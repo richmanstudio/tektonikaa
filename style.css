@@ -1,102 +1,206 @@
-/* ---------- Переменные ---------- */
-:root{
-  --bg       : #ffffff;
-  --bg-alt   : #f3f5f7;
-  --text     : #1d1d1f;
-  --accent   : #00796b;
-  --radius   : 8px;
-  --shadow   : 0 2px 8px rgba(0,0,0,.08);
-  --max-w    : 1050px;
-  --fs-base  : 18px;
-}
-
-/* ---------- База ---------- */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:var(--fs-base)}
-body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-h1,h2,h3{font-weight:600;line-height:1.3}
-h1{font-size:clamp(2rem,4vw,2.75rem);margin-bottom:.5em}
-h2{font-size:1.75rem;margin-bottom:1em}
-h3{font-size:1.25rem;margin-bottom:.5em}
-p{margin-bottom:1em}
-.container{width:min(var(--max-w),100% - 2rem);margin-inline:auto}
-a{color:var(--accent);text-decoration:none}
-
-/* ---------- Кнопки ---------- */
-.btn{display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;border:none;cursor:pointer;transition:opacity .2s}
-.btn:hover{opacity:.85}
-.btn.large{font-size:1.1rem}
-.btn.mini{padding:.55rem 1.2rem;font-size:.9rem}
-
-/* ---------- Шапка ---------- */
-header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
-.header-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
-.logo{font-size:1.4rem;color:var(--text);white-space:nowrap}
-.burger{display:none;background:none;border:none;padding:.35rem;cursor:pointer}
-.burger span{display:block;width:23px;height:2px;margin:5px;background:var(--text);transition:.3s}
-.main-nav{display:flex;gap:1.5rem;align-items:center}
-.main-nav a{font-weight:500;color:var(--text)}
-.main-nav a.btn{color:#fff}
-
-/* ---------- Hero ---------- */
-.hero{background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;min-height:60vh;position:relative;text-align:center}
-.hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:-1}
-.hero-content{position:relative;z-index:1;max-width:600px;margin:auto;padding:4rem 1rem;text-align:center}
-.lead{font-size:1.1rem;margin-bottom:2rem}
-.accent{color:var(--accent)}
-
-/* ---------- Sections ---------- */
-.section{padding:4rem 0}
-.section.alt{background:var(--bg-alt)}
-.center{text-align:center}
-
-/* ---------- Quick‑facts ---------- */
-.quick-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:1.5rem}
-.qbox{background:#fff;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);text-align:center}
-.qicon{font-size:2rem;display:block;margin-bottom:.3rem}
-
-/* ---------- Grid карточек (на внутренних) ---------- */
-.cards-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
-.card p{margin:0}
-
-/* ---------- Footer (компакт) ---------- */
-footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
-@media(max-width:600px){.footer-inner{flex-direction:column;gap:.4rem}}
-
-/* ==================================================================== */
-/* ========================   МОБИЛЬНЫЕ   ============================= */
-/* ==================================================================== */
-@media (max-width:600px){
-
-  html{font-size:16px}
-
-  .header-inner{padding:.4rem 0}
-  .burger{display:block}
-
-  /* выезжающее меню */
-  .main-nav{
-    position:fixed;top:0;right:-100%;
-    width:70%;height:100vh;background:#fff;
-    flex-direction:column;gap:1.2rem;
-    padding:5rem 1.5rem 2rem;
-    box-shadow:-2px 0 10px rgba(0,0,0,.1);
-    z-index:999;                         /* подняли над контентом */
-    transition:.35s ease-out;
+/* =====================================================================
+   VARIABLES
+   ===================================================================== */
+   :root{
+    --bg       : #ffffff;
+    --bg-alt   : #f3f5f7;
+    --text     : #1d1d1f;
+    --accent   : #00796b;         /* emerald‑green accent */
+    --radius   : 8px;
+    --shadow   : 0 2px 8px rgba(0,0,0,.08);
+    --max-w    : 1050px;
+    --fs-base  : 18px;
   }
-  .main-nav.open{right:0}
-  .main-nav a{font-size:1.1rem}
-  .main-nav a.btn{width:100%;text-align:center}
-
-  /* анимация бургера */
-  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .burger.open span:nth-child(2){opacity:0}
-  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-  .hero-content{padding:3rem 1rem}
-  .lead{margin-bottom:1.5rem}
-
-  .quick-grid,
-  .cards-grid{grid-template-columns:1fr}
-}
+  
+  /* =====================================================================
+     BASE
+     ===================================================================== */
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:var(--fs-base)}
+  body{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-weight:600;line-height:1.3}
+  h1{font-size:clamp(2rem,4vw,2.75rem);margin-bottom:.5em}
+  h2{font-size:1.75rem;margin-bottom:1em}
+  h3{font-size:1.25rem;margin-bottom:.5em}
+  p{margin-bottom:1em}
+  .container{width:min(var(--max-w),100% - 2rem);margin-inline:auto}
+  a{color:var(--accent);text-decoration:none}
+  
+  /* =====================================================================
+     BUTTONS & LINKS
+     ===================================================================== */
+  .btn{
+    display:inline-block;
+    padding:.75rem 1.6rem;
+    border-radius:var(--radius);
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    transition:opacity .2s;
+  }
+  .btn:hover{opacity:.85}
+  .btn.large{font-size:1.1rem}
+  .btn.mini{padding:.55rem 1.2rem;font-size:.9rem}
+  
+  /* =====================================================================
+     HEADER + NAVBAR
+     ===================================================================== */
+  header{
+    background:#fff;
+    box-shadow:var(--shadow);
+    position:sticky;top:0;z-index:100;
+  }
+  .header-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:.6rem 0;
+  }
+  .logo{font-size:1.4rem;color:var(--text);white-space:nowrap}
+  
+  /* burger button */
+  .burger{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    width:44px;height:44px;padding:0;          /* larger tap‑area */
+  }
+  .burger span{
+    display:block;width:24px;height:2px;
+    margin:6px auto;
+    background:var(--text);
+    transition:.3s;
+    pointer-events:none;                       /* ignore clicks on spans */
+  }
+  
+  /* desktop nav */
+  .main-nav{
+    display:flex;
+    gap:1.5rem;
+    align-items:center;
+  }
+  .main-nav a{font-weight:500;color:var(--text)}
+  .main-nav a.btn{color:#fff}
+  
+  /* =====================================================================
+     HERO
+     ===================================================================== */
+  .hero{
+    background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60')
+              center/cover no-repeat;
+    min-height:60vh;
+    position:relative;
+    text-align:center;
+  }
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background:rgba(255,255,255,.6);
+    z-index:-1;
+  }
+  .hero-content{
+    position:relative;z-index:1;
+    max-width:600px;margin:auto;
+    padding:4rem 1rem;
+    text-align:center;
+  }
+  .lead{font-size:1.1rem;margin-bottom:2rem}
+  .accent{color:var(--accent)}
+  
+  /* =====================================================================
+     SECTIONS & QUICK‑GRID
+     ===================================================================== */
+  .section{padding:4rem 0}
+  .section.alt{background:var(--bg-alt)}
+  .center{text-align:center}
+  
+  .quick-grid{
+    display:grid;
+    gap:1.5rem;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    margin-top:1.5rem;
+  }
+  .qbox{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:1rem;
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  .qicon{font-size:2rem;display:block;margin-bottom:.3rem}
+  
+  /* =====================================================================
+     GENERIC CARD GRID (for inner pages)
+     ===================================================================== */
+  .cards-grid{
+    display:grid;
+    gap:2rem;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:1.5rem;
+    box-shadow:var(--shadow);
+  }
+  .card p{margin:0}
+  
+  /* =====================================================================
+     FOOTER (compact)
+     ===================================================================== */
+  footer{
+    background:#fafafa;
+    border-top:1px solid #e0e0e0;
+    font-size:.9rem;
+  }
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:.6rem 0;
+  }
+  @media(max-width:600px){
+    .footer-inner{flex-direction:column;gap:.4rem}
+  }
+  
+  /* =====================================================================
+     MOBILE / SMALL SCREEN RULES
+     ===================================================================== */
+  @media (max-width:600px){
+  
+    html{font-size:16px}
+  
+    .header-inner{padding:.4rem 0}
+    .burger{display:block}
+  
+    /* slide‑out nav */
+    .main-nav{
+      position:fixed;top:0;right:-100%;
+      width:70%;height:100vh;
+      background:#fff;
+      flex-direction:column;
+      gap:1.2rem;
+      padding:5rem 1.5rem 2rem;
+      box-shadow:-2px 0 10px rgba(0,0,0,.1);
+      z-index:999;
+      transition:.35s ease-out;
+    }
+    .main-nav.open{right:0 !important;}   /* forces open position */
+  
+    .main-nav a{font-size:1.1rem}
+    .main-nav a.btn{width:100%;text-align:center}
+  
+    /* burger → cross */
+    .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  
+    .hero-content{padding:3rem 1rem}
+    .lead{margin-bottom:1.5rem}
+  
+    .quick-grid,
+    .cards-grid{grid-template-columns:1fr}
+  }
