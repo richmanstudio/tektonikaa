@@ -55,7 +55,7 @@ header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:10
 .qbox{background:#fff;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);text-align:center}
 .qicon{font-size:2rem;display:block;margin-bottom:.3rem}
 
-/* ---------- Grid карточек (на других страницах) ---------- */
+/* ---------- Grid карточек (на внутренних) ---------- */
 .cards-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .card{background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
 .card p{margin:0}
@@ -74,10 +74,22 @@ footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
 
   .header-inner{padding:.4rem 0}
   .burger{display:block}
-  .main-nav{position:fixed;top:0;right:-100%;width:70%;height:100vh;background:#fff;flex-direction:column;gap:1.2rem;padding:5rem 1.5rem 2rem;box-shadow:-2px 0 10px rgba(0,0,0,.1);transition:.35s}
+
+  /* выезжающее меню */
+  .main-nav{
+    position:fixed;top:0;right:-100%;
+    width:70%;height:100vh;background:#fff;
+    flex-direction:column;gap:1.2rem;
+    padding:5rem 1.5rem 2rem;
+    box-shadow:-2px 0 10px rgba(0,0,0,.1);
+    z-index:999;                         /* подняли над контентом */
+    transition:.35s ease-out;
+  }
   .main-nav.open{right:0}
   .main-nav a{font-size:1.1rem}
   .main-nav a.btn{width:100%;text-align:center}
+
+  /* анимация бургера */
   .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -85,7 +97,6 @@ footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
   .hero-content{padding:3rem 1rem}
   .lead{margin-bottom:1.5rem}
 
-  .quick-grid{grid-template-columns:1fr}
+  .quick-grid,
   .cards-grid{grid-template-columns:1fr}
-
 }
