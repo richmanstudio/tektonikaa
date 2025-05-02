@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ТЕКТОНИКА — Главная</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="container header-inner">
+    <a class="logo" href="index.html">ТЕКТОНИКА</a>
+
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mobileNav">
+      <a href="index.html"      class="active">Главная</a>
+      <a href="services.html">Услуги</a>
+      <a href="projects.html">Проекты</a>
+      <a href="about.html">О&nbsp;нас</a>
+      <a href="media.html">Медиа</a>
+      <a href="research.html">Научная&nbsp;деятельность</a>
+      <a href="careers.html" class="btn primary mini">Карьера</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero flex-center">
+  <div class="hero-content">
+    <h1>Добро пожаловать в ТЕКТОНИКУ</h1>
+    <p class="lead">Геолого‑разведочные решения под ключ.</p>
+
+    <!-- две кнопки -->
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a class="btn primary large" href="services.html">Наши услуги</a>
+      <a class="btn large" style="background:#ffffff;color:var(--accent);border:2px solid var(--accent)"
+         href="about.html">О нас</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Quick Facts ===== -->
+<section class="section alt">
+  <div class="container">
+    <h2 class="center">Что мы делаем</h2>
+
+    <div class="quick-grid">
+      <div class="qbox">
+        <span class="qicon">⛏️</span>
+        <h3>Бурение</h3>
+        <p>RC и&nbsp;коронковое бурение до&nbsp;1 200 м</p>
+      </div>
+      <div class="qbox">
+        <span class="qicon">🛰️</span>
+        <h3>Геофизика</h3>
+        <p>Магнито‑ и&nbsp;электроразведка, IP‑томография</p>
+      </div>
+      <div class="qbox">
+        <span class="qicon">🗂️</span>
+        <h3>3‑D модели</h3>
+        <p>Micromine / Surpac, варьографика</p>
+      </div>
+      <div class="qbox">
+        <span class="qicon">📑</span>
+        <h3>Отчёты</h3>
+        <p>GKZ, JORC и независимый аудит</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container footer-inner">
+    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
+    <a href="mailto:info@tektonika-dv.ru">Написать письмо</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
