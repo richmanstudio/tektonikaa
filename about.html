@@ -3,24 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ТЕКТОНИКА — О нас</title>
+  <title>ТЕКТОНИКА — О нас</title>
 
+  <!-- общий шрифт и стили -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ===== Header ===== -->
 <header>
   <div class="container header-inner">
-    <a class="logo" href="index.html">ТЕКТОНИКА</a>
+    <a href="index.html">
+      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
+    </a>
+
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
+
     <nav class="main-nav" id="mobileNav">
       <a href="index.html">Главная</a>
       <a href="services.html">Услуги</a>
       <a href="projects.html">Проекты</a>
-      <a href="about.html"  class="active">О нас</a>
+      <a href="about.html" class="active">О&nbsp;нас</a>
       <a href="media.html">Медиа</a>
       <a href="research.html">Научная&nbsp;деятельность</a>
       <a href="careers.html" class="btn primary mini">Карьера</a>
@@ -28,17 +34,37 @@
   </div>
 </header>
 
+<!-- ===== About page ===== -->
 <section class="section">
   <div class="container">
     <h1>О компании</h1>
-    <p>Текст о компании будет добавлен.</p>
+
+    <p>ООО «ТЕКТОНИКА» — российская геолого-разведочная компания, выполняющая
+       полный цикл услуг — от полевого бурения и геофизики до 3-D моделирования
+       месторождений и подготовки отчётов GKZ / JORC. Мы работаем на территории
+       всей страны, сочетая многолетний практический опыт с современными
+       цифровыми технологиями (БПЛА-съёмка, облака точек, машинное обучение).</p>
+
+    <p><strong>Ключевые факты:</strong></p>
+    <ul>
+      <li>Зарегистрированы — 18 декабря 2023 г.</li>
+      <li>Уставный капитал — 16 000 ₽</li>
+      <li>Выручка 2024 года — 97,9 млн ₽; прибыль — 19,5 млн ₽</li>
+      <li>Собственная буровая техника и аккредитованная лаборатория грунтов</li>
+      <li>Команда инженеров и геологов с опытом защиты запасов в ГКЗ</li>
+    </ul>
+
+    <p>Наша миссия — <em>комплексно исследовать недра, предоставляя заказчикам
+       точные, прозрачные и финансово обоснованные данные о ресурсах и запасах
+       полезных ископаемых</em>.</p>
   </div>
 </section>
 
+<!-- ===== Footer ===== -->
 <footer>
   <div class="container footer-inner">
-    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
-    <a href="mailto:info@tektonika-dv.ru">Написать письмо</a>
+    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
+    <a href="mailto:tektonikayur16@gmail.com">Написать письмо</a>
   </div>
 </footer>
 
