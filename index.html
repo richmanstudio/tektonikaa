@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ТЕКТОНИКА — Главная</title>
+  <title>ТЕКТОНИКА — Главная</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -13,14 +13,14 @@
 <!-- ===== Header ===== -->
 <header>
   <div class="container header-inner">
-    <a class="logo" href="index.html">ТЕКТОНИКА</a>
+    <a href="index.html"><img src="logo.png" alt="ТЕКТОНИКА" class="logo-img"></a>
 
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
     <nav class="main-nav" id="mobileNav">
-      <a href="index.html"      class="active">Главная</a>
+      <a href="index.html"  class="active">Главная</a>
       <a href="services.html">Услуги</a>
       <a href="projects.html">Проекты</a>
       <a href="about.html">О&nbsp;нас</a>
@@ -34,15 +34,36 @@
 <!-- ===== Hero ===== -->
 <section class="hero flex-center">
   <div class="hero-content">
-    <h1>Добро пожаловать в ТЕКТОНИКУ</h1>
-    <p class="lead">Геолого‑разведочные решения под ключ.</p>
+    <h1>Добро пожаловать в ТЕКТОНИКУ</h1>
+    <p class="lead">Комплексный подход к решению геолого-геофизических задач</p>
 
-    <!-- две кнопки -->
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a class="btn primary large" href="services.html">Наши услуги</a>
-      <a class="btn large" style="background:#ffffff;color:var(--accent);border:2px solid var(--accent)"
-         href="about.html">О нас</a>
+      <a class="btn large" style="background:#fff;color:var(--accent);border:2px solid var(--accent)"
+         href="about.html">О&nbsp;нас</a>
     </div>
+  </div>
+</section>
+
+<!-- ===== О компании ===== -->
+<section class="section">
+  <div class="container">
+    <h2>О&nbsp;компании</h2>
+    <p>Компания ООО «ТЕКТОНИКА» выполняет полный спектр геолого-геофизических исследований
+       недр по всей территории России. Мы обладаем многолетним опытом полевых работ
+       и развиваем технологии применения БПЛА.</p>
+  </div>
+</section>
+
+<!-- ===== География деятельности ===== -->
+<section class="section alt">
+  <div class="container">
+    <h2>География деятельности</h2>
+    <p class="center">На карте будут отмечены регионы, где выполнены проекты.</p>
+
+    <div class="map-box"
+         style="background:#dfe7e6 url('https://dummyimage.com/800x300/ced4da/6c757d&text=Карта+будет+здесь') center/cover no-repeat;
+                border-radius:var(--radius);height:300px;"></div>
   </div>
 </section>
 
@@ -53,34 +74,58 @@
 
     <div class="quick-grid">
       <div class="qbox">
-        <span class="qicon">⛏️</span>
-        <h3>Бурение</h3>
-        <p>RC и&nbsp;коронковое бурение до&nbsp;1 200 м</p>
-      </div>
-      <div class="qbox">
         <span class="qicon">🛰️</span>
         <h3>Геофизика</h3>
-        <p>Магнито‑ и&nbsp;электроразведка, IP‑томография</p>
+        <p>Магнито- и&nbsp;электроразведка, IP-томография</p>
       </div>
+
       <div class="qbox">
-        <span class="qicon">🗂️</span>
-        <h3>3‑D модели</h3>
-        <p>Micromine / Surpac, варьографика</p>
+        <span class="qicon">⛏️</span>
+        <h3>Геология</h3>
+        <p>Полевые партии, опробование, QA/QC-контроль</p>
       </div>
+
+      <div class="qbox">
+        <span class="qicon">📊</span>
+        <h3>3D&nbsp;Модели</h3>
+        <p>Геолого-геофизические&nbsp;3D&nbsp;модели</p>
+      </div>
+
       <div class="qbox">
         <span class="qicon">📑</span>
         <h3>Отчёты</h3>
-        <p>GKZ, JORC и независимый аудит</p>
+        <p>GKZ, JORC и&nbsp;независимый аудит запасов</p>
+      </div>
+
+      <div class="qbox">
+        <span class="qicon">📐</span>
+        <h3>Топография</h3>
+        <p>Лазерное сканирование, цифровые модели рельефа</p>
+      </div>
+
+      <div class="qbox">
+        <span class="qicon">🚁</span>
+        <h3>Дроны&nbsp;/ БПЛА</h3>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== Контакты ===== -->
+<section class="section">
+  <div class="container">
+    <h2>Контакты</h2>
+    <p><strong>Адрес:</strong> 680000, Хабаровский край, г.&nbsp;Хабаровск, ул.&nbsp;Ким&nbsp;Ю&nbsp;Чена, д.&nbsp;65, офис 326</p>
+    <p><strong>E-mail:</strong> <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a></p>
+    <p><strong>Телефон:</strong> <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a></p>
   </div>
 </section>
 
 <!-- ===== Footer ===== -->
 <footer>
   <div class="container footer-inner">
-    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
-    <a href="mailto:info@tektonika-dv.ru">Написать письмо</a>
+    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
+    <a href="mailto:tektonikayur16@gmail.com">Написать письмо</a>
   </div>
 </footer>
 
