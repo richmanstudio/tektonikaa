@@ -1,5 +1,6 @@
 /* =====================================================================
-   T E K T O N I K A  •  GLOBAL STYLESHEET  (May-2025, responsive v4)
+   T E K T O N I K A  •  GLOBAL STYLESHEET
+   Версия: 2025-05-v6  (общий файл для ВСЕХ страниц проекта)
    ===================================================================== */
 
 
@@ -7,17 +8,21 @@
    0.  DESIGN TOKENS
    ─────────────────────────────────────────── */
    :root{
+      /* colors */
       --bg        : #ffffff;
       --bg-alt    : #f3f5f7;
       --text      : #1d1d1f;
       --accent    : #0056b3;
     
+      /* shapes / FX */
       --radius    : 8px;
       --shadow    : 0 2px 8px rgb(0 0 0 / .08);
     
+      /* breakpoints */
       --max-w-l   : 1050px;
       --max-w-m   : 860px;
     
+      /* fluid type */
       --fs-base   : clamp(17px,1.05vw + .6rem,19px);
       --fs-h1     : clamp(2.3rem,1.7vw + 1.7rem,2.9rem);
       --fs-h2     : clamp(1.7rem,1.2vw + 1.2rem,2.1rem);
@@ -25,7 +30,7 @@
     }
     
     /* ─────────────────────────────────────────────
-       1.  RESET & BASE
+       1.  RESET & BASICS
        ─────────────────────────────────────────── */
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:var(--fs-base)}
@@ -44,22 +49,19 @@
     a{color:var(--accent);text-decoration:none}
     
     /* ─────────────────────────────────────────────
-       2.  LOGO
+       2.  LOGO & BUTTONS
        ─────────────────────────────────────────── */
     .logo-img{height:clamp(38px,4vw,64px);object-fit:contain}
-    
-    /* ─────────────────────────────────────────────
-       3.  BUTTONS
-       ─────────────────────────────────────────── */
-    .btn{display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);
-         background:var(--accent);color:#fff;font-weight:600;border:none;cursor:pointer;
-         transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+    .btn{
+      display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);
+      background:var(--accent);color:#fff;font-weight:600;border:none;cursor:pointer;
+      transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
     .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgb(0 0 0 /.15)}
     .btn.large{font-size:1.1rem}
     .btn.mini{padding:.55rem 1.2rem;font-size:.9rem}
     
     /* ─────────────────────────────────────────────
-       4.  HEADER / NAVBAR
+       3.  HEADER / NAVBAR
        ─────────────────────────────────────────── */
     header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
     .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0}
@@ -71,84 +73,97 @@
     .main-nav a.btn{color:#fff}
     
     /* ─────────────────────────────────────────────
-       5.  HERO
+       4.  HERO (BG-image, overlay)
        ─────────────────────────────────────────── */
     .hero{
       background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
-      min-height:clamp(60vh,70vh,85vh);position:relative;text-align:center
-    }
+      min-height:clamp(60vh,70vh,85vh);position:relative;text-align:center}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:-1}
     .hero-content{position:relative;z-index:1;max-width:min(680px,90%);margin:auto;
-                  padding:clamp(3rem,10vh,5rem) 1rem}
+      padding:clamp(3rem,10vh,5rem) 1rem}
     .lead{font-size:1.1rem;margin-bottom:2rem}
     
     /* ─────────────────────────────────────────────
-       6.  SECTIONS
+       5.  UNIVERSAL SECTIONS
        ─────────────────────────────────────────── */
     .section{padding:clamp(3rem,8vw,4.5rem) 0}
     .section.alt{background:var(--bg-alt)}
     .center{text-align:center}
     
     /* ─────────────────────────────────────────────
-       7.  MEDIA PAGE LAYOUT
-       ─────────────────────────────────────────── */
-    .media-layout{display:flex;gap:2rem}
-    .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.5rem;margin-top:.2rem}
-    .media-content{flex:1;min-width:0}
-    
-    /* таб-кнопки (левое подчёркивание) */
-    .media-sidebar .tab-btn{
-      all:unset;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--text);
-      border-left:4px solid transparent;padding:.55rem 0 .55rem 0;transition:color .25s,border-color .25s
-    }
-    .media-sidebar .tab-btn:hover{color:var(--accent)}
-    .media-sidebar .tab-btn.active{color:var(--accent);border-color:var(--accent)}
-    
-    /* моб. select (появляется только ≤600px) */
-    .media-select{display:none;margin-bottom:1.5rem}
-    .media-select select{
-      font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)
-    }
-    
-    /* ─────────────────────────────────────────────
-       8.  QUICK-FACTS GRID
+       6.  QUICK-FACTS GRID (главная)
        ─────────────────────────────────────────── */
     .quick-grid{--card-min:260px;display:grid;gap:2.2rem 2rem;
-                grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
-                max-width:var(--max-w-m);margin:2.5rem auto 0;justify-content:center}
+      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
+      max-width:var(--max-w-m);margin:2.5rem auto 0;justify-content:center}
     .qbox{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
-          gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e4e7ec;border-radius:14px;
-          box-shadow:0 4px 16px rgb(0 0 0 /.05);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+      gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e4e7ec;
+      border-radius:14px;box-shadow:0 4px 16px rgb(0 0 0 /.05);
+      transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
     .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;
-                  background:var(--accent);opacity:.8}
+      background:var(--accent);opacity:.8}
     .qbox:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgb(0 0 0 /.08)}
     .qicon{font-size:2.4rem}
     .qbox h3{margin:.25rem 0;font-size:1.17rem}
+    
+    /* quick-grid breakpoints */
     @media(max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
-    @media(max-width:480px){
-      .quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}
-      .qbox{padding:1.7rem 1.2rem}
-    }
+    @media(max-width:480px){.quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}.qbox{padding:1.7rem 1.2rem}}
     
     /* ─────────────────────────────────────────────
-       9.  GALLERY
+       7.  MEDIA-CENTER LAYOUT (ТАБЫ)
+       ─────────────────────────────────────────── */
+    .media-layout{display:flex;gap:2rem}
+    .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.55rem;margin-top:.2rem}
+    .media-content{flex:1;min-width:0}
+    
+    /* основные таб-кнопки (левое подч.) */
+    .media-sidebar .tab-btn{
+      all:unset;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--text);
+      border-left:4px solid transparent;padding:.55rem 0;transition:color .25s,border-color .25s}
+    .media-sidebar .tab-btn:hover{background:rgba(0,86,179,.08)}
+    .media-sidebar .tab-btn.active{color:var(--accent);border-color:var(--accent)}
+    
+    /* mobile-select заменяет sidebar ≤600 px */
+    .media-select{display:none;margin-bottom:1.5rem}
+    .media-select select{font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)}
+    
+    /* ─────────────────────────────────────────────
+       8.  SEASON-TABS (внутри Фото)
+       ─────────────────────────────────────────── */
+    .season-tabs{display:flex;gap:1.2rem;justify-content:center;margin:0 0 1.6rem}
+    .season-tabs .tab-btn{
+      all:unset;cursor:pointer;font-weight:600;color:var(--text);
+      border-bottom:3px solid transparent;padding:.45rem .2rem;
+      transition:border-color .25s,color .25s}
+    .season-tabs .tab-btn:hover{color:var(--accent)}
+    .season-tabs .tab-btn.active{color:var(--accent);border-color:var(--accent)}
+    
+    /* season-panes (fade slide) */
+    .seasons-wrapper{position:relative}
+    .season-pane{opacity:0;pointer-events:none;position:absolute;inset:0;
+      transform:translateX(40px);transition:opacity .35s,transform .35s}
+    .season-pane.active{position:static;opacity:1;pointer-events:auto;transform:none}
+    
+    /* ─────────────────────────────────────────────
+       9.  GALLERY (Фото)
        ─────────────────────────────────────────── */
     .gallery{--thumb:160px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--thumb),1fr))}
     .gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
-                 box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s}
+      box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s}
     .gallery a:hover img{transform:scale(1.03);box-shadow:0 6px 16px rgb(0 0 0 /.18)}
     @media(min-width:800px){.gallery{--thumb:200px}}
     @media(min-width:1100px){.gallery{--thumb:240px}}
     
     /* lightbox */
     #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);
-              display:flex;align-items:center;justify-content:center;
-              opacity:0;pointer-events:none;transition:opacity .35s;z-index:1100}
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .35s;z-index:1100}
     #lightbox.show{opacity:1;pointer-events:auto}
     #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 4px 24px rgb(0 0 0 /.3)}
     
     /* ─────────────────────────────────────────────
-       10.  MEDIA – NEWS & DOCS
+       10.  NEWS & DOCS контент
        ─────────────────────────────────────────── */
     .cards-grid{display:flex;flex-direction:column;gap:2rem}
     .card h3{margin-bottom:.4rem;font-size:1.15rem}
@@ -160,44 +175,58 @@
     .docs-table th{text-align:left;font-weight:600}
     
     /* ─────────────────────────────────────────────
-       11.  TOAST
+       11.  CONTACT-FORM (карьера)
+       ─────────────────────────────────────────── */
+    .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:700px;margin:auto}
+    .contact-form label{font-size:.9rem;display:flex;flex-direction:column;gap:.35rem}
+    .contact-form input,.contact-form select,.contact-form textarea{
+      font:inherit;width:100%;padding:.65rem .8rem;border:1px solid #cfd4da;border-radius:var(--radius);
+      background:#fff;transition:border .2s,box-shadow .2s}
+    .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
+      border-color:var(--accent);box-shadow:0 0 0 2px rgb(0 86 179 /.2);outline:0}
+    .contact-form .two-cols{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .switch{display:flex;align-items:center;gap:.6rem;margin:.8rem 0 1.2rem}
+    .switch input{appearance:none;width:46px;height:24px;border-radius:12px;background:#cfd4da;cursor:pointer;position:relative;transition:.25s}
+    .switch input::before{content:'';position:absolute;top:3px;left:4px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.25s}
+    .switch input:checked{background:var(--accent)}
+    .switch input:checked::before{transform:translateX(22px)}
+    .switch-label{font-size:.9rem}
+    
+    /* ─────────────────────────────────────────────
+       12.  REVEAL-ON-SCROLL
+       ─────────────────────────────────────────── */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+    
+    /* ─────────────────────────────────────────────
+       13.  TOAST
        ─────────────────────────────────────────── */
     .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(40px);
-           padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;
-           box-shadow:0 6px 20px rgb(0 0 0 /.15);opacity:0;pointer-events:none;z-index:1500;
-           transition:opacity .4s,transform .4s}
+      padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;
+      box-shadow:0 6px 20px rgb(0 0 0 /.15);opacity:0;pointer-events:none;z-index:1500;
+      transition:opacity .4s,transform .4s}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     
     /* ─────────────────────────────────────────────
-       12.  FOOTER
+       14.  FOOTER
        ─────────────────────────────────────────── */
     footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
     @media(max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
     
     /* ─────────────────────────────────────────────
-       13.  ANIMATIONS & PREFS
-       ─────────────────────────────────────────── */
-    @keyframes fade-up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-    .anim-init{opacity:0}
-    .anim-active{animation:fade-up .8s .1s both}
-    @media(prefers-reduced-motion:reduce){.anim-init{opacity:1 !important;animation:none !important}}
-    
-    /* ─────────────────────────────────────────────
-       14.  MID-WIDTH  (601–1023 px) – горизонтальные табы
+       15.  GRID / TAB tweak @ MID-WIDTH (601-1023 px)
        ─────────────────────────────────────────── */
     @media(min-width:601px) and (max-width:1023px){
       .media-layout{flex-direction:column}
       .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.5rem;margin:0 0 1.4rem 0}
-      .media-sidebar .tab-btn{
-        border-left:none;padding:.45rem .2rem;border-bottom:4px solid transparent
-      }
+      .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.5rem .2rem}
       .media-sidebar .tab-btn.active{border-color:var(--accent)}
       .media-select{display:none}
     }
     
     /* ─────────────────────────────────────────────
-       15.  MOBILE  (≤600 px) – выпадающий список
+       16.  MOBILE (≤600 px)  – sidebar → select
        ─────────────────────────────────────────── */
     @media(max-width:600px){
       html{font-size:16px}
@@ -205,9 +234,10 @@
       .header-inner{padding:.4rem 0}
       .burger{display:block}
     
-      .main-nav{position:fixed;top:0;right:-100%;width:min(280px,75%);height:100vh;background:#fff;
-                flex-direction:column;gap:1.2rem;padding:5rem 1.5rem 2rem;
-                box-shadow:-2px 0 10px rgb(0 0 0 /.1);z-index:999;transition:.35s ease-out}
+      .main-nav{
+        position:fixed;top:0;right:-100%;width:min(280px,75%);height:100vh;background:#fff;
+        flex-direction:column;gap:1.2rem;padding:5rem 1.5rem 2rem;
+        box-shadow:-2px 0 10px rgb(0 0 0 /.1);z-index:999;transition:.35s ease-out}
       .main-nav.open{right:0 !important}
       .main-nav a{font-size:1.1rem}
       .main-nav a.btn{width:100%;text-align:center}
@@ -220,4 +250,5 @@
       .media-sidebar{display:none}
       .media-select{display:block}
       .gallery{--thumb:140px}
+      .contact-form .two-cols{grid-template-columns:1fr}
     }
