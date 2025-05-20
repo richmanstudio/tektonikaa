@@ -1,68 +1,66 @@
 /* =====================================================================
    Т Е К Т О Н И К А •  style.css
-   Версия: 2025-05-30  (v9 «Polished»)
-   — единый файл, покрывающий ВСЕ страницы проекта
-   — современная типографика, адаптив, интерактивные кнопки, плавные анимации
-   — без «мёртвого» кода: каждый селектор реально используется
-   ===================================================================== */
+   Версия: 2025-05-31  (v9-hotfix)
+   ────────────────────────────────────────────
+   Изменения по просьбе клиента   (см. последний скрин):
+     1)  Нав-кнопки в шапке больше НЕ окрашиваются в голубой при ховере,
+        остаются тёмными; голубым остаётся только подчёркивание.
+     2)  Иконки в блоке «Что мы делаем» увеличены и слегка смещены
+        вниз, чтобы сбалансировать вертикальный ритм карточки.
+   -------------------------------------------------------------------- */
+
 
 /* ─────────────────────────────────────────────
-   0.  DESIGN TOKENS  (единственный «источник правды»)
+   0.  TOKENS
    ─────────────────────────────────────────── */
    :root{
-      /* Цветовая система */
       --clr-bg         : #ffffff;
       --clr-bg-alt     : #f5f7fb;
       --clr-text       : #1d1d1f;
-      --clr-accent     : #0060ff;          /* основной бренд-синий */
-      --clr-accent-2   : #3e8dff;          /* градиент-хайлайт */
+      --clr-text-soft  : #666c75;
+      --clr-accent     : #0060ff;
+      --clr-accent-2   : #3e8dff;
       --clr-border     : #d9dee7;
-      --clr-error      : #e04141;
     
-      /* Радиус, тень, скорость */
       --radius         : 10px;
-      --shadow-sm      : 0 2px 6px rgb(0 0 0 /.06);
-      --shadow-md      : 0 10px 26px rgb(0 0 0 /.1);
-      --ease-soft      : cubic-bezier(.25,.8,.3,1);
+      --shadow-sm      : 0 2px 6px  rgb(0 0 0 /.06);
+      --shadow-md      : 0 10px 26px rgb(0 0 0 /.10);
     
-      /* Лимиты сетки */
       --w-xl           : 1180px;
       --w-lg           : 1024px;
       --w-sm           : 620px;
     
-      /* Флюидная типографика */
       --fs-base        : clamp(17px,1vw + .6rem,19px);
       --fs-h1          : clamp(2.6rem,2vw + 2rem,3.3rem);
       --fs-h2          : clamp(1.9rem,1.3vw + 1.3rem,2.4rem);
       --fs-h3          : clamp(1.2rem,.9vw + 1rem,1.4rem);
     }
     
+    
     /* ─────────────────────────────────────────────
-       1.  RESET  +  GLOBAL BASICS
+       1.  RESET & BASE
        ─────────────────────────────────────────── */
-    *,
-    *::before,
-    *::after{margin:0;padding:0;box-sizing:border-box}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:var(--fs-base)}
     body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      color:var(--clr-text);
-      background:var(--clr-bg);
-      line-height:1.6;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",
+                  Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--clr-text);background:var(--clr-bg);line-height:1.6;
       -webkit-font-smoothing:antialiased;
     }
-    img,picture,svg{display:block;max-width:100%}
+    img,svg,picture{max-width:100%;display:block}
     h1,h2,h3{font-weight:700;line-height:1.2}
     h1{font-size:var(--fs-h1);margin-bottom:.45em}
     h2{font-size:var(--fs-h2);margin-bottom:.85em}
     h3{font-size:var(--fs-h3);margin:.8rem 0 .55rem}
-    p{margin-bottom:1em}
+    p{margin:0 0 1em}
     a{color:var(--clr-accent);text-decoration:none;transition:color .2s}
-    a:hover{color:var(--clr-accent-2)}
+    a:focus-visible{outline:2px solid var(--clr-accent-2);outline-offset:2px}
     .container{width:min(var(--w-xl),calc(100% - 2rem));margin-inline:auto}
     
+    
     /* ─────────────────────────────────────────────
-       2.  LOGO  +  BUTTONS
+       2.  LOGO & BUTTONS
        ─────────────────────────────────────────── */
     .logo-img{height:clamp(42px,4vw,74px);object-fit:contain}
     
@@ -72,90 +70,131 @@
       padding:.85rem 2rem;border-radius:var(--radius);
       font-weight:600;font-size:.95rem;letter-spacing:.02em;
       color:#fff;background:var(--grad);border:none;cursor:pointer;
-      box-shadow:0 6px 16px rgb(0 96 255 /.25);transition:transform .25s var(--ease-soft),box-shadow .25s;
+      box-shadow:0 6px 16px rgb(0 96 255 /.25);
+      transition:transform .25s cubic-bezier(.25,.8,.3,1),box-shadow .25s;
     }
     .btn:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgb(0 96 255 /.35)}
-    .btn:active{transform:translateY(-1px);box-shadow:0 6px 18px rgb(0 96 255 /.3)}
+    .btn:active{transform:translateY(-1px);box-shadow:0 6px 18px rgb(0 96 255 /.30)}
     .btn.mini{padding:.6rem 1.3rem;font-size:.88rem}
     .btn.ghost{background:#fff;color:var(--clr-accent);border:1px solid var(--clr-accent)}
     .btn.ghost:hover{background:var(--clr-accent);color:#fff}
     
+    
     /* ─────────────────────────────────────────────
-       3.  HEADER  +  NAV
+       3.  HEADER / NAVBAR
        ─────────────────────────────────────────── */
     header{
       background:#fff;position:sticky;top:0;z-index:999;
-      box-shadow:0 1px 4px rgb(0 0 0 /.06)}
+      box-shadow:0 1px 4px rgb(0 0 0 /.06);
+    }
     .header-inner{
       display:flex;justify-content:space-between;align-items:center;
-      padding:.65rem 0}
-    .main-nav{display:flex;gap:1.7rem;align-items:center;font-weight:500}
-    .main-nav a{position:relative;padding:.25rem 0}
+      padding:.65rem 0;
+    }
+    .main-nav{
+      display:flex;gap:1.7rem;align-items:center;font-weight:500;
+    }
+    .main-nav a{
+      color:var(--clr-text);                /* ←— 1. тёмный текст ВСЕГДА  */
+      position:relative;padding:.25rem 0;
+    }
+    .main-nav a:hover{
+      color:var(--clr-text);                /* ←— не меняем цвет при ховере */
+    }
     .main-nav a::after{
       content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;
-      background:var(--clr-accent-2);transform:scaleX(0);transition:transform .25s}
+      background:var(--clr-accent-2);
+      transform:scaleX(0);transition:transform .25s;
+    }
     .main-nav a:hover::after{transform:scaleX(1)}
     .main-nav a.btn{color:#fff !important}
     
-    .burger{
-      display:none;width:48px;height:48px;padding:0;border:none;background:none;cursor:pointer}
-    .burger span{
-      display:block;width:28px;height:2px;margin:6px auto;background:var(--clr-text);transition:.35s}
+    .burger{display:none;width:48px;height:48px;padding:0;border:none;background:none;cursor:pointer}
+    .burger span{display:block;width:28px;height:2px;margin:6px auto;background:var(--clr-text);transition:.35s}
+    
     
     /* ─────────────────────────────────────────────
-       4.  HERO   (используется на главной)
+       4.  HERO
        ─────────────────────────────────────────── */
     .hero{
-      background:#e7f0ff url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1800&q=70') 50%/cover no-repeat;
-      position:relative;min-height:clamp(62vh,78vh,94vh);text-align:center}
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.58);backdrop-filter:blur(2px)}
+      background:#e7f0ff url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1800&q=70')
+                 50%/cover no-repeat;
+      position:relative;min-height:clamp(62vh,78vh,94vh);text-align:center;
+    }
+    .hero::after{content:'';position:absolute;inset:0;
+      background:rgba(255,255,255,.58);backdrop-filter:blur(2px);}
     .hero-content{
       position:relative;z-index:1;max-width:min(720px,92%);margin:auto;
-      padding:clamp(3.5rem,10vh,5.8rem) 1rem}
+      padding:clamp(3.5rem,10vh,5.8rem) 1rem;
+    }
     .lead{font-size:1.14rem;margin:.9rem 0 2.2rem;color:#333}
     
+    
     /* ─────────────────────────────────────────────
-       5.  UNIVERSAL SECTION WRAPPER
+       5.  SECTION WRAPPER
        ─────────────────────────────────────────── */
     .section{padding:clamp(3.4rem,8vw,5rem) 0}
     .section.alt{background:var(--clr-bg-alt)}
     .center{text-align:center}
     
+    
     /* ─────────────────────────────────────────────
-       6.  UNIVERSAL TAB SYSTEM
+       6.  TAB-SYSTEM
        ─────────────────────────────────────────── */
     .tab-btn,.tab-button{
       all:unset;cursor:pointer;font-weight:600;color:var(--clr-text);position:relative;
-      transition:color .25s}
-    .tab-btn:hover,.tab-button:hover{color:var(--clr-accent)}
-    .tab-btn.active,.tab-button.active{color:var(--clr-accent)}
+      transition:color .25s;
+    }
+    .tab-btn:hover,.tab-button:hover{color:var(--clr-text)}
+    .tab-btn.active,.tab-button.active{color:var(--clr-text)}
     
     .tab-bar{
       --move-x:0;--underline-w:0;
-      display:flex;gap:2rem;justify-content:center;margin-bottom:2rem;position:relative}
+      display:flex;gap:2rem;justify-content:center;margin-bottom:2rem;position:relative;
+    }
     .tab-bar::after{
       content:'';position:absolute;left:var(--move-x);bottom:-6px;
       width:var(--underline-w);height:3px;border-radius:2px;background:var(--clr-accent-2);
-      transition:left .35s var(--ease-soft),width .35s var(--ease-soft)}
+      transition:left .35s cubic-bezier(.25,.8,.3,1),width .35s cubic-bezier(.25,.8,.3,1);
+    }
     .tab-pane,.tab-panel{display:none}
     .tab-pane.active,.tab-panel.active{display:block}
     
     /* ─────────────────────────────────────────────
-       7.  QUICK-FACT GRID  (главная “Что мы делаем”)
+       7.  QUICK-FACTS GRID  (вкл. увеличенные иконки)
        ─────────────────────────────────────────── */
-    .quick-grid{--min:250px;display:grid;gap:2.4rem;
+    .quick-grid{
+      --min:260px;
+      display:grid;gap:2.4rem;
       grid-template-columns:repeat(auto-fill,minmax(var(--min),1fr));
-      max-width:var(--w-lg);margin:3rem auto 0}
+      max-width:var(--w-lg);margin:3rem auto 0;
+    }
     .qbox{
       background:#fff;border:1px solid var(--clr-border);border-radius:14px;
-      padding:2rem 1.5rem 1.8rem;text-align:center;position:relative;
-      box-shadow:var(--shadow-sm);transition:transform .25s var(--ease-soft),box-shadow .25s}
-    .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;
-      background:var(--clr-accent);opacity:.88;transform-origin:left;transform:scaleX(.2);transition:transform .25s}
+      padding:2.15rem 1.6rem 1.95rem;text-align:center;
+      position:relative;box-shadow:var(--shadow-sm);
+      transition:transform .25s,box-shadow .25s;
+    }
+    .qbox::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:4px;
+      border-radius:14px 14px 0 0;background:var(--clr-accent);opacity:.88;
+      transform-origin:left;transform:scaleX(.2);transition:transform .25s;
+    }
     .qbox:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
     .qbox:hover::before{transform:scaleX(1)}
-    .qbox-icon{font-size:2.5rem;margin-bottom:1rem;color:var(--clr-accent)}
-    .qbox h3{font-size:1.2rem;margin-bottom:.4rem}
+    .qbox-icon{
+      font-size:3.25rem;            /* ←— 2. иконки стали больше  */
+      margin-bottom:1.1rem;
+      color:var(--clr-accent);
+    }
+    .qbox h3{font-size:1.22rem;margin-bottom:.4rem}
+    @media(max-width:680px){
+      .quick-grid{--min:200px;gap:1.9rem}
+    }
+    @media(max-width:460px){
+      .quick-grid{grid-template-columns:1fr;--min:100%;gap:1.6rem}
+      .qbox{padding:2rem 1.5rem}
+    }
     
     /* ─────────────────────────────────────────────
        8.  MEDIA   (новости / фото / документы)
