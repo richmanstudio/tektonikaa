@@ -1,30 +1,30 @@
 /* =====================================================================
-   Т Е К Т О Н И К А • script.js   (May-2025  —  full bundle v6)
-   Реализует:
+   Т Е К Т О Н И К А • script.js            (full bundle v7 – 2025-05-30)
+   ───────────────────────────────────────────
    ▸ Бургер-меню
-   ▸ Плавный скролл по якорям
-   ▸ Reveal-on-scroll (добавляет .show элементам .reveal)
-   ▸ Главные табы (Новости / Фото / Документы)
-   ▸ Сезонные табы внутри «Фото»
-   ▸ Lightbox-галерею
-   ▸ Toast-уведомления (форма практики – заглушка)
+   ▸ Плавный скролл
+   ▸ Reveal-on-scroll   (.reveal → .show)
+   ▸ Универсальные ТАБЫ  (элемент с data-tab на ЛЮБОЙ странице)
+   ▸ «Фото» → сезоны (data-season)
+   ▸ Лайтбокс-галерея
+   ▸ Toast-уведомление (форма практики – заглушка)
    ===================================================================== */
    document.addEventListener('DOMContentLoaded', () => {
 
     /* ───────────────────────────────────────────
-       1.  Burger-меню
+       1.  Burger
        ───────────────────────────────────────── */
     const burger = document.getElementById('burger');
     const nav    = document.getElementById('mobileNav');
   
     if (burger && nav) {
-      const blockScroll = () => document.body.style.overflow = 'hidden';
-      const allowScroll = () => document.body.style.overflow = '';
+      const lock   = () => document.body.style.overflow = 'hidden';
+      const unlock = () => document.body.style.overflow = '';
   
       const toggle = () => {
         const open = nav.classList.toggle('open');
         burger.classList.toggle('open', open);
-        open ? blockScroll() : allowScroll();
+        open ? lock() : unlock();
       };
   
       burger.addEventListener('click', toggle);
@@ -38,12 +38,12 @@
     }
   
     /* ───────────────────────────────────────────
-       2.  Smooth anchor scroll
+       2.  Smooth anchors (skip if reduce-motion)
        ───────────────────────────────────────── */
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', e => {
-          const id = link.getAttribute('href').slice(1);
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href').slice(1);
           const tgt = document.getElementById(id);
           if (tgt) {
             e.preventDefault();
@@ -55,38 +55,44 @@
     }
   
     /* ───────────────────────────────────────────
-       3.  Reveal-on-scroll
+       3.  Reveal-observer
        ───────────────────────────────────────── */
     const revealElems = () => document.querySelectorAll('.reveal:not(.show)');
-    const io = new IntersectionObserver((entries, obs) => {
+    const io = new IntersectionObserver((entries, ob) => {
       entries.forEach(ent => {
         if (ent.isIntersecting) {
           ent.target.classList.add('show');
-          obs.unobserve(ent.target);
+          ob.unobserve(ent.target);
         }
       });
-    }, { threshold:.15 });
-  
+    },{ threshold:.15 });
     revealElems().forEach(el => io.observe(el));
   
     /* ───────────────────────────────────────────
-       4.  Главные табы (News / Photo / Docs)
+       4.  MAIN TABS  (любой элемент data-tab)
        ───────────────────────────────────────── */
+    const mainTabBtns = document.querySelectorAll('[data-tab]');
+  
     function activateMainTab(id){
-      document.querySelectorAll('.tab-btn').forEach(b =>
-        b.classList.toggle('active', b.dataset.tab === id)
+      /* кнопки */
+      mainTabBtns.forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.tab === id)
       );
-      document.querySelectorAll('.tab-pane').forEach(p =>
+  
+      /* панели (поддержка .tab-pane и .tab-panel) */
+      document.querySelectorAll('.tab-pane, .tab-panel').forEach(p =>
         p.classList.toggle('active', p.id === id)
       );
+  
+      /* mobile <select> sync */
       const sel = document.getElementById('mediaSelect');
       if (sel && sel.value !== id) sel.value = id;
   
-      /* подгружаем reveal для нового контента */
+      /* наблюдать reveal в новом контенте */
       revealElems().forEach(el => io.observe(el));
     }
   
-    document.querySelectorAll('.media-sidebar .tab-btn').forEach(btn =>
+    mainTabBtns.forEach(btn =>
       btn.addEventListener('click', () => activateMainTab(btn.dataset.tab))
     );
   
@@ -96,34 +102,33 @@
     }
   
     /* ───────────────────────────────────────────
-       5.  Season-tabs (внутри Фото)
+       5.  SEASON TABS (data-season)
        ───────────────────────────────────────── */
-    function activateSeason(id){
-      document.querySelectorAll('.season-tabs .tab-btn').forEach(b =>
-        b.classList.toggle('active', b.dataset.season === id)
+    const seasonBtns = document.querySelectorAll('.season-tabs .tab-btn');
+    function activateSeason(code){
+      seasonBtns.forEach(b =>
+        b.classList.toggle('active', b.dataset.season === code)
       );
       document.querySelectorAll('.season-pane').forEach(p =>
-        p.classList.toggle('active', p.id === `season-${id}`)
+        p.classList.toggle('active', p.id === `season-${code}`)
       );
       revealElems().forEach(el => io.observe(el));
     }
-  
-    document.querySelectorAll('.season-tabs .tab-btn').forEach(btn =>
+    seasonBtns.forEach(btn =>
       btn.addEventListener('click', () => activateSeason(btn.dataset.season))
     );
   
     /* ───────────────────────────────────────────
-       6.  Lightbox-галерея (Фото)
+       6.  Lightbox gallery
        ───────────────────────────────────────── */
     const lightbox = document.getElementById('lightbox');
     const lbImg    = lightbox ? lightbox.querySelector('img') : null;
-  
     if (lightbox && lbImg){
       document.body.addEventListener('click', e => {
-        const link = e.target.closest('.gallery a');
-        if (link){
+        const anchor = e.target.closest('.gallery a');
+        if (anchor){
           e.preventDefault();
-          lbImg.src = link.href;
+          lbImg.src = anchor.href;
           lightbox.classList.add('show');
         }
       });
@@ -133,7 +138,7 @@
     }
   
     /* ───────────────────────────────────────────
-       7.  Практика-форма (toast-заглушка)
+       7.  Practice-form stub  → toast
        ───────────────────────────────────────── */
     const internForm = document.getElementById('internForm');
     if (internForm){
@@ -146,7 +151,7 @@
     }
   
     /* ───────────────────────────────────────────
-       Helper • Toast
+       Helper: TOAST
        ───────────────────────────────────────── */
     function toast(msg='OK', ms=4000){
       let t = document.querySelector('.toast');

@@ -1,6 +1,6 @@
 /* =====================================================================
-   T E K T O N I K A  •  GLOBAL STYLESHEET
-   Версия: 2025-05-v6  (общий файл для ВСЕХ страниц проекта)
+   Т Е К Т О Н И К А • GLOBAL STYLESHEET
+   Версия: 2025-05-30 (v7) — единый css для всех страниц
    ===================================================================== */
 
 
@@ -8,21 +8,17 @@
    0.  DESIGN TOKENS
    ─────────────────────────────────────────── */
    :root{
-      /* colors */
       --bg        : #ffffff;
       --bg-alt    : #f3f5f7;
       --text      : #1d1d1f;
       --accent    : #0056b3;
     
-      /* shapes / FX */
       --radius    : 8px;
       --shadow    : 0 2px 8px rgb(0 0 0 / .08);
     
-      /* breakpoints */
       --max-w-l   : 1050px;
       --max-w-m   : 860px;
     
-      /* fluid type */
       --fs-base   : clamp(17px,1.05vw + .6rem,19px);
       --fs-h1     : clamp(2.3rem,1.7vw + 1.7rem,2.9rem);
       --fs-h2     : clamp(1.7rem,1.2vw + 1.2rem,2.1rem);
@@ -73,7 +69,7 @@
     .main-nav a.btn{color:#fff}
     
     /* ─────────────────────────────────────────────
-       4.  HERO (BG-image, overlay)
+       4.  HERO
        ─────────────────────────────────────────── */
     .hero{
       background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
@@ -91,7 +87,20 @@
     .center{text-align:center}
     
     /* ─────────────────────────────────────────────
-       6.  QUICK-FACTS GRID (главная)
+       6.  UNIVERSAL TAB BUTTONS  (career + media)
+       ─────────────────────────────────────────── */
+    .tab-btn,.tab-button{
+      all:unset;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--text);
+      transition:color .25s}
+    .tab-btn:hover,.tab-button:hover{background:rgba(0,86,179,.08)}
+    .tab-btn.active,.tab-button.active{color:var(--accent)}
+    
+    /* hide/show for tab-panels everywhere */
+    .tab-pane,.tab-panel{display:none}
+    .tab-pane.active,.tab-panel.active{display:block}
+    
+    /* ─────────────────────────────────────────────
+       7.  QUICK-FACTS GRID (главная)
        ─────────────────────────────────────────── */
     .quick-grid{--card-min:260px;display:grid;gap:2.2rem 2rem;
       grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
@@ -105,41 +114,30 @@
     .qbox:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgb(0 0 0 /.08)}
     .qicon{font-size:2.4rem}
     .qbox h3{margin:.25rem 0;font-size:1.17rem}
-    
-    /* quick-grid breakpoints */
     @media(max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
     @media(max-width:480px){.quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}.qbox{padding:1.7rem 1.2rem}}
     
     /* ─────────────────────────────────────────────
-       7.  MEDIA-CENTER LAYOUT (ТАБЫ)
+       8.  MEDIA-CENTER LAYOUT
        ─────────────────────────────────────────── */
     .media-layout{display:flex;gap:2rem}
     .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.55rem;margin-top:.2rem}
     .media-content{flex:1;min-width:0}
     
-    /* основные таб-кнопки (левое подч.) */
+    /* sidebar-specific visual (left bar) */
     .media-sidebar .tab-btn{
-      all:unset;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--text);
-      border-left:4px solid transparent;padding:.55rem 0;transition:color .25s,border-color .25s}
-    .media-sidebar .tab-btn:hover{background:rgba(0,86,179,.08)}
-    .media-sidebar .tab-btn.active{color:var(--accent);border-color:var(--accent)}
+      border-left:4px solid transparent;padding:.55rem 0}
+    .media-sidebar .tab-btn.active{border-color:var(--accent)}
     
-    /* mobile-select заменяет sidebar ≤600 px */
+    /* mobile-select атрибут */
     .media-select{display:none;margin-bottom:1.5rem}
     .media-select select{font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)}
     
-    /* ─────────────────────────────────────────────
-       8.  SEASON-TABS (внутри Фото)
-       ─────────────────────────────────────────── */
+    /* ───── фото → сезонные табы ───── */
     .season-tabs{display:flex;gap:1.2rem;justify-content:center;margin:0 0 1.6rem}
     .season-tabs .tab-btn{
-      all:unset;cursor:pointer;font-weight:600;color:var(--text);
-      border-bottom:3px solid transparent;padding:.45rem .2rem;
-      transition:border-color .25s,color .25s}
-    .season-tabs .tab-btn:hover{color:var(--accent)}
-    .season-tabs .tab-btn.active{color:var(--accent);border-color:var(--accent)}
-    
-    /* season-panes (fade slide) */
+      border-bottom:3px solid transparent;padding:.45rem .2rem}
+    .season-tabs .tab-btn.active{border-color:var(--accent)}
     .seasons-wrapper{position:relative}
     .season-pane{opacity:0;pointer-events:none;position:absolute;inset:0;
       transform:translateX(40px);transition:opacity .35s,transform .35s}
@@ -163,19 +161,18 @@
     #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 4px 24px rgb(0 0 0 /.3)}
     
     /* ─────────────────────────────────────────────
-       10.  NEWS & DOCS контент
+       10.  NEWS & DOCS
        ─────────────────────────────────────────── */
     .cards-grid{display:flex;flex-direction:column;gap:2rem}
     .card h3{margin-bottom:.4rem;font-size:1.15rem}
     .card time{display:block;font-size:.9rem;margin-bottom:.4rem;color:#555}
     .card p{margin-bottom:.9rem}
-    
     .docs-table{width:100%;border-collapse:collapse;font-size:.95rem}
     .docs-table th,.docs-table td{padding:.55rem .6rem;border-bottom:1px solid #e4e4e4}
     .docs-table th{text-align:left;font-weight:600}
     
     /* ─────────────────────────────────────────────
-       11.  CONTACT-FORM (карьера)
+       11.  CAREER FORM
        ─────────────────────────────────────────── */
     .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:700px;margin:auto}
     .contact-form label{font-size:.9rem;display:flex;flex-direction:column;gap:.35rem}
@@ -193,7 +190,7 @@
     .switch-label{font-size:.9rem}
     
     /* ─────────────────────────────────────────────
-       12.  REVEAL-ON-SCROLL
+       12.  REVEAL ANIMATION
        ─────────────────────────────────────────── */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
     .reveal.show{opacity:1;transform:none}
@@ -215,18 +212,18 @@
     @media(max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
     
     /* ─────────────────────────────────────────────
-       15.  GRID / TAB tweak @ MID-WIDTH (601-1023 px)
+       15.  MID (601-1023 px)  → табы сверху
        ─────────────────────────────────────────── */
     @media(min-width:601px) and (max-width:1023px){
       .media-layout{flex-direction:column}
-      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.5rem;margin:0 0 1.4rem 0}
+      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.5rem;margin:0 0 1.4rem}
       .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.5rem .2rem}
       .media-sidebar .tab-btn.active{border-color:var(--accent)}
       .media-select{display:none}
     }
     
     /* ─────────────────────────────────────────────
-       16.  MOBILE (≤600 px)  – sidebar → select
+       16.  MOBILE (≤600 px)
        ─────────────────────────────────────────── */
     @media(max-width:600px){
       html{font-size:16px}
