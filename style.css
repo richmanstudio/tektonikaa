@@ -1,6 +1,6 @@
 /* =====================================================================
-   Т Е К Т О Н И К А • GLOBAL STYLESHEET
-   Версия: 2025-05-30 (v7) — единый css для всех страниц
+   T E K T O N I K A  •  STYLES.CSS
+   Версия: 2025-05-30  (v8)  — единый файл для ВСЕХ страниц
    ===================================================================== */
 
 
@@ -8,21 +8,26 @@
    0.  DESIGN TOKENS
    ─────────────────────────────────────────── */
    :root{
-      --bg        : #ffffff;
-      --bg-alt    : #f3f5f7;
-      --text      : #1d1d1f;
-      --accent    : #0056b3;
+      /* Цвета */
+      --bg            : #ffffff;
+      --bg-alt        : #f4f6fa;
+      --text          : #1d1d1f;
+      --accent        : #0056b3;
+      --accent-soft   : #3c7cf0;
     
-      --radius    : 8px;
-      --shadow    : 0 2px 8px rgb(0 0 0 / .08);
+      /* Радиус и тень */
+      --radius        : 8px;
+      --shadow        : 0 2px 8px rgb(0 0 0 / .08);
     
-      --max-w-l   : 1050px;
-      --max-w-m   : 860px;
+      /* Контейнеры */
+      --max-w-l       : 1050px;
+      --max-w-m       : 880px;
     
-      --fs-base   : clamp(17px,1.05vw + .6rem,19px);
-      --fs-h1     : clamp(2.3rem,1.7vw + 1.7rem,2.9rem);
-      --fs-h2     : clamp(1.7rem,1.2vw + 1.2rem,2.1rem);
-      --fs-h3     : clamp(1.15rem,.9vw + .9rem,1.3rem);
+      /* Флюидная типографика */
+      --fs-base       : clamp(17px,1.05vw + .6rem,19px);
+      --fs-h1         : clamp(2.4rem,1.7vw + 1.8rem,3.1rem);
+      --fs-h2         : clamp(1.8rem,1.2vw + 1.25rem,2.25rem);
+      --fs-h3         : clamp(1.17rem,.9vw + .9rem,1.35rem);
     }
     
     /* ─────────────────────────────────────────────
@@ -38,133 +43,131 @@
     h1,h2,h3{font-weight:600;line-height:1.25}
     h1{font-size:var(--fs-h1);margin-bottom:.5em}
     h2{font-size:var(--fs-h2);margin-bottom:1em}
-    h3{font-size:var(--fs-h3);margin:.9rem 0 .6rem}
+    h3{font-size:var(--fs-h3);margin:.85rem 0 .55rem}
     p{margin-bottom:1em}
     img{max-width:100%;display:block}
     .container{width:clamp(90vw,100% - 2rem,var(--max-w-l));margin-inline:auto}
-    a{color:var(--accent);text-decoration:none}
+    a{color:var(--accent);text-decoration:none;transition:color .2s}
     
     /* ─────────────────────────────────────────────
        2.  LOGO & BUTTONS
        ─────────────────────────────────────────── */
-    .logo-img{height:clamp(38px,4vw,64px);object-fit:contain}
+    .logo-img{height:clamp(40px,4vw,66px);object-fit:contain}
     .btn{
-      display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);
-      background:var(--accent);color:#fff;font-weight:600;border:none;cursor:pointer;
-      transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgb(0 0 0 /.15)}
-    .btn.large{font-size:1.1rem}
-    .btn.mini{padding:.55rem 1.2rem;font-size:.9rem}
+      --gr:linear-gradient(135deg,var(--accent) 0%,var(--accent-soft) 100%);
+      display:inline-block;font-weight:600;color:#fff;padding:.8rem 1.9rem;
+      background:var(--gr);border:none;border-radius:var(--radius);cursor:pointer;
+      box-shadow:0 4px 16px rgb(0 86 179 /.28);transition:transform .25s,box-shadow .25s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgb(0 86 179 /.35)}
+    .btn:active{transform:translateY(0);box-shadow:0 6px 14px rgb(0 86 179 /.25)}
+    .btn.mini{padding:.55rem 1.25rem;font-size:.9rem}
+    .btn[disabled]{opacity:.55;cursor:not-allowed;transform:none !important;box-shadow:none !important}
     
     /* ─────────────────────────────────────────────
        3.  HEADER / NAVBAR
        ─────────────────────────────────────────── */
     header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
-    .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0}
-    .burger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;padding:0}
-    .burger span{display:block;width:24px;height:2px;margin:6px auto;background:var(--text);transition:.3s}
-    .main-nav{display:flex;gap:1.5rem;align-items:center}
-    .main-nav a{font-weight:500;color:var(--text);transition:color .2s}
-    .main-nav a:hover{color:var(--accent)}
-    .main-nav a.btn{color:#fff}
+    .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
+    .burger{display:none;background:none;border:none;cursor:pointer;width:46px;height:46px;padding:0}
+    .burger span{display:block;width:26px;height:2px;margin:6px auto;background:var(--text);transition:.35s}
+    .main-nav{display:flex;gap:1.6rem;align-items:center}
+    .main-nav a{font-weight:500;position:relative;padding:.2rem 0}
+    .main-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent-soft);
+      transform:scaleX(0);transition:transform .25s}
+    .main-nav a:hover::after{transform:scaleX(1)}
+    .main-nav a.btn{color:#fff !important}
     
     /* ─────────────────────────────────────────────
        4.  HERO
        ─────────────────────────────────────────── */
     .hero{
-      background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
-      min-height:clamp(60vh,70vh,85vh);position:relative;text-align:center}
+      background:#eaf0fe url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
+      min-height:clamp(60vh,70vh,88vh);position:relative;text-align:center}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:-1}
-    .hero-content{position:relative;z-index:1;max-width:min(680px,90%);margin:auto;
-      padding:clamp(3rem,10vh,5rem) 1rem}
-    .lead{font-size:1.1rem;margin-bottom:2rem}
+    .hero-content{position:relative;z-index:1;max-width:min(700px,92%);margin:auto;padding:clamp(3rem,10vh,5.3rem) 1rem}
+    .lead{font-size:1.12rem;margin-bottom:2rem}
     
     /* ─────────────────────────────────────────────
        5.  UNIVERSAL SECTIONS
        ─────────────────────────────────────────── */
-    .section{padding:clamp(3rem,8vw,4.5rem) 0}
+    .section{padding:clamp(3.2rem,8vw,4.8rem) 0}
     .section.alt{background:var(--bg-alt)}
     .center{text-align:center}
     
     /* ─────────────────────────────────────────────
-       6.  UNIVERSAL TAB BUTTONS  (career + media)
+       6.  UNIVERSAL TAB BUTTONS
        ─────────────────────────────────────────── */
     .tab-btn,.tab-button{
-      all:unset;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--text);
+      all:unset;cursor:pointer;font-weight:600;font-size:1.06rem;color:var(--text);position:relative;
       transition:color .25s}
-    .tab-btn:hover,.tab-button:hover{background:rgba(0,86,179,.08)}
+    .tab-btn:hover,.tab-button:hover{color:var(--accent)}
     .tab-btn.active,.tab-button.active{color:var(--accent)}
-    
-    /* hide/show for tab-panels everywhere */
+    /* underline animation (career top tabs) */
+    .tab-bar{display:flex;gap:2rem;justify-content:center;margin-bottom:1.8rem;position:relative}
+    .tab-bar::after{
+      content:'';position:absolute;left:var(--x,0);bottom:-4px;width:var(--w,0);height:3px;background:var(--accent-soft);
+      transition:transform .35s,width .35s}
+    .tab-bar .tab-button{padding:.45rem 0}
     .tab-pane,.tab-panel{display:none}
     .tab-pane.active,.tab-panel.active{display:block}
     
     /* ─────────────────────────────────────────────
-       7.  QUICK-FACTS GRID (главная)
+       7.  HOME QUICK-FACTS GRID
        ─────────────────────────────────────────── */
     .quick-grid{--card-min:260px;display:grid;gap:2.2rem 2rem;
       grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
       max-width:var(--max-w-m);margin:2.5rem auto 0;justify-content:center}
-    .qbox{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
-      gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e4e7ec;
-      border-radius:14px;box-shadow:0 4px 16px rgb(0 0 0 /.05);
-      transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+    .qbox{
+      position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
+      gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e6e9f0;border-radius:14px;
+      box-shadow:0 4px 16px rgb(0 0 0 /.05);transition:transform .25s,box-shadow .25s}
     .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;
-      background:var(--accent);opacity:.8}
-    .qbox:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgb(0 0 0 /.08)}
+      background:var(--accent);opacity:.85}
+    .qbox:hover{transform:translateY(-8px);box-shadow:0 14px 32px rgb(0 0 0 /.08)}
     .qicon{font-size:2.4rem}
-    .qbox h3{margin:.25rem 0;font-size:1.17rem}
+    .qbox h3{margin:.25rem 0;font-size:1.18rem}
     @media(max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
     @media(max-width:480px){.quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}.qbox{padding:1.7rem 1.2rem}}
     
     /* ─────────────────────────────────────────────
-       8.  MEDIA-CENTER LAYOUT
+       8.  MEDIA-CENTER
        ─────────────────────────────────────────── */
     .media-layout{display:flex;gap:2rem}
-    .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.55rem;margin-top:.2rem}
+    .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.6rem;margin-top:.25rem}
     .media-content{flex:1;min-width:0}
-    
-    /* sidebar-specific visual (left bar) */
     .media-sidebar .tab-btn{
       border-left:4px solid transparent;padding:.55rem 0}
     .media-sidebar .tab-btn.active{border-color:var(--accent)}
-    
-    /* mobile-select атрибут */
-    .media-select{display:none;margin-bottom:1.5rem}
+    .media-select{display:none;margin-bottom:1.6rem}
     .media-select select{font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)}
     
-    /* ───── фото → сезонные табы ───── */
-    .season-tabs{display:flex;gap:1.2rem;justify-content:center;margin:0 0 1.6rem}
-    .season-tabs .tab-btn{
-      border-bottom:3px solid transparent;padding:.45rem .2rem}
+    /* season-tabs (Фото) */
+    .season-tabs{display:flex;gap:1.3rem;justify-content:center;margin:0 0 1.6rem}
+    .season-tabs .tab-btn{border-bottom:3px solid transparent;padding:.45rem .25rem}
     .season-tabs .tab-btn.active{border-color:var(--accent)}
     .seasons-wrapper{position:relative}
     .season-pane{opacity:0;pointer-events:none;position:absolute;inset:0;
       transform:translateX(40px);transition:opacity .35s,transform .35s}
     .season-pane.active{position:static;opacity:1;pointer-events:auto;transform:none}
     
-    /* ─────────────────────────────────────────────
-       9.  GALLERY (Фото)
-       ─────────────────────────────────────────── */
+    /* gallery */
     .gallery{--thumb:160px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--thumb),1fr))}
     .gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
       box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s}
-    .gallery a:hover img{transform:scale(1.03);box-shadow:0 6px 16px rgb(0 0 0 /.18)}
+    .gallery a:hover img{transform:scale(1.05);box-shadow:0 6px 18px rgb(0 0 0 /.18)}
     @media(min-width:800px){.gallery{--thumb:200px}}
     @media(min-width:1100px){.gallery{--thumb:240px}}
     
     /* lightbox */
     #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);
-      display:flex;align-items:center;justify-content:center;
-      opacity:0;pointer-events:none;transition:opacity .35s;z-index:1100}
+      display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
+      transition:opacity .35s;z-index:1100}
     #lightbox.show{opacity:1;pointer-events:auto}
     #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 4px 24px rgb(0 0 0 /.3)}
     
-    /* ─────────────────────────────────────────────
-       10.  NEWS & DOCS
-       ─────────────────────────────────────────── */
+    /* news / docs */
     .cards-grid{display:flex;flex-direction:column;gap:2rem}
-    .card h3{margin-bottom:.4rem;font-size:1.15rem}
+    .card h3{margin-bottom:.4rem;font-size:1.17rem}
     .card time{display:block;font-size:.9rem;margin-bottom:.4rem;color:#555}
     .card p{margin-bottom:.9rem}
     .docs-table{width:100%;border-collapse:collapse;font-size:.95rem}
@@ -172,63 +175,77 @@
     .docs-table th{text-align:left;font-weight:600}
     
     /* ─────────────────────────────────────────────
-       11.  CAREER FORM
+       9.  CAREER PAGE
        ─────────────────────────────────────────── */
-    .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:700px;margin:auto}
-    .contact-form label{font-size:.9rem;display:flex;flex-direction:column;gap:.35rem}
+    .career-page .intro{max-width:var(--max-w-m);margin:0 auto 2.5rem;font-size:1.05rem}
+    .career-cards{display:grid;gap:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .career-card{
+      background:#fff;border-radius:var(--radius);padding:1.7rem;border:1px solid #e6e9f0;
+      box-shadow:0 4px 14px rgb(0 0 0 /.05);transition:transform .25s,box-shadow .25s}
+    .career-card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgb(0 0 0 /.08)}
+    .career-card h3{margin:.25rem 0 .45rem;font-size:1.19rem}
+    .career-card .btn{margin-top:1.1rem;--gr:linear-gradient(135deg,#fff 0%,#f6f7f9 100%);color:var(--accent);
+      box-shadow:none;border:1px solid var(--accent);transition:background .25s,color .25s,box-shadow .25s}
+    .career-card .btn:hover{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgb(0 86 179 /.3)}
+    
+    /* contact-form */
+    .contact-form{background:#fff;border:1px solid #e1e4ec;border-radius:var(--radius);padding:2rem 1.8rem;
+      box-shadow:0 6px 22px rgb(0 0 0 /.04)}
     .contact-form input,.contact-form select,.contact-form textarea{
-      font:inherit;width:100%;padding:.65rem .8rem;border:1px solid #cfd4da;border-radius:var(--radius);
-      background:#fff;transition:border .2s,box-shadow .2s}
+      transition:border .25s,box-shadow .25s,transform .25s}
     .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
-      border-color:var(--accent);box-shadow:0 0 0 2px rgb(0 86 179 /.2);outline:0}
-    .contact-form .two-cols{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .switch{display:flex;align-items:center;gap:.6rem;margin:.8rem 0 1.2rem}
-    .switch input{appearance:none;width:46px;height:24px;border-radius:12px;background:#cfd4da;cursor:pointer;position:relative;transition:.25s}
-    .switch input::before{content:'';position:absolute;top:3px;left:4px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.25s}
+      transform:translateY(-2px)}
+    .contact-form button[type="submit"]{margin-top:1.4rem}
+    
+    /* custom switch */
+    .switch input{background:#dbe1eb;transition:.25s}
     .switch input:checked{background:var(--accent)}
-    .switch input:checked::before{transform:translateX(22px)}
-    .switch-label{font-size:.9rem}
+    .switch input:checked::before{background:#fff}
+    
+    /* animated form panel */
+    .tab-panel.fade-in{animation:fadeIn .45s both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
     
     /* ─────────────────────────────────────────────
-       12.  REVEAL ANIMATION
+       10.  REVEAL ON SCROLL
        ─────────────────────────────────────────── */
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease}
     .reveal.show{opacity:1;transform:none}
     
     /* ─────────────────────────────────────────────
-       13.  TOAST
+       11.  TOAST
        ─────────────────────────────────────────── */
-    .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(40px);
-      padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;
+    .toast{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%) translateY(44px);
+      padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent-soft);color:#fff;font-weight:600;
       box-shadow:0 6px 20px rgb(0 0 0 /.15);opacity:0;pointer-events:none;z-index:1500;
       transition:opacity .4s,transform .4s}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     
     /* ─────────────────────────────────────────────
-       14.  FOOTER
+       12.  FOOTER
        ─────────────────────────────────────────── */
     footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
-    .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0}
     @media(max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
     
     /* ─────────────────────────────────────────────
-       15.  MID (601-1023 px)  → табы сверху
+       13.  MID (601-1023 px)
        ─────────────────────────────────────────── */
     @media(min-width:601px) and (max-width:1023px){
       .media-layout{flex-direction:column}
-      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.5rem;margin:0 0 1.4rem}
-      .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.5rem .2rem}
+      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.4rem;margin:0 0 1.5rem}
+      .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.55rem .25rem}
       .media-sidebar .tab-btn.active{border-color:var(--accent)}
       .media-select{display:none}
     }
     
     /* ─────────────────────────────────────────────
-       16.  MOBILE (≤600 px)
+       14.  MOBILE (≤600 px)
        ─────────────────────────────────────────── */
     @media(max-width:600px){
       html{font-size:16px}
       .logo-img{height:42px}
-      .header-inner{padding:.4rem 0}
+      .header-inner{padding:.45rem 0}
       .burger{display:block}
     
       .main-nav{
@@ -239,13 +256,14 @@
       .main-nav a{font-size:1.1rem}
       .main-nav a.btn{width:100%;text-align:center}
     
-      .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+      .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
       .burger.open span:nth-child(2){opacity:0}
-      .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+      .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
     
       .media-layout{flex-direction:column}
       .media-sidebar{display:none}
       .media-select{display:block}
       .gallery{--thumb:140px}
-      .contact-form .two-cols{grid-template-columns:1fr}
+      .career-cards{grid-template-columns:1fr}
+      .contact-form{padding:1.5rem}
     }
