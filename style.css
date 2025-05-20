@@ -1,269 +1,313 @@
 /* =====================================================================
-   T E K T O N I K A  •  STYLES.CSS
-   Версия: 2025-05-30  (v8)  — единый файл для ВСЕХ страниц
+   Т Е К Т О Н И К А •  style.css
+   Версия: 2025-05-30  (v9 «Polished»)
+   — единый файл, покрывающий ВСЕ страницы проекта
+   — современная типографика, адаптив, интерактивные кнопки, плавные анимации
+   — без «мёртвого» кода: каждый селектор реально используется
    ===================================================================== */
 
-
 /* ─────────────────────────────────────────────
-   0.  DESIGN TOKENS
+   0.  DESIGN TOKENS  (единственный «источник правды»)
    ─────────────────────────────────────────── */
    :root{
-      /* Цвета */
-      --bg            : #ffffff;
-      --bg-alt        : #f4f6fa;
-      --text          : #1d1d1f;
-      --accent        : #0056b3;
-      --accent-soft   : #3c7cf0;
+      /* Цветовая система */
+      --clr-bg         : #ffffff;
+      --clr-bg-alt     : #f5f7fb;
+      --clr-text       : #1d1d1f;
+      --clr-accent     : #0060ff;          /* основной бренд-синий */
+      --clr-accent-2   : #3e8dff;          /* градиент-хайлайт */
+      --clr-border     : #d9dee7;
+      --clr-error      : #e04141;
     
-      /* Радиус и тень */
-      --radius        : 8px;
-      --shadow        : 0 2px 8px rgb(0 0 0 / .08);
+      /* Радиус, тень, скорость */
+      --radius         : 10px;
+      --shadow-sm      : 0 2px 6px rgb(0 0 0 /.06);
+      --shadow-md      : 0 10px 26px rgb(0 0 0 /.1);
+      --ease-soft      : cubic-bezier(.25,.8,.3,1);
     
-      /* Контейнеры */
-      --max-w-l       : 1050px;
-      --max-w-m       : 880px;
+      /* Лимиты сетки */
+      --w-xl           : 1180px;
+      --w-lg           : 1024px;
+      --w-sm           : 620px;
     
       /* Флюидная типографика */
-      --fs-base       : clamp(17px,1.05vw + .6rem,19px);
-      --fs-h1         : clamp(2.4rem,1.7vw + 1.8rem,3.1rem);
-      --fs-h2         : clamp(1.8rem,1.2vw + 1.25rem,2.25rem);
-      --fs-h3         : clamp(1.17rem,.9vw + .9rem,1.35rem);
+      --fs-base        : clamp(17px,1vw + .6rem,19px);
+      --fs-h1          : clamp(2.6rem,2vw + 2rem,3.3rem);
+      --fs-h2          : clamp(1.9rem,1.3vw + 1.3rem,2.4rem);
+      --fs-h3          : clamp(1.2rem,.9vw + 1rem,1.4rem);
     }
     
     /* ─────────────────────────────────────────────
-       1.  RESET & BASICS
+       1.  RESET  +  GLOBAL BASICS
        ─────────────────────────────────────────── */
-    *{margin:0;padding:0;box-sizing:border-box}
+    *,
+    *::before,
+    *::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:var(--fs-base)}
     body{
-      font-family:Inter,Arial,Helvetica,sans-serif;
-      color:var(--text);background:var(--bg);line-height:1.6;
-      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--clr-text);
+      background:var(--clr-bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
     }
-    h1,h2,h3{font-weight:600;line-height:1.25}
-    h1{font-size:var(--fs-h1);margin-bottom:.5em}
-    h2{font-size:var(--fs-h2);margin-bottom:1em}
-    h3{font-size:var(--fs-h3);margin:.85rem 0 .55rem}
+    img,picture,svg{display:block;max-width:100%}
+    h1,h2,h3{font-weight:700;line-height:1.2}
+    h1{font-size:var(--fs-h1);margin-bottom:.45em}
+    h2{font-size:var(--fs-h2);margin-bottom:.85em}
+    h3{font-size:var(--fs-h3);margin:.8rem 0 .55rem}
     p{margin-bottom:1em}
-    img{max-width:100%;display:block}
-    .container{width:clamp(90vw,100% - 2rem,var(--max-w-l));margin-inline:auto}
-    a{color:var(--accent);text-decoration:none;transition:color .2s}
+    a{color:var(--clr-accent);text-decoration:none;transition:color .2s}
+    a:hover{color:var(--clr-accent-2)}
+    .container{width:min(var(--w-xl),calc(100% - 2rem));margin-inline:auto}
     
     /* ─────────────────────────────────────────────
-       2.  LOGO & BUTTONS
+       2.  LOGO  +  BUTTONS
        ─────────────────────────────────────────── */
-    .logo-img{height:clamp(40px,4vw,66px);object-fit:contain}
+    .logo-img{height:clamp(42px,4vw,74px);object-fit:contain}
+    
     .btn{
-      --gr:linear-gradient(135deg,var(--accent) 0%,var(--accent-soft) 100%);
-      display:inline-block;font-weight:600;color:#fff;padding:.8rem 1.9rem;
-      background:var(--gr);border:none;border-radius:var(--radius);cursor:pointer;
-      box-shadow:0 4px 16px rgb(0 86 179 /.28);transition:transform .25s,box-shadow .25s}
-    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgb(0 86 179 /.35)}
-    .btn:active{transform:translateY(0);box-shadow:0 6px 14px rgb(0 86 179 /.25)}
-    .btn.mini{padding:.55rem 1.25rem;font-size:.9rem}
-    .btn[disabled]{opacity:.55;cursor:not-allowed;transform:none !important;box-shadow:none !important}
+      --grad:linear-gradient(135deg,var(--clr-accent) 0%,var(--clr-accent-2) 100%);
+      display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
+      padding:.85rem 2rem;border-radius:var(--radius);
+      font-weight:600;font-size:.95rem;letter-spacing:.02em;
+      color:#fff;background:var(--grad);border:none;cursor:pointer;
+      box-shadow:0 6px 16px rgb(0 96 255 /.25);transition:transform .25s var(--ease-soft),box-shadow .25s;
+    }
+    .btn:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgb(0 96 255 /.35)}
+    .btn:active{transform:translateY(-1px);box-shadow:0 6px 18px rgb(0 96 255 /.3)}
+    .btn.mini{padding:.6rem 1.3rem;font-size:.88rem}
+    .btn.ghost{background:#fff;color:var(--clr-accent);border:1px solid var(--clr-accent)}
+    .btn.ghost:hover{background:var(--clr-accent);color:#fff}
     
     /* ─────────────────────────────────────────────
-       3.  HEADER / NAVBAR
+       3.  HEADER  +  NAV
        ─────────────────────────────────────────── */
-    header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
-    .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
-    .burger{display:none;background:none;border:none;cursor:pointer;width:46px;height:46px;padding:0}
-    .burger span{display:block;width:26px;height:2px;margin:6px auto;background:var(--text);transition:.35s}
-    .main-nav{display:flex;gap:1.6rem;align-items:center}
-    .main-nav a{font-weight:500;position:relative;padding:.2rem 0}
-    .main-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent-soft);
-      transform:scaleX(0);transition:transform .25s}
+    header{
+      background:#fff;position:sticky;top:0;z-index:999;
+      box-shadow:0 1px 4px rgb(0 0 0 /.06)}
+    .header-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.65rem 0}
+    .main-nav{display:flex;gap:1.7rem;align-items:center;font-weight:500}
+    .main-nav a{position:relative;padding:.25rem 0}
+    .main-nav a::after{
+      content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;
+      background:var(--clr-accent-2);transform:scaleX(0);transition:transform .25s}
     .main-nav a:hover::after{transform:scaleX(1)}
     .main-nav a.btn{color:#fff !important}
     
-    /* ─────────────────────────────────────────────
-       4.  HERO
-       ─────────────────────────────────────────── */
-    .hero{
-      background:#eaf0fe url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
-      min-height:clamp(60vh,70vh,88vh);position:relative;text-align:center}
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:-1}
-    .hero-content{position:relative;z-index:1;max-width:min(700px,92%);margin:auto;padding:clamp(3rem,10vh,5.3rem) 1rem}
-    .lead{font-size:1.12rem;margin-bottom:2rem}
+    .burger{
+      display:none;width:48px;height:48px;padding:0;border:none;background:none;cursor:pointer}
+    .burger span{
+      display:block;width:28px;height:2px;margin:6px auto;background:var(--clr-text);transition:.35s}
     
     /* ─────────────────────────────────────────────
-       5.  UNIVERSAL SECTIONS
+       4.  HERO   (используется на главной)
        ─────────────────────────────────────────── */
-    .section{padding:clamp(3.2rem,8vw,4.8rem) 0}
-    .section.alt{background:var(--bg-alt)}
+    .hero{
+      background:#e7f0ff url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1800&q=70') 50%/cover no-repeat;
+      position:relative;min-height:clamp(62vh,78vh,94vh);text-align:center}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.58);backdrop-filter:blur(2px)}
+    .hero-content{
+      position:relative;z-index:1;max-width:min(720px,92%);margin:auto;
+      padding:clamp(3.5rem,10vh,5.8rem) 1rem}
+    .lead{font-size:1.14rem;margin:.9rem 0 2.2rem;color:#333}
+    
+    /* ─────────────────────────────────────────────
+       5.  UNIVERSAL SECTION WRAPPER
+       ─────────────────────────────────────────── */
+    .section{padding:clamp(3.4rem,8vw,5rem) 0}
+    .section.alt{background:var(--clr-bg-alt)}
     .center{text-align:center}
     
     /* ─────────────────────────────────────────────
-       6.  UNIVERSAL TAB BUTTONS
+       6.  UNIVERSAL TAB SYSTEM
        ─────────────────────────────────────────── */
     .tab-btn,.tab-button{
-      all:unset;cursor:pointer;font-weight:600;font-size:1.06rem;color:var(--text);position:relative;
+      all:unset;cursor:pointer;font-weight:600;color:var(--clr-text);position:relative;
       transition:color .25s}
-    .tab-btn:hover,.tab-button:hover{color:var(--accent)}
-    .tab-btn.active,.tab-button.active{color:var(--accent)}
-    /* underline animation (career top tabs) */
-    .tab-bar{display:flex;gap:2rem;justify-content:center;margin-bottom:1.8rem;position:relative}
+    .tab-btn:hover,.tab-button:hover{color:var(--clr-accent)}
+    .tab-btn.active,.tab-button.active{color:var(--clr-accent)}
+    
+    .tab-bar{
+      --move-x:0;--underline-w:0;
+      display:flex;gap:2rem;justify-content:center;margin-bottom:2rem;position:relative}
     .tab-bar::after{
-      content:'';position:absolute;left:var(--x,0);bottom:-4px;width:var(--w,0);height:3px;background:var(--accent-soft);
-      transition:transform .35s,width .35s}
-    .tab-bar .tab-button{padding:.45rem 0}
+      content:'';position:absolute;left:var(--move-x);bottom:-6px;
+      width:var(--underline-w);height:3px;border-radius:2px;background:var(--clr-accent-2);
+      transition:left .35s var(--ease-soft),width .35s var(--ease-soft)}
     .tab-pane,.tab-panel{display:none}
     .tab-pane.active,.tab-panel.active{display:block}
     
     /* ─────────────────────────────────────────────
-       7.  HOME QUICK-FACTS GRID
+       7.  QUICK-FACT GRID  (главная “Что мы делаем”)
        ─────────────────────────────────────────── */
-    .quick-grid{--card-min:260px;display:grid;gap:2.2rem 2rem;
-      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
-      max-width:var(--max-w-m);margin:2.5rem auto 0;justify-content:center}
+    .quick-grid{--min:250px;display:grid;gap:2.4rem;
+      grid-template-columns:repeat(auto-fill,minmax(var(--min),1fr));
+      max-width:var(--w-lg);margin:3rem auto 0}
     .qbox{
-      position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
-      gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e6e9f0;border-radius:14px;
-      box-shadow:0 4px 16px rgb(0 0 0 /.05);transition:transform .25s,box-shadow .25s}
+      background:#fff;border:1px solid var(--clr-border);border-radius:14px;
+      padding:2rem 1.5rem 1.8rem;text-align:center;position:relative;
+      box-shadow:var(--shadow-sm);transition:transform .25s var(--ease-soft),box-shadow .25s}
     .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;
-      background:var(--accent);opacity:.85}
-    .qbox:hover{transform:translateY(-8px);box-shadow:0 14px 32px rgb(0 0 0 /.08)}
-    .qicon{font-size:2.4rem}
-    .qbox h3{margin:.25rem 0;font-size:1.18rem}
-    @media(max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
-    @media(max-width:480px){.quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}.qbox{padding:1.7rem 1.2rem}}
+      background:var(--clr-accent);opacity:.88;transform-origin:left;transform:scaleX(.2);transition:transform .25s}
+    .qbox:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+    .qbox:hover::before{transform:scaleX(1)}
+    .qbox-icon{font-size:2.5rem;margin-bottom:1rem;color:var(--clr-accent)}
+    .qbox h3{font-size:1.2rem;margin-bottom:.4rem}
     
     /* ─────────────────────────────────────────────
-       8.  MEDIA-CENTER
+       8.  MEDIA   (новости / фото / документы)
        ─────────────────────────────────────────── */
-    .media-layout{display:flex;gap:2rem}
-    .media-sidebar{flex:0 0 180px;display:flex;flex-direction:column;gap:.6rem;margin-top:.25rem}
+    .media-layout{display:flex;gap:2.4rem}
+    .media-sidebar{flex:0 0 185px;display:flex;flex-direction:column;gap:.7rem}
     .media-content{flex:1;min-width:0}
-    .media-sidebar .tab-btn{
-      border-left:4px solid transparent;padding:.55rem 0}
-    .media-sidebar .tab-btn.active{border-color:var(--accent)}
-    .media-select{display:none;margin-bottom:1.6rem}
-    .media-select select{font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)}
+    .media-sidebar .tab-btn{padding:.55rem 0;border-left:4px solid transparent}
+    .media-sidebar .tab-btn.active{border-color:var(--clr-accent)}
     
-    /* season-tabs (Фото) */
-    .season-tabs{display:flex;gap:1.3rem;justify-content:center;margin:0 0 1.6rem}
-    .season-tabs .tab-btn{border-bottom:3px solid transparent;padding:.45rem .25rem}
-    .season-tabs .tab-btn.active{border-color:var(--accent)}
+    .media-select{display:none;margin-bottom:1.8rem}
+    .media-select select{font:inherit;padding:.65rem .9rem;border:1px solid var(--clr-border);border-radius:var(--radius)}
+    
+    /* season-tabs */
+    .season-tabs{display:flex;gap:1.4rem;justify-content:center;margin:1rem 0 2.1rem}
+    .season-tabs .tab-btn{padding:.45rem .25rem;border-bottom:3px solid transparent}
+    .season-tabs .tab-btn.active{border-color:var(--clr-accent)}
+    
     .seasons-wrapper{position:relative}
-    .season-pane{opacity:0;pointer-events:none;position:absolute;inset:0;
-      transform:translateX(40px);transition:opacity .35s,transform .35s}
+    .season-pane{opacity:0;pointer-events:none;position:absolute;inset:0;transform:translateX(40px);
+      transition:opacity .4s var(--ease-soft),transform .4s var(--ease-soft)}
     .season-pane.active{position:static;opacity:1;pointer-events:auto;transform:none}
     
-    /* gallery */
-    .gallery{--thumb:160px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--thumb),1fr))}
+    /* Gallery */
+    .gallery{--thumb:160px;display:grid;gap:14px;
+      grid-template-columns:repeat(auto-fill,minmax(var(--thumb),1fr))}
     .gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
-      box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s}
-    .gallery a:hover img{transform:scale(1.05);box-shadow:0 6px 18px rgb(0 0 0 /.18)}
+      box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s}
+    .gallery a:hover img{transform:scale(1.06);box-shadow:0 8px 20px rgb(0 0 0 /.15)}
     @media(min-width:800px){.gallery{--thumb:200px}}
     @media(min-width:1100px){.gallery{--thumb:240px}}
     
     /* lightbox */
-    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);
+    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.78);
       display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
-      transition:opacity .35s;z-index:1100}
+      transition:opacity .4s var(--ease-soft);z-index:1200}
     #lightbox.show{opacity:1;pointer-events:auto}
-    #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 4px 24px rgb(0 0 0 /.3)}
+    #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 10px 36px rgb(0 0 0 /.4)}
     
     /* news / docs */
-    .cards-grid{display:flex;flex-direction:column;gap:2rem}
-    .card h3{margin-bottom:.4rem;font-size:1.17rem}
-    .card time{display:block;font-size:.9rem;margin-bottom:.4rem;color:#555}
-    .card p{margin-bottom:.9rem}
-    .docs-table{width:100%;border-collapse:collapse;font-size:.95rem}
-    .docs-table th,.docs-table td{padding:.55rem .6rem;border-bottom:1px solid #e4e4e4}
-    .docs-table th{text-align:left;font-weight:600}
+    .cards-grid{display:flex;flex-direction:column;gap:2.1rem}
+    .card h3{font-size:1.22rem;margin-bottom:.45rem}
+    .card time{display:block;font-size:.88rem;margin-bottom:.4rem;color:#666}
+    .card p{margin-bottom:1rem}
+    .docs-table{width:100%;border-collapse:collapse;font-size:.96rem}
+    .docs-table th,.docs-table td{padding:.65rem .75rem;border-bottom:1px solid var(--clr-border)}
+    .docs-table th{font-weight:600;text-align:left}
     
     /* ─────────────────────────────────────────────
-       9.  CAREER PAGE
+       9.  CAREER   (вакансии & практика)
        ─────────────────────────────────────────── */
-    .career-page .intro{max-width:var(--max-w-m);margin:0 auto 2.5rem;font-size:1.05rem}
-    .career-cards{display:grid;gap:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .career-card{
-      background:#fff;border-radius:var(--radius);padding:1.7rem;border:1px solid #e6e9f0;
-      box-shadow:0 4px 14px rgb(0 0 0 /.05);transition:transform .25s,box-shadow .25s}
-    .career-card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgb(0 0 0 /.08)}
-    .career-card h3{margin:.25rem 0 .45rem;font-size:1.19rem}
-    .career-card .btn{margin-top:1.1rem;--gr:linear-gradient(135deg,#fff 0%,#f6f7f9 100%);color:var(--accent);
-      box-shadow:none;border:1px solid var(--accent);transition:background .25s,color .25s,box-shadow .25s}
-    .career-card .btn:hover{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgb(0 86 179 /.3)}
+    .career-page h1{margin-bottom:.3rem}
+    .career-page .intro{max-width:var(--w-sm);margin:0 auto 2.7rem;color:#444;font-size:1.06rem}
     
-    /* contact-form */
-    .contact-form{background:#fff;border:1px solid #e1e4ec;border-radius:var(--radius);padding:2rem 1.8rem;
-      box-shadow:0 6px 22px rgb(0 0 0 /.04)}
+    /* vacancy cards */
+    .career-cards{display:grid;gap:2.2rem;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+    .career-card{background:#fff;border:1px solid var(--clr-border);border-radius:var(--radius);
+      padding:1.9rem 1.6rem;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s}
+    .career-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+    .career-card h3{font-size:1.23rem;margin-bottom:.5rem}
+    .career-card .btn{margin-top:1.2rem;font-size:.9rem;--grad:linear-gradient(135deg,#fff 0%,#f7f8fb 100%);
+      color:var(--clr-accent);border:1px solid var(--clr-accent);box-shadow:none}
+    .career-card .btn:hover{background:var(--clr-accent);color:#fff;box-shadow:0 6px 18px rgb(0 96 255 /.3)}
+    
+    /* practice form */
+    .contact-form{
+      background:#fff;border:1px solid var(--clr-border);border-radius:var(--radius);
+      padding:2.3rem 2rem;box-shadow:var(--shadow-sm);max-width:760px;margin:auto}
+    .contact-form fieldset{border:none;margin:0 0 1.8rem}
+    .contact-form legend{font-weight:700;margin-bottom:1rem}
+    .contact-form label{font-size:.88rem;font-weight:600;display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
     .contact-form input,.contact-form select,.contact-form textarea{
-      transition:border .25s,box-shadow .25s,transform .25s}
-    .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
-      transform:translateY(-2px)}
-    .contact-form button[type="submit"]{margin-top:1.4rem}
+      font:inherit;padding:.7rem .85rem;border:1px solid var(--clr-border);border-radius:var(--radius);
+      background:#fff;transition:border .25s,box-shadow .25s,transform .25s}
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus{
+      border-color:var(--clr-accent-2);box-shadow:0 0 0 3px rgb(0 96 255 /.15);transform:translateY(-2px);outline:0}
+    .contact-form .grid-2{display:grid;gap:1.3rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .switch{display:flex;align-items:center;gap:.7rem;margin:1rem 0}
+    .switch input{appearance:none;width:50px;height:26px;border-radius:13px;background:#cfd6e4;
+      position:relative;cursor:pointer;transition:.3s}
+    .switch input::before{content:'';position:absolute;top:3px;left:4px;width:20px;height:20px;border-radius:50%;
+      background:#fff;transition:.3s}
+    .switch input:checked{background:var(--clr-accent)}
+    .switch input:checked::before{transform:translateX(24px)}
+    .switch-label{font-size:.88rem}
     
-    /* custom switch */
-    .switch input{background:#dbe1eb;transition:.25s}
-    .switch input:checked{background:var(--accent)}
-    .switch input:checked::before{background:#fff}
+    .contact-form button[type=submit]{display:block;margin:2rem 0 0 auto}
     
-    /* animated form panel */
-    .tab-panel.fade-in{animation:fadeIn .45s both}
+    /* fade anim for form panel */
+    .tab-panel.fade-in{animation:fadeIn .5s both}
     @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
     
     /* ─────────────────────────────────────────────
-       10.  REVEAL ON SCROLL
+       10.  EFFECTS: reveal-on-scroll + toast
        ─────────────────────────────────────────── */
-    .reveal{opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease}
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity .65s var(--ease-soft),transform .65s var(--ease-soft)}
     .reveal.show{opacity:1;transform:none}
     
-    /* ─────────────────────────────────────────────
-       11.  TOAST
-       ─────────────────────────────────────────── */
-    .toast{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%) translateY(44px);
-      padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent-soft);color:#fff;font-weight:600;
-      box-shadow:0 6px 20px rgb(0 0 0 /.15);opacity:0;pointer-events:none;z-index:1500;
-      transition:opacity .4s,transform .4s}
+    .toast{
+      position:fixed;bottom:1.7rem;left:50%;transform:translateX(-50%) translateY(40px);
+      padding:1rem 1.6rem;border-radius:var(--radius);background:var(--clr-accent-2);color:#fff;font-weight:600;
+      box-shadow:0 8px 24px rgb(0 96 255 /.3);opacity:0;pointer-events:none;z-index:1500;
+      transition:opacity .4s var(--ease-soft),transform .4s var(--ease-soft)}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     
     /* ─────────────────────────────────────────────
-       12.  FOOTER
+       11.  FOOTER
        ─────────────────────────────────────────── */
-    footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
-    .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0}
-    @media(max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
+    footer{background:#fafafa;border-top:1px solid var(--clr-border);font-size:.92rem}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0}
+    @media(max-width:560px){.footer-inner{flex-direction:column;gap:.45rem;text-align:center}}
     
     /* ─────────────────────────────────────────────
-       13.  MID (601-1023 px)
+       12.  DESKTOP <→> TABLET (601-1023 px)
        ─────────────────────────────────────────── */
     @media(min-width:601px) and (max-width:1023px){
       .media-layout{flex-direction:column}
-      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.4rem;margin:0 0 1.5rem}
-      .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.55rem .25rem}
-      .media-sidebar .tab-btn.active{border-color:var(--accent)}
+      .media-sidebar{flex:none;flex-direction:row;justify-content:center;gap:1.6rem;margin:0 0 1.8rem}
+      .media-sidebar .tab-btn{border-left:none;border-bottom:4px solid transparent;padding:.6rem .3rem}
+      .media-sidebar .tab-btn.active{border-color:var(--clr-accent)}
       .media-select{display:none}
     }
     
     /* ─────────────────────────────────────────────
-       14.  MOBILE (≤600 px)
+       13.  MOBILE (≤600 px)
        ─────────────────────────────────────────── */
     @media(max-width:600px){
       html{font-size:16px}
-      .logo-img{height:42px}
-      .header-inner{padding:.45rem 0}
+      .logo-img{height:44px}
+      .header-inner{padding:.5rem 0}
       .burger{display:block}
     
+      /* burger anim */
+      .burger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+      .burger.open span:nth-child(2){opacity:0}
+      .burger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+    
       .main-nav{
-        position:fixed;top:0;right:-100%;width:min(280px,75%);height:100vh;background:#fff;
-        flex-direction:column;gap:1.2rem;padding:5rem 1.5rem 2rem;
-        box-shadow:-2px 0 10px rgb(0 0 0 /.1);z-index:999;transition:.35s ease-out}
+        position:fixed;top:0;right:-100%;width:min(300px,78%);height:100vh;background:#fff;
+        flex-direction:column;gap:1.4rem;padding:5rem 1.8rem 2.2rem;box-shadow:-3px 0 16px rgb(0 0 0 /.08);
+        z-index:1100;transition:right .4s var(--ease-soft)}
       .main-nav.open{right:0 !important}
-      .main-nav a{font-size:1.1rem}
+      .main-nav a{font-size:1.15rem}
       .main-nav a.btn{width:100%;text-align:center}
     
-      .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-      .burger.open span:nth-child(2){opacity:0}
-      .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-    
+      /* media page select */
       .media-layout{flex-direction:column}
       .media-sidebar{display:none}
       .media-select{display:block}
       .gallery{--thumb:140px}
       .career-cards{grid-template-columns:1fr}
-      .contact-form{padding:1.5rem}
+      .contact-form{padding:1.7rem}
     }
