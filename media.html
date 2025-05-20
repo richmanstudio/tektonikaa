@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ТЕКТОНИКА — Медиа</title>
+  <title>ТЕКТОНИКА — Медиа-центр</title>
 
-  <!-- общий шрифт + глобальные стили -->
+  <!-- глобальные стили -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,9 +14,7 @@
 <!-- ===== Header ===== -->
 <header>
   <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
+    <a href="index.html"><img src="logo.png" alt="ТЕКТОНИКА" class="logo-img"></a>
 
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
@@ -34,89 +32,170 @@
   </div>
 </header>
 
-<!-- ===== Album ===== -->
-<section class="section">
+<!-- ===== Media page ===== -->
+<section class="section media-page">
   <div class="container">
-    <h1 class="center">Альбом: сезон&nbsp;2024</h1>
 
-    <!-- responsive gallery -->
-    <div class="gallery">
+    <!-- таб-меню (desktop) -->
+    <nav class="media-tabs">
+      <button class="tab-btn active" data-tab="news">Новости</button>
+      <button class="tab-btn" data-tab="photo">Фото</button>
+      <button class="tab-btn" data-tab="video">Видео</button>
+      <button class="tab-btn" data-tab="audio">Аудио</button>
+      <button class="tab-btn" data-tab="docs">Документы</button>
+    </nav>
 
-      <!-- фото-карточки -->
-      <figure>
-        <a href="media/season-2024/IMG_6109.JPG">
-          <img src="media/season-2024/IMG_6109.JPG" alt="">
-        </a>
-      </figure>
+    <!-- выпадающий список (mobile) -->
+    <label class="media-select">
+      <select id="mediaSelect">
+        <option value="news" selected>Новости</option>
+        <option value="photo">Фото</option>
+        <option value="video">Видео</option>
+        <option value="audio">Аудио</option>
+        <option value="docs">Документы</option>
+      </select>
+    </label>
 
-      <figure>
-        <a href="media/season-2024/IMG_6110.JPG">
-          <img src="media/season-2024/IMG_6110.JPG" alt="">
-        </a>
-      </figure>
+    <!-- ============ NEWS ============ -->
+    <div class="tab-pane active" id="news">
+      <div class="cards-grid">
 
-      <figure>
-        <a href="media/season-2024/IMG_6111.JPG">
-          <img src="media/season-2024/IMG_6111.JPG" alt="">
-        </a>
-      </figure>
+        <article class="card">
+          <h3>Начаты буровые работы на участке «Солнечный»</h3>
+          <time datetime="2025-05-15">15.05.2025</time>
+          <p>Первая очередь RC-бурения объёмом 2 500 погонных метров стартовала по графику.
+             Используются собственные станки Epiroc Christensen CT14…</p>
+          <a class="btn mini" href="#">Читать далее</a>
+        </article>
 
-      <figure>
-        <a href="media/season-2024/IMG_6112.JPG">
-          <img src="media/season-2024/IMG_6112.JPG" alt="">
-        </a>
-      </figure>
+        <article class="card">
+          <h3>ТЕКТОНИКА вошла в ТОП-10 молодых геолого-сервисных компаний РФ</h3>
+          <time datetime="2025-04-08">08.04.2025</time>
+          <p>Рейтинг аналитического центра «Недра» учитывал выручку, портфель проектов
+             и инвестиции в R&amp;D-направления…</p>
+          <a class="btn mini" href="#">Читать далее</a>
+        </article>
 
-      <figure>
-        <a href="media/season-2024/IMG_6113.JPG">
-          <img src="media/season-2024/IMG_6113.JPG" alt="">
-        </a>
-      </figure>
+        <article class="card">
+          <h3>Завершена IP-томография на месторождении «Орлинка»</h3>
+          <time datetime="2025-03-26">26.03.2025</time>
+          <p>Получены аномальные зоны заряда-разряда. Уточнена 3D модель рудного тела,
+             сформирован план бурения приоритетных скважин…</p>
+          <a class="btn mini" href="#">Читать далее</a>
+        </article>
 
-      <figure>
-        <a href="media/season-2024/IMG_6114.JPG">
-          <img src="media/season-2024/IMG_6114.JPG" alt="">
-        </a>
-      </figure>
+      </div>
+    </div>
 
-      <figure>
-        <a href="media/season-2024/IMG_6115.JPG">
-          <img src="media/season-2024/IMG_6115.JPG" alt="">
-        </a>
-      </figure>
+    <!-- ============ PHOTO ============ -->
+    <div class="tab-pane" id="photo">
+      <div class="gallery">
 
-      <figure>
-        <a href="media/season-2024/IMG_6116.JPG">
-          <img src="media/season-2024/IMG_6116.JPG" alt="">
-        </a>
-      </figure>
+        <!-- 11 кадров сезона 2024 -->
+        <figure><a href="media/photos/2B468F1B-CA2A-42BD-BE1A-8F96009D0E2E.jpeg">
+          <img src="media/photos/2B468F1B-CA2A-42BD-BE1A-8F96009D0E2E_thumb.jpeg" alt="Перевал в тумане">
+        </a></figure>
 
-      <figure>
-        <a href="media/season-2024/IMG_6117.JPG">
-          <img src="media/season-2024/IMG_6117.JPG" alt="">
-        </a>
-      </figure>
+        <figure><a href="media/photos/0390CA8B-1F2E-4F55-9B9F-4024128CC926.jpeg">
+          <img src="media/photos/0390CA8B-1F2E-4F55-9B9F-4024128CC926_thumb.jpeg" alt="Полевой лагерь утром">
+        </a></figure>
 
-      <figure>
-        <a href="media/season-2024/IMG_6118.JPG">
-          <img src="media/season-2024/IMG_6118.JPG" alt="">
-        </a>
-      </figure>
+        <figure><a href="media/photos/FBDBBBD5-D6CC-4FAE-9B83-FC7A06867EDA.jpeg">
+          <img src="media/photos/FBDBBBD5-D6CC-4FAE-9B83-FC7A06867EDA_thumb.jpeg" alt="Работа на ручье">
+        </a></figure>
 
-      <figure>
-        <a href="media/season-2024/IMG_6119.JPG">
-          <img src="media/season-2024/IMG_6119.JPG" alt="">
-        </a>
-      </figure>
+        <figure><a href="media/photos/EE6A653A-7196-4D1F-84EE-1508423A89DB.jpeg">
+          <img src="media/photos/EE6A653A-7196-4D1F-84EE-1508423A89DB_thumb.jpeg" alt="Река и отражение">
+        </a></figure>
 
-    </div><!-- /.gallery -->
-  </div>
+        <figure><a href="media/photos/826F71F4-FDD4-43FF-A421-FB7653F47CBE.jpeg">
+          <img src="media/photos/826F71F4-FDD4-43FF-A421-FB7653F47CBE_thumb.jpeg" alt="Лагерь в снегу">
+        </a></figure>
+
+        <figure><a href="media/photos/7C76AB72-02E1-441A-9170-1A331DF4037A.jpeg">
+          <img src="media/photos/7C76AB72-02E1-441A-9170-1A331DF4037A_thumb.jpeg" alt="Панорама выработки">
+        </a></figure>
+
+        <figure><a href="media/photos/EB8FFDB0-A6C7-494F-86C6-879FA92515A3.jpeg">
+          <img src="media/photos/EB8FFDB0-A6C7-494F-86C6-879FA92515A3_thumb.jpeg" alt="Отбор проб на закате">
+        </a></figure>
+
+        <figure><a href="media/photos/60A027D8-0632-44E7-9033-45BE8F0887B7.jpeg">
+          <img src="media/photos/60A027D8-0632-44E7-9033-45BE8F0887B7_thumb.jpeg" alt="Катера на Амуре">
+        </a></figure>
+
+        <figure><a href="media/photos/D6578FDE-4B56-4BD8-8E8C-6CFA67BBF8CC.jpeg">
+          <img src="media/photos/D6578FDE-4B56-4BD8-8E8C-6CFA67BBF8CC_thumb.jpeg" alt="Вездеход на базе">
+        </a></figure>
+
+        <figure><a href="media/photos/C7113BBB-8FD8-4C96-9D0D-B3305150D8E2.jpeg">
+          <img src="media/photos/C7113BBB-8FD8-4C96-9D0D-B3305150D8E2_thumb.jpeg" alt="Тайга и костёр">
+        </a></figure>
+
+        <figure><a href="media/photos/EAE1151B-517C-4C80-BACD-3C54DC12A573.jpeg">
+          <img src="media/photos/EAE1151B-517C-4C80-BACD-3C54DC12A573_thumb.jpeg" alt="Утренняя дымка">
+        </a></figure>
+
+      </div>
+    </div>
+
+    <!-- ============ VIDEO ============ -->
+    <div class="tab-pane" id="video">
+      <div class="cards-grid">
+
+        <article class="card">
+          <iframe src="media/videos/overview2024.mp4" loading="lazy" title="Обзор сезона 2024" style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
+          <h3>Обзор сезона&nbsp;2024</h3>
+        </article>
+
+        <article class="card">
+          <iframe src="media/videos/ip_tomo_demo.mp4" loading="lazy" title="IP-томография" style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
+          <h3>IP-томография: демонстрация</h3>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ============ AUDIO ============ -->
+    <div class="tab-pane" id="audio">
+      <ul class="audio-list">
+        <li>
+          <h3>Подкаст #1: Новые технологии бурения</h3>
+          <audio controls src="media/audio/podcast1.mp3"></audio>
+        </li>
+        <li>
+          <h3>Подкаст #2: Дроны в геологии</h3>
+          <audio controls src="media/audio/podcast2.mp3"></audio>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ============ DOCS ============ -->
+    <div class="tab-pane" id="docs">
+      <table class="docs-table">
+        <thead>
+          <tr><th>Документ</th><th>Дата</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Презентация результатов IP-томографии «Орлинка»</td>
+            <td>26.03.2025</td>
+            <td><a class="btn mini" href="media/docs/ip_tomo_orlinka.pdf" target="_blank">Скачать</a></td>
+          </tr>
+          <tr>
+            <td>Каталог услуг ТЕКТОНИКА — 2025</td>
+            <td>01.02.2025</td>
+            <td><a class="btn mini" href="media/docs/services_2025.pdf" target="_blank">Скачать</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /.container -->
 </section>
 
-<!-- ===== Lightbox overlay ===== -->
-<div id="lightbox">
-  <img src="#" alt="">
-</div>
+<!-- lightbox -->
+<div id="lightbox"><img src="#" alt=""></div>
 
 <!-- ===== Footer ===== -->
 <footer>
