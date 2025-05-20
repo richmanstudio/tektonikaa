@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТЕКТОНИКА — Услуги</title>
 
+  <!-- базовые шрифты и общий css -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,55 +14,79 @@
 <!-- ===== Header ===== -->
 <header>
   <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
+    <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА"></a>
 
-    <button class="burger" id="burger" aria-label="Меню">
+    <button id="burger" class="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
-    <nav class="main-nav" id="mobileNav">
+    <nav id="mobileNav" class="main-nav">
       <a href="index.html">Главная</a>
-      <a href="services.html"  class="active">Услуги</a>
+      <a href="services.html" class="active">Услуги</a>
       <a href="projects.html">Проекты</a>
       <a href="about.html">О&nbsp;нас</a>
       <a href="media.html">Медиа</a>
       <a href="research.html">Научная&nbsp;деятельность</a>
-      <a href="careers.html" class="btn primary mini">Карьера</a>
+      <a href="careers.html" class="btn mini">Карьера</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== Services page ===== -->
-<section class="section">
-  <div class="container">
-    <h1>Наши услуги</h1>
-
-    <p>В этом разделе позже появится подробное описание всех направлений деятельности компании «ТЕКТОНИКА» — от поисково-разведочного бурения до ресурсного аудита JORC. Сейчас страница служит заготовкой.</p>
-
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Поисково-разведочное бурение</h3>
-        <p>RC / коронковое бурение до 1 200 м, QA/QC-контроль, опробование.</p>
-      </div>
-      <div class="card">
-        <h3>Геофизика и&nbsp;геохимия</h3>
-        <p>Магнито- и электрометрия, IP-томография, XRF-скрининг.</p>
-      </div>
-      <div class="card">
-        <h3>3-D геологическое моделирование</h3>
-        <p>Micromine, Surpac: блок-модели, варьографика, запасы.</p>
-      </div>
-      <div class="card">
-        <h3>Отчёты GKZ / JORC</h3>
-        <p>Полный пакет документации, сопровождение независимого аудита.</p>
-      </div>
-    </div>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="reveal">Наши услуги</h1>
+    <p class="lead reveal">Геолого-геофизические решения полного цикла — от&nbsp;поиска месторождений до&nbsp;цифровых моделей местности</p>
   </div>
 </section>
 
-<!-- ===== Footer ===== -->
+<!-- ===== SERVICES LIST ===== -->
+<section class="services-section reveal">
+  <div class="container">
+    <h2>Геофизические&nbsp;исследования</h2>
+    <ul>
+      <li>Поиск и&nbsp;разведка рудных полезных ископаемых</li>
+      <li>Поиск и&nbsp;разведка подземных вод</li>
+      <li>Поиск и&nbsp;разведка месторождений строительных материалов</li>
+      <li>Изучение петрофизических свойств</li>
+      <li>Аэрофотосъёмка&nbsp;(БПЛА)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="services-section reveal">
+  <div class="container">
+    <h2>Геологические&nbsp;исследования</h2>
+    <ul>
+      <li>Геологические маршруты</li>
+      <li>Сбор и&nbsp;оценка геологических материалов</li>
+      <li>Отбор проб (штуфных&nbsp;/ геохимических)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="services-section reveal">
+  <div class="container">
+    <h2>Консультирование</h2>
+    <ul>
+      <li>Обработка и&nbsp;интерпретация данных, сопровождение и&nbsp;запуск полевых работ</li>
+      <li>Сбор материала, оцифровка и&nbsp;анализ ранее проведённых работ, написание проектов и&nbsp;отчётов</li>
+    </ul>
+  </div>
+</section>
+
+<section class="services-section reveal">
+  <div class="container">
+    <h2>Топография</h2>
+    <ul>
+      <li>Лидарная съёмка&nbsp;(LiDAR) с&nbsp;применением БПЛА</li>
+      <li>Создание цифровой модели местности</li>
+      <li>Уточнение геодезических планов</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-inner">
     <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
