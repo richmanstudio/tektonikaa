@@ -1,8 +1,7 @@
 /* =====================================================================
    Т Е К Т О Н И К А  •  style.css
-   Версия: 2025-05-31  (v10-final)
-   Полный файл – ни одна секция не опущена.
-   Охватывает ВСЮ визуальную систему проекта.
+   Версия: 2025-05-31  (v12 — «hero-CTA»)
+   Полный файл: все блоки + новая стилизация кнопки-якоря
    ===================================================================== */
 
 
@@ -10,7 +9,6 @@
    0.  DESIGN TOKENS
    ─────────────────────────────────────────── */
    :root{
-      /* цвета */
       --clr-bg         : #ffffff;
       --clr-bg-alt     : #f5f7fb;
       --clr-text       : #1d1d1f;
@@ -19,17 +17,14 @@
       --clr-accent-2   : #3d8aff;
       --clr-border     : #d9dee7;
     
-      /* форма / тени */
       --radius         : 10px;
       --shadow-sm      : 0 2px 6px  rgb(0 0 0/.06);
       --shadow-md      : 0 10px 26px rgb(0 0 0/.10);
     
-      /* сетка */
       --w-xl           : 1180px;
       --w-lg           : 1040px;
       --w-sm           : 640px;
     
-      /* fluid-type */
       --fs-base        : clamp(17px,1vw + .6rem,19px);
       --fs-h1          : clamp(2.6rem,2vw + 2rem,3.4rem);
       --fs-h2          : clamp(1.9rem,1.3vw + 1.3rem,2.45rem);
@@ -47,7 +42,7 @@
       color:var(--clr-text);background:var(--clr-bg);line-height:1.6;
       -webkit-font-smoothing:antialiased;
     }
-    img,svg,picture{display:block;max-width:100%}
+    img,picture,svg{display:block;max-width:100%}
     h1,h2,h3{font-weight:700;line-height:1.22}
     h1{font-size:var(--fs-h1);margin-bottom:.45em}
     h2{font-size:var(--fs-h2);margin-bottom:.9em}
@@ -61,7 +56,6 @@
        2.  LOGO & BUTTONS
        ─────────────────────────────────────────── */
     .logo-img{height:clamp(44px,4.5vw,76px);object-fit:contain}
-    
     .btn{
       --grad:linear-gradient(135deg,var(--clr-accent) 0%,var(--clr-accent-2) 100%);
       display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
@@ -72,14 +66,13 @@
     .btn:hover{transform:translateY(-4px);box-shadow:0 12px 34px rgb(0 96 255/.35)}
     .btn:active{transform:translateY(-1px);box-shadow:0 7px 22px rgb(0 96 255/.30)}
     .btn.mini{padding:.6rem 1.3rem;font-size:.88rem}
-    .btn.ghost{background:#fff;color:var(--clr-accent);border:1px solid var(--clr-accent);box-shadow:none}
+    .btn.ghost{background:#fff;color:var(--clr-accent);border:1px solid var(--clr-accent)}
     .btn.ghost:hover{background:var(--clr-accent);color:#fff}
     
     /* ─────────────────────────────────────────────
        3.  HEADER / NAVBAR
        ─────────────────────────────────────────── */
-    header{position:sticky;top:0;z-index:900;background:#fff;
-            box-shadow:0 1px 4px rgb(0 0 0/.06)}
+    header{position:sticky;top:0;z-index:900;background:#fff;box-shadow:0 1px 4px rgb(0 0 0/.06)}
     .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.68rem 0}
     .main-nav{display:flex;gap:1.75rem;align-items:center;font-weight:500}
     .main-nav a{color:var(--clr-text);position:relative;padding:.25rem 0}
@@ -88,7 +81,6 @@
       background:var(--clr-accent-2);transform:scaleX(0);transition:transform .25s}
     .main-nav a:hover::after{transform:scaleX(1)}
     .main-nav a.btn{color:#fff !important}
-    
     .burger{display:none;width:48px;height:48px;padding:0;border:none;background:none;cursor:pointer}
     .burger span{display:block;width:28px;height:2px;margin:6px auto;background:var(--clr-text);transition:.35s}
     
@@ -101,8 +93,16 @@
       position:relative;min-height:clamp(62vh,78vh,95vh);text-align:center}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);backdrop-filter:blur(2px)}
     .hero-content{position:relative;z-index:1;max-width:min(720px,92%);margin:auto;
-                  padding:clamp(3.6rem,10vh,6rem) 1rem}
-    .lead{font-size:1.15rem;margin:.95rem 0 2.25rem;color:#333}
+      padding:clamp(3.6rem,10vh,6rem) 1rem}
+    .lead{font-size:1.15rem;margin:.95rem 0 1.8rem;color:#333}
+    
+    /* — кнопка-якорь “К услугам” — */
+    .hero-content .btn{
+      margin-top:0;                       /* сразу под lead */
+      font-size:1rem;
+      padding:1rem 2.4rem;
+      box-shadow:0 8px 22px rgb(0 96 255/.28)}
+    .hero-content .btn:hover{box-shadow:0 14px 34px rgb(0 96 255/.38);transform:translateY(-5px)}
     
     /* ─────────────────────────────────────────────
        5.  UNIVERSAL SECTION
@@ -118,8 +118,7 @@
       position:relative;padding:.5rem .15rem;transition:color .25s}
     .tab-btn:hover,.tab-button:hover{color:var(--clr-text)}
     .tab-btn.active,.tab-button.active{color:var(--clr-text)}
-    .tab-bar{--move-x:0;--underline-w:0;
-      display:flex;gap:2rem;justify-content:center;margin-bottom:2rem;position:relative}
+    .tab-bar{--move-x:0;--underline-w:0;display:flex;gap:2rem;justify-content:center;margin-bottom:2rem;position:relative}
     .tab-bar::after{content:'';position:absolute;left:var(--move-x);bottom:-6px;width:var(--underline-w);
       height:3px;border-radius:2px;background:var(--clr-accent-2);
       transition:left .35s cubic-bezier(.25,.8,.3,1),width .35s cubic-bezier(.25,.8,.3,1)}
@@ -143,8 +142,7 @@
     .qbox-icon{font-size:3.4rem;margin:0 auto 1.15rem;color:var(--clr-accent)}
     .qbox h3{font-size:1.24rem;margin-bottom:.45rem}
     @media(max-width:680px){.quick-grid{--min:200px;gap:2rem}}
-    @media(max-width:460px){.quick-grid{grid-template-columns:1fr;--min:100%;gap:1.7rem}
-      .qbox{padding:2.1rem 1.6rem}}
+    @media(max-width:460px){.quick-grid{grid-template-columns:1fr;--min:100%;gap:1.7rem}.qbox{padding:2.1rem 1.6rem}}
     
     /* ─────────────────────────────────────────────
        8.  SERVICES STRIP-SECTIONS
@@ -157,7 +155,21 @@
     .services-section li::before{content:"•";position:absolute;left:0;top:0;font-size:1.3rem;color:var(--clr-accent)}
     
     /* ─────────────────────────────────────────────
-       9.  MEDIA-CENTER
+       9.  NEWS ARTICLE
+       ─────────────────────────────────────────── */
+    article{max-width:var(--w-lg);margin:auto;font-size:1.06rem;line-height:1.7;color:var(--clr-text)}
+    article h2{font-size:1.45rem;margin:1.7rem 0 .9rem}
+    article h3{font-size:1.25rem;margin:1.5rem 0 .8rem}
+    article img{border-radius:var(--radius);box-shadow:var(--shadow-md)}
+    article figure{margin:2rem 0;text-align:center}
+    article figcaption{font-size:.85rem;margin-top:.6rem;color:var(--clr-text-soft)}
+    article blockquote{margin:1.8rem 0;padding:1.2rem 1.4rem;border-left:4px solid var(--clr-accent);
+      background:var(--clr-bg-alt);font-style:italic}
+    article ul,article ol{margin:0 0 1.2rem 1.4rem;padding:0;display:block}
+    article code{padding:.2rem .4rem;border-radius:4px;background:#eef1fa;font-family:Consolas,monospace}
+    
+    /* ─────────────────────────────────────────────
+       10.  MEDIA-CENTER
        ─────────────────────────────────────────── */
     .media-layout{display:flex;gap:2.4rem}
     .media-sidebar{flex:0 0 185px;display:flex;flex-direction:column;gap:.7rem}
@@ -182,23 +194,20 @@
     @media(min-width:800px){.gallery{--thumb:205px}}
     @media(min-width:1100px){.gallery{--thumb:245px}}
     
-    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.78);
-      display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
-      transition:opacity .4s;z-index:1200}
+    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;
+      align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:1200}
     #lightbox.show{opacity:1;pointer-events:auto}
-    #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);
-      box-shadow:0 10px 38px rgb(0 0 0/.4)}
+    #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 10px 38px rgb(0 0 0/.4)}
     
     .cards-grid{display:flex;flex-direction:column;gap:2.2rem}
     .card h3{font-size:1.22rem;margin-bottom:.48rem}
     .card time{display:block;font-size:.88rem;margin-bottom:.44rem;color:var(--clr-text-soft)}
-    .card p{margin-bottom:1rem}
     .docs-table{width:100%;border-collapse:collapse;font-size:.96rem}
     .docs-table th,.docs-table td{padding:.66rem .78rem;border-bottom:1px solid var(--clr-border)}
     .docs-table th{text-align:left;font-weight:600}
     
     /* ─────────────────────────────────────────────
-       10.  CAREER
+       11.  CAREER
        ─────────────────────────────────────────── */
     .career-page .intro{max-width:var(--w-sm);margin:0 auto 2.8rem;color:#4a4f57;font-size:1.06rem}
     .career-cards{display:grid;gap:2.3rem;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
@@ -225,7 +234,8 @@
       transform:translateY(-2px);outline:0}
     .contact-form .grid-2{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
     .switch{display:flex;align-items:center;gap:.75rem;margin:1.1rem 0}
-    .switch input{appearance:none;width:50px;height:26px;border-radius:13px;background:#cfd6e4;cursor:pointer;position:relative;transition:.3s}
+    .switch input{appearance:none;width:50px;height:26px;border-radius:13px;background:#cfd6e4;cursor:pointer;
+      position:relative;transition:.3s}
     .switch input::before{content:'';position:absolute;top:3px;left:4px;width:20px;height:20px;border-radius:50%;
       background:#fff;transition:.3s}
     .switch input:checked{background:var(--clr-accent)}
@@ -233,27 +243,27 @@
     .contact-form button[type=submit]{margin:2rem 0 0 auto}
     
     /* ─────────────────────────────────────────────
-       11.  EFFECTS  (Reveal + Toast)
+       12.  EFFECTS (Reveal + Toast)
        ─────────────────────────────────────────── */
     .reveal{opacity:0;transform:translateY(36px);
-      transition:opacity .66s cubic-bezier(.25,.8,.3,1),transform .66s cubic-bezier(.25,.8,.3,1)}
+      transition:opacity .66s cubic-bezier(.25,.8,.3,1),
+                 transform .66s cubic-bezier(.25,.8,.3,1)}
     .reveal.show{opacity:1;transform:none}
-    
     .toast{position:fixed;bottom:1.8rem;left:50%;transform:translateX(-50%) translateY(46px);
-      padding:1rem 1.6rem;border-radius:var(--radius);background:var(--clr-accent-2);color:#fff;font-weight:600;
-      box-shadow:0 8px 26px rgb(0 96 255/.28);opacity:0;pointer-events:none;z-index:1500;
+      padding:1rem 1.6rem;border-radius:var(--radius);background:var(--clr-accent-2);
+      color:#fff;font-weight:600;box-shadow:0 8px 26px rgb(0 96 255/.28);opacity:0;pointer-events:none;z-index:1500;
       transition:opacity .44s cubic-bezier(.25,.8,.3,1),transform .44s cubic-bezier(.25,.8,.3,1)}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     
     /* ─────────────────────────────────────────────
-       12.  FOOTER
+       13.  FOOTER
        ─────────────────────────────────────────── */
     footer{background:#fafafa;border-top:1px solid var(--clr-border);font-size:.92rem;margin-top:4rem}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0}
     @media(max-width:560px){.footer-inner{flex-direction:column;gap:.5rem;text-align:center}}
     
     /* ─────────────────────────────────────────────
-       13.  BREAKPOINTS
+       14.  BREAKPOINTS
        ─────────────────────────────────────────── */
     @media(min-width:601px) and (max-width:1023px){
       .media-layout{flex-direction:column}

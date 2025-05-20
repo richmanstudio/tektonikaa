@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТЕКТОНИКА — Услуги</title>
 
-  <!-- базовые шрифты и общий css -->
+  <!-- общий шрифт + глобальный css -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== Header ===== -->
+<!-- ===== HEADER ===== -->
 <header>
   <div class="container header-inner">
     <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА"></a>
@@ -36,12 +36,16 @@
 <section class="hero">
   <div class="hero-content">
     <h1 class="reveal">Наши услуги</h1>
-    <p class="lead reveal">Геолого-геофизические решения полного цикла — от&nbsp;поиска месторождений до&nbsp;цифровых моделей местности</p>
+    <p class="lead reveal">
+      Геолого-геофизические решения полного цикла — от&nbsp;поиска месторождений до&nbsp;цифровых моделей.
+    </p>
+    <!-- новая кнопка прокрутки -->
+    <a href="#geo-services" class="btn reveal mini">К&nbsp;услугам ↓</a>
   </div>
 </section>
 
 <!-- ===== SERVICES LIST ===== -->
-<section class="services-section reveal">
+<section id="geo-services" class="services-section reveal">
   <div class="container">
     <h2>Геофизические&nbsp;исследования</h2>
     <ul>

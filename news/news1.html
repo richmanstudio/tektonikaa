@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ТЕКТОНИКА — Новости • Заголовок новости</title>
+
+  <!-- подключаем общий стиль из корня -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container header-inner">
+    <a href="../index.html"><img src="../logo.png" class="logo-img" alt="ТЕКТОНИКА"></a>
+
+    <button id="burger" class="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="mobileNav" class="main-nav">
+      <a href="../index.html">Главная</a>
+      <a href="../services.html">Услуги</a>
+      <a href="../projects.html">Проекты</a>
+      <a href="../about.html">О&nbsp;нас</a>
+      <a href="../media.html" class="active">Медиа</a>
+      <a href="../research.html">Научная&nbsp;деятельность</a>
+      <a href="../careers.html" class="btn mini">Карьера</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ARTICLE HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="reveal">Заголовок новости</h1>
+    <p class="lead reveal"><time datetime="2025-05-31">31&nbsp;мая&nbsp;2025&nbsp;г.</time></p>
+  </div>
+</section>
+
+<!-- ===== ARTICLE BODY ===== -->
+<article class="section reveal" style="max-width:var(--w-lg);margin:auto">
+  <p>Здесь будет размещён полный текст новости. Используйте этот файл как шаблон:
+     замените заголовок, дату, изображение и текст на актуальные данные.</p>
+
+  <h2>Подзаголовок блока</h2>
+  <p>Параграф с подробностями. Добавляйте картинки, списки или цитаты по необходимости.</p>
+
+  <figure class="reveal" style="margin:2rem 0">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=60"
+         alt="Иллюстрация новости" style="border-radius:var(--radius);box-shadow:var(--shadow-md)">
+    <figcaption style="font-size:.85rem;margin-top:.6rem;color:var(--clr-text-soft)">Подпись к изображению.</figcaption>
+  </figure>
+
+  <p>Завершающий абзац. Если материал длинный, разбивайте его подзаголовками
+     и добавляйте <code>&lt;section class="reveal"&gt;…&lt;/section&gt;</code> для плавного появления.</p>
+
+  <a href="../media.html" class="btn ghost mini" style="margin-top:2rem">← Вернуться к медиа</a>
+</article>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container footer-inner">
+    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
+    <a href="mailto:tektonikayur16@gmail.com">Написать письмо</a>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
