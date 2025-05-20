@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТЕКТОНИКА — Медиа-центр</title>
 
-  <!-- глобальные стили -->
+  <!-- базовые шрифты и общий css -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,11 +16,11 @@
   <div class="container header-inner">
     <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА"></a>
 
-    <button class="burger" id="burger" aria-label="Меню">
+    <button id="burger" class="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
-    <nav class="main-nav" id="mobileNav">
+    <nav id="mobileNav" class="main-nav">
       <a href="index.html">Главная</a>
       <a href="services.html">Услуги</a>
       <a href="projects.html">Проекты</a>
@@ -32,72 +32,68 @@
   </div>
 </header>
 
-<!-- ===== Media page ===== -->
+<!-- ===== Media Page ===== -->
 <section class="section media-page">
   <div class="container">
 
-    <!-- выпадающий список (виден только ≤ 600 px, скрывается css-ом на десктопе) -->
+    <!-- mobile-select (отображается только ≤600 px) -->
     <label class="media-select">
       <select id="mediaSelect">
         <option value="news"  selected>Новости</option>
         <option value="photo">Фото</option>
-        <option value="video">Видео</option>
-        <option value="audio">Аудио</option>
-        <option value="docs">Документы</option>
+        <option value="docs" >Документы</option>
       </select>
     </label>
 
-    <!-- FLEX-разметка: слева сайдбар, справа контент -->
+    <!-- flex-layout: sidebar + content -->
     <div class="media-layout">
 
-      <!-- вертикальное меню-сайдбар -->
+      <!-- вертикальный сайдбар -->
       <nav class="media-sidebar">
         <button class="tab-btn active" data-tab="news">Новости</button>
         <button class="tab-btn"        data-tab="photo">Фото</button>
-        <button class="tab-btn"        data-tab="video">Видео</button>
-        <button class="tab-btn"        data-tab="audio">Аудио</button>
-        <button class="tab-btn"        data-tab="docs">Документы</button>
+        <button class="tab-btn"        data-tab="docs" >Документы</button>
       </nav>
 
       <!-- основной контент -->
       <div class="media-content">
 
-        <!-- ───── TAB: NEWS ───── -->
-        <div class="tab-pane active" id="news">
+        <!-- ── NEWS ── -->
+        <div id="news" class="tab-pane active">
           <div class="cards-grid">
 
             <article class="card">
               <h3>Начаты буровые работы на участке «Солнечный»</h3>
               <time datetime="2025-05-15">15.05.2025</time>
-              <p>Первая очередь RC-бурения объёмом 2&nbsp;500 п.м. стартовала по графику.
-                 Используются собственные станки Epiroc Christensen&nbsp;CT14…</p>
-              <a class="btn mini" href="#">Читать далее</a>
+              <p>Первая очередь RC-бурения объёмом 2 500 п.м. стартовала по графику.
+                 Используются собственные станки Epiroc Christensen CT14…</p>
+              <a href="#" class="btn mini">Читать далее</a>
             </article>
 
             <article class="card">
-              <h3>ТЕКТОНИКА вошла в ТОП-10 молодых геолого-сервисных компаний РФ</h3>
+              <h3>ТЕКТОНИКА вошла в ТОП-10 молодых геолого-сервисных компаний&nbsp;РФ</h3>
               <time datetime="2025-04-08">08.04.2025</time>
-              <p>Аналитический центр «Недра» оценивал выручку, портфель проектов и инвестиции
-                 в&nbsp;R&amp;D-направления…</p>
-              <a class="btn mini" href="#">Читать далее</a>
+              <p>Аналитический центр «Недра» оценивал выручку, портфель проектов
+                 и инвестиции в R&amp;D-направления…</p>
+              <a href="#" class="btn mini">Читать далее</a>
             </article>
 
             <article class="card">
               <h3>Завершена IP-томография на месторождении «Орлинка»</h3>
               <time datetime="2025-03-26">26.03.2025</time>
-              <p>Получены аномальные зоны заряда-разряда. Уточнена 3-D модель рудного тела,
-                 составлен план приоритетных скважин…</p>
-              <a class="btn mini" href="#">Читать далее</a>
+              <p>Получены аномальные зоны заряда-разряда, уточнена 3-D модель
+                 рудного тела, сформирован план приоритетных скважин…</p>
+              <a href="#" class="btn mini">Читать далее</a>
             </article>
 
           </div>
         </div><!-- /#news -->
 
-        <!-- ───── TAB: PHOTO ───── -->
-        <div class="tab-pane" id="photo">
+        <!-- ── PHOTO ── -->
+        <div id="photo" class="tab-pane">
           <div class="gallery">
 
-            <!-- превью + полный кадр -->
+            <!-- 11 кадров сезона 2024 -->
             <figure><a href="media/photos/2B468F1B-CA2A-42BD-BE1A-8F96009D0E2E.jpeg">
               <img src="media/photos/2B468F1B-CA2A-42BD-BE1A-8F96009D0E2E_thumb.jpeg" alt="Перевал в тайге">
             </a></figure>
@@ -131,11 +127,11 @@
             </a></figure>
 
             <figure><a href="media/photos/D6578FDE-4B56-4BD8-8E8C-6CFA67BBF8CC.jpeg">
-              <img src="media/photos/D6578FDE-4B56-4BD8-8E8C-6CFA67BBF8CC_thumb.jpeg" alt="Вездеход">
+              <img src="media/photos/D6578FDE-4B56-4BD8-8E8C-6CFA67BBF8CC_thumb.jpeg" alt="Вездеход на базе">
             </a></figure>
 
             <figure><a href="media/photos/C7113BBB-8FD8-4C96-9D0D-B3305150D8E2.jpeg">
-              <img src="media/photos/C7113BBB-8FD8-4C96-9D0D-B3305150D8E2_thumb.jpeg" alt="Кордон и костёр">
+              <img src="media/photos/C7113BBB-8FD8-4C96-9D0D-B3305150D8E2_thumb.jpeg" alt="Кордон в тайге">
             </a></figure>
 
             <figure><a href="media/photos/EAE1151B-517C-4C80-BACD-3C54DC12A573.jpeg">
@@ -145,42 +141,8 @@
           </div>
         </div><!-- /#photo -->
 
-        <!-- ───── TAB: VIDEO ───── -->
-        <div class="tab-pane" id="video">
-          <div class="cards-grid">
-
-            <article class="card">
-              <iframe src="media/videos/overview2024.mp4" loading="lazy"
-                      title="Обзор сезона 2024"
-                      style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
-              <h3>Обзор сезона&nbsp;2024</h3>
-            </article>
-
-            <article class="card">
-              <iframe src="media/videos/ip_tomo_demo.mp4" loading="lazy"
-                      title="IP-томография" style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
-              <h3>IP-томография: демонстрация</h3>
-            </article>
-
-          </div>
-        </div><!-- /#video -->
-
-        <!-- ───── TAB: AUDIO ───── -->
-        <div class="tab-pane" id="audio">
-          <ul class="audio-list">
-            <li>
-              <h3>Подкаст №1: Новые технологии бурения</h3>
-              <audio controls src="media/audio/podcast1.mp3"></audio>
-            </li>
-            <li>
-              <h3>Подкаст №2: Дроны в геологии</h3>
-              <audio controls src="media/audio/podcast2.mp3"></audio>
-            </li>
-          </ul>
-        </div><!-- /#audio -->
-
-        <!-- ───── TAB: DOCS ───── -->
-        <div class="tab-pane" id="docs">
+        <!-- ── DOCUMENTS ── -->
+        <div id="docs" class="tab-pane">
           <table class="docs-table">
             <thead><tr><th>Документ</th><th>Дата</th><th></th></tr></thead>
             <tbody>
@@ -203,7 +165,7 @@
   </div><!-- /.container -->
 </section>
 
-<!-- ===== Lightbox ===== -->
+<!-- ===== Lightbox (для фото) ===== -->
 <div id="lightbox"><img src="#" alt=""></div>
 
 <!-- ===== Footer ===== -->

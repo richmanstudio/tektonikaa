@@ -1,17 +1,17 @@
 /* =====================================================================
-   Т Е К Т О Н И К А • script.js  (2025-05, единый фронт-bundle)
+   Т Е К Т О Н И К А • script.js  (May-2025, rev-4)
    Функционал:
-   – Бургер-меню (моб.)
-   – Плавный скролл по якорям
-   – Анимация появления секций
-   – Табы (карьера и медиа-центр: sidebar + mobile-select)
-   – Lightbox-галерея (Фото)
-   – Toast-уведомление (форма практики / stub)
+     – бургер-меню
+     – плавный скролл
+     – reveal-on-scroll
+     – табы (кадры «карьера» + медиа: news / photo / docs — без video & audio)
+     – lightbox-галерея для фото
+     – toast-уведомления (форма практики — заглушка)
    ===================================================================== */
    document.addEventListener('DOMContentLoaded', () => {
 
     /* ───────────────────────────────────────────
-       1.  Burger-menu (mobile)
+       1.  Burger-меню
        ───────────────────────────────────────── */
     const burger = document.getElementById('burger');
     const nav    = document.getElementById('mobileNav');
@@ -38,60 +38,55 @@
     }
   
     /* ───────────────────────────────────────────
-       2.  Smooth anchor scroll (no reduce-motion)
+       2.  Anchor-scroll
        ───────────────────────────────────────── */
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
           const id = link.getAttribute('href').slice(1);
-          const target = document.getElementById(id);
-          if (target) {
+          const tgt = document.getElementById(id);
+          if (tgt) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, '', `#${id}`);
+            tgt.scrollIntoView({ behavior:'smooth', block:'start' });
+            history.pushState(null,'',`#${id}`);
           }
         });
       });
     }
   
     /* ───────────────────────────────────────────
-       3.  Reveal-on-scroll (IntersectionObserver)
+       3.  Reveal-on-scroll
        ───────────────────────────────────────── */
-    const animElems = document.querySelectorAll('.anim-init');
-    if (animElems.length && 'IntersectionObserver' in window) {
+    const reveal = document.querySelectorAll('.anim-init');
+    if (reveal.length && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, ob) => {
-        entries.forEach(el => {
-          if (el.isIntersecting) {
-            el.target.classList.add('anim-active');
-            ob.unobserve(el.target);
+        entries.forEach(ent => {
+          if (ent.isIntersecting) {
+            ent.target.classList.add('anim-active');
+            ob.unobserve(ent.target);
           }
         });
-      }, { threshold: .15 });
-      animElems.forEach(e => io.observe(e));
-    } else {
-      animElems.forEach(e => e.classList.add('anim-active'));
-    }
+      }, { threshold:.15 });
+      reveal.forEach(el => io.observe(el));
+    } else { reveal.forEach(el => el.classList.add('anim-active')); }
   
     /* ───────────────────────────────────────────
-       4.  Универсальные табы
+       4.  Tabs  (универсально по data-tab)
        ───────────────────────────────────────── */
     function activateTab(id){
-      /* кнопки */
-      document.querySelectorAll('.tab-button, .tab-btn').forEach(b =>
+      document.querySelectorAll('.tab-btn,.tab-button').forEach(b =>
         b.classList.toggle('active', b.dataset.tab === id)
       );
-      /* панели */
-      document.querySelectorAll('.tab-panel, .tab-pane').forEach(p =>
+      document.querySelectorAll('.tab-pane,.tab-panel').forEach(p =>
         p.classList.toggle('active', p.id === id)
       );
-      /* mobile-select sync */
-      const select = document.getElementById('mediaSelect');
-      if (select && select.value !== id) select.value = id;
+      const sel = document.getElementById('mediaSelect');
+      if (sel && sel.value !== id) sel.value = id;
     }
   
-    document.querySelectorAll('.tab-button, .tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => activateTab(btn.dataset.tab));
-    });
+    document.querySelectorAll('.tab-btn,.tab-button').forEach(btn =>
+      btn.addEventListener('click', () => activateTab(btn.dataset.tab))
+    );
   
     const mediaSelect = document.getElementById('mediaSelect');
     if (mediaSelect){
@@ -99,7 +94,7 @@
     }
   
     /* ───────────────────────────────────────────
-       5.  Practice form (stub) + toast
+       5.  Practice-form (stub) + toast
        ───────────────────────────────────────── */
     const internForm = document.getElementById('internForm');
     if (internForm){
@@ -112,14 +107,12 @@
     }
   
     /* ───────────────────────────────────────────
-       6.  Lightbox-gallery (media > Фото)
+       6.  Lightbox-галерея (Фото)
        ───────────────────────────────────────── */
-    const lightbox  = document.getElementById('lightbox');
-    const lbImg     = lightbox ? lightbox.querySelector('img') : null;
-    const gallery   = document.querySelectorAll('.gallery a');
-  
-    if (lightbox && lbImg && gallery.length){
-      gallery.forEach(link => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = lightbox ? lightbox.querySelector('img') : null;
+    if (lightbox && lbImg){
+      document.querySelectorAll('.gallery a').forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
           lbImg.src = link.href;
@@ -132,9 +125,9 @@
     }
   
     /* ───────────────────────────────────────────
-       Helper • toast()
+       Helper • toast
        ───────────────────────────────────────── */
-    function toast(msg = 'OK', ms = 4000){
+    function toast(msg='OK', ms=4000){
       let t = document.querySelector('.toast');
       if (t) t.remove();
   
@@ -146,7 +139,7 @@
       requestAnimationFrame(() => t.classList.add('show'));
       setTimeout(() => {
         t.classList.remove('show');
-        t.addEventListener('transitionend', () => t.remove(), { once: true });
+        t.addEventListener('transitionend', () => t.remove(), { once:true });
       }, ms);
     }
   
