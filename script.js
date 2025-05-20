@@ -1,12 +1,17 @@
 /* =====================================================================
-   Т Е К Т О Н И К А • script.js
-   Универсальный клиент-скрипт: бургер-меню, плавный скролл, появление
-   секций, табы (карьера / медиа), lightbox-галерея, toast-уведомления.
+   Т Е К Т О Н И К А • script.js  (2025-05, единый фронт-bundle)
+   Функционал:
+   – Бургер-меню (моб.)
+   – Плавный скролл по якорям
+   – Анимация появления секций
+   – Табы (карьера и медиа-центр: sidebar + mobile-select)
+   – Lightbox-галерея (Фото)
+   – Toast-уведомление (форма практики / stub)
    ===================================================================== */
    document.addEventListener('DOMContentLoaded', () => {
 
     /* ───────────────────────────────────────────
-       1.  Burger-меню (mobile)
+       1.  Burger-menu (mobile)
        ───────────────────────────────────────── */
     const burger = document.getElementById('burger');
     const nav    = document.getElementById('mobileNav');
@@ -15,32 +20,30 @@
       const lock   = () => document.body.style.overflow = 'hidden';
       const unlock = () => document.body.style.overflow = '';
   
-      const toggleMenu = () => {
+      const toggle = () => {
         const open = nav.classList.toggle('open');
         burger.classList.toggle('open', open);
         open ? lock() : unlock();
       };
   
-      burger.addEventListener('click', toggleMenu);
-      nav.querySelectorAll('a').forEach(link =>
-        link.addEventListener('click', () => nav.classList.contains('open') && toggleMenu())
+      burger.addEventListener('click', toggle);
+      nav.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => nav.classList.contains('open') && toggle())
       );
   
       document.addEventListener('click', e => {
         if (nav.classList.contains('open') &&
-            !nav.contains(e.target) && !burger.contains(e.target)) {
-          toggleMenu();
-        }
+            !nav.contains(e.target) && !burger.contains(e.target)) toggle();
       });
     }
   
     /* ───────────────────────────────────────────
-       2.  Smooth-scroll по якорям
+       2.  Smooth anchor scroll (no reduce-motion)
        ───────────────────────────────────────── */
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          const id = a.getAttribute('href').slice(1);
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const id = link.getAttribute('href').slice(1);
           const target = document.getElementById(id);
           if (target) {
             e.preventDefault();
@@ -54,24 +57,23 @@
     /* ───────────────────────────────────────────
        3.  Reveal-on-scroll (IntersectionObserver)
        ───────────────────────────────────────── */
-    const reveal = document.querySelectorAll('.anim-init');
-    if (reveal.length && 'IntersectionObserver' in window) {
+    const animElems = document.querySelectorAll('.anim-init');
+    if (animElems.length && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, ob) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('anim-active');
-            ob.unobserve(entry.target);
+        entries.forEach(el => {
+          if (el.isIntersecting) {
+            el.target.classList.add('anim-active');
+            ob.unobserve(el.target);
           }
         });
       }, { threshold: .15 });
-      reveal.forEach(el => io.observe(el));
+      animElems.forEach(e => io.observe(e));
     } else {
-      reveal.forEach(el => el.classList.add('anim-active'));
+      animElems.forEach(e => e.classList.add('anim-active'));
     }
   
     /* ───────────────────────────────────────────
-       4.  Tabs — карьера ('.tab-button')
-                  и медиа ('.tab-btn' + select)
+       4.  Универсальные табы
        ───────────────────────────────────────── */
     function activateTab(id){
       /* кнопки */
@@ -82,44 +84,42 @@
       document.querySelectorAll('.tab-panel, .tab-pane').forEach(p =>
         p.classList.toggle('active', p.id === id)
       );
-      /* select (mobile) */
-      const sel = document.getElementById('mediaSelect');
-      if (sel && sel.value !== id) sel.value = id;
+      /* mobile-select sync */
+      const select = document.getElementById('mediaSelect');
+      if (select && select.value !== id) select.value = id;
     }
   
-    /* кнопки-табы */
     document.querySelectorAll('.tab-button, .tab-btn').forEach(btn => {
       btn.addEventListener('click', () => activateTab(btn.dataset.tab));
     });
   
-    /* mobile-select в media.html */
     const mediaSelect = document.getElementById('mediaSelect');
     if (mediaSelect){
       mediaSelect.addEventListener('change', () => activateTab(mediaSelect.value));
     }
   
     /* ───────────────────────────────────────────
-       5.  Practice form stub + toast
+       5.  Practice form (stub) + toast
        ───────────────────────────────────────── */
     const internForm = document.getElementById('internForm');
     if (internForm){
       internForm.addEventListener('submit', e => {
         e.preventDefault();
         if (!internForm.checkValidity()){internForm.reportValidity();return;}
-        showToast('Спасибо! Заявка отправлена.');
+        toast('Спасибо! Заявка отправлена.');
         internForm.reset();
       });
     }
   
     /* ───────────────────────────────────────────
-       6.  Lightbox-галерея (media.html > .gallery)
+       6.  Lightbox-gallery (media > Фото)
        ───────────────────────────────────────── */
-    const galleryLinks = document.querySelectorAll('.gallery a');
-    const lightbox     = document.getElementById('lightbox');
-    const lbImg        = lightbox ? lightbox.querySelector('img') : null;
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = lightbox ? lightbox.querySelector('img') : null;
+    const gallery   = document.querySelectorAll('.gallery a');
   
-    if (galleryLinks.length && lightbox && lbImg){
-      galleryLinks.forEach(link => {
+    if (lightbox && lbImg && gallery.length){
+      gallery.forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
           lbImg.src = link.href;
@@ -132,9 +132,9 @@
     }
   
     /* ───────────────────────────────────────────
-       Helper • Toast
+       Helper • toast()
        ───────────────────────────────────────── */
-    function showToast(msg='OK', ms=4000){
+    function toast(msg = 'OK', ms = 4000){
       let t = document.querySelector('.toast');
       if (t) t.remove();
   
@@ -143,10 +143,10 @@
       t.textContent = msg;
       document.body.appendChild(t);
   
-      requestAnimationFrame(()=>t.classList.add('show'));
-      setTimeout(()=>{
+      requestAnimationFrame(() => t.classList.add('show'));
+      setTimeout(() => {
         t.classList.remove('show');
-        t.addEventListener('transitionend', ()=>t.remove(),{once:true});
+        t.addEventListener('transitionend', () => t.remove(), { once: true });
       }, ms);
     }
   

@@ -1,5 +1,5 @@
 /* =====================================================================
-   T E K T O N I K A  •  GLOBAL STYLESHEET  (May 2025, responsive)
+   T E K T O N I K A  •  GLOBAL STYLESHEET  (May 2025, responsive v2)
    ===================================================================== */
 
 
@@ -7,25 +7,21 @@
    0.  DESIGN TOKENS
    ─────────────────────────────────────────── */
    :root{
-      /* colours */
-      --bg        : #ffffff;
-      --bg-alt    : #f3f5f7;
-      --text      : #1d1d1f;
-      --accent    : #0056b3;
+      --bg          : #ffffff;
+      --bg-alt      : #f3f5f7;
+      --text        : #1d1d1f;
+      --accent      : #0056b3;
     
-      /* shapes */
-      --radius    : 8px;
-      --shadow    : 0 2px 8px rgb(0 0 0 / .08);
+      --radius      : 8px;
+      --shadow      : 0 2px 8px rgb(0 0 0 / .08);
     
-      /* grid break widths */
-      --max-w-l   : 1050px;
-      --max-w-m   : 860px;
+      --max-w-l     : 1050px;
+      --max-w-m     : 860px;
     
-      /* fluid type */
-      --fs-base   : clamp(17px, 1.05vw + .6rem, 19px);
-      --fs-h1     : clamp(2.3rem, 1.7vw + 1.7rem, 2.9rem);
-      --fs-h2     : clamp(1.7rem, 1.2vw + 1.2rem, 2.1rem);
-      --fs-h3     : clamp(1.15rem, .9vw + .9rem, 1.3rem);
+      --fs-base     : clamp(17px,1.05vw + .6rem,19px);
+      --fs-h1       : clamp(2.3rem,1.7vw + 1.7rem,2.9rem);
+      --fs-h2       : clamp(1.7rem,1.2vw + 1.2rem,2.1rem);
+      --fs-h3       : clamp(1.15rem,.9vw + .9rem,1.3rem);
     }
     
     /* ─────────────────────────────────────────────
@@ -33,11 +29,8 @@
        ─────────────────────────────────────────── */
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:var(--fs-base)}
-    body{
-      font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);
-      background:var(--bg);line-height:1.6;
-      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-    }
+    body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;
+         -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     h1,h2,h3{font-weight:600;line-height:1.25}
     h1{font-size:var(--fs-h1);margin-bottom:.5em}
     h2{font-size:var(--fs-h2);margin-bottom:1em}
@@ -55,8 +48,8 @@
     /* ─────────────────────────────────────────────
        3.  BUTTONS
        ─────────────────────────────────────────── */
-    .btn{display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);
-         background:var(--accent);color:#fff;font-weight:600;border:none;cursor:pointer;
+    .btn{display:inline-block;padding:.75rem 1.6rem;border-radius:var(--radius);background:var(--accent);
+         color:#fff;font-weight:600;border:none;cursor:pointer;
          transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
     .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgb(0 0 0 /.15)}
     .btn.large{font-size:1.1rem}
@@ -68,10 +61,11 @@
     header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
     .header-inner{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0}
     .burger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;padding:0}
-    .burger span{display:block;width:24px;height:2px;margin:6px auto;background:var(--text);transition:.3s;pointer-events:none}
+    .burger span{display:block;width:24px;height:2px;margin:6px auto;background:var(--text);transition:.3s}
     .main-nav{display:flex;gap:1.5rem;align-items:center}
     .main-nav a{font-weight:500;color:var(--text);position:relative;transition:color .2s}
-    .main-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s}
+    .main-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);
+                       transform:scaleX(0);transition:transform .25s}
     .main-nav a:hover::after{transform:scaleX(1)}
     .main-nav a.btn{color:#fff}
     
@@ -81,8 +75,7 @@
     .hero{background:#e8f0ef url('https://images.unsplash.com/photo-1504439723725-1992ca1518d5?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
           min-height:clamp(60vh,70vh,85vh);position:relative;text-align:center}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:-1}
-    .hero-content{position:relative;z-index:1;max-width:min(680px,90%);margin:auto;
-                  padding:clamp(3rem,10vh,5rem) 1rem;text-align:center}
+    .hero-content{position:relative;z-index:1;max-width:min(680px,90%);margin:auto;padding:clamp(3rem,10vh,5rem) 1rem}
     .lead{font-size:1.1rem;margin-bottom:2rem}
     
     /* ─────────────────────────────────────────────
@@ -93,14 +86,11 @@
     .center{text-align:center}
     
     /* ─────────────────────────────────────────────
-       7.  TABS  (careers / media)
+       7.  GLOBAL TABS (карьера / др.)
        ─────────────────────────────────────────── */
-    .tabs,.media-tabs{
-      display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:2rem 0 1.5rem
-    }
     .tab-button,.tab-btn{
-      background:none;border:none;font-weight:600;font-size:1.05rem;cursor:pointer;position:relative;
-      padding:.5rem 0;color:var(--text);transition:color .25s
+      background:none;border:none;font-weight:600;font-size:1.05rem;
+      cursor:pointer;color:var(--text);position:relative;transition:color .25s
     }
     .tab-button::after,.tab-btn::after{
       content:'';position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--accent);
@@ -111,14 +101,28 @@
     .tab-panel,.tab-pane{display:none;animation:fade-up .6s both}
     .tab-panel.active,.tab-pane.active{display:block}
     
-    /* select for mobile */
+    /* ─────────────────────────────────────────────
+       8.  MEDIA PAGE LAYOUT (sidebar + content)
+       ─────────────────────────────────────────── */
+    .media-layout{display:flex;gap:2rem}
+    .media-sidebar{
+      flex:0 0 180px;display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem
+    }
+    .media-sidebar .tab-btn{
+      width:100%;text-align:left;padding:.6rem 0;border-left:4px solid transparent
+    }
+    .media-sidebar .tab-btn:hover{color:var(--accent)}
+    .media-sidebar .tab-btn.active{color:var(--accent);border-color:var(--accent)}
+    .media-content{flex:1;min-width:0}
+    
+    /* mobile select (по умолчанию спрятан) */
     .media-select{display:none;margin-bottom:1.5rem}
     .media-select select{
-      font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius);
+      font:inherit;padding:.55rem .9rem;border:1px solid #cfd4da;border-radius:var(--radius)
     }
     
     /* ─────────────────────────────────────────────
-       8.  QUICK-FACTS GRID
+       9.  QUICK-FACTS GRID (главная)
        ─────────────────────────────────────────── */
     .quick-grid{
       --card-min:260px;
@@ -129,30 +133,31 @@
     .qbox{
       position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
       gap:.7rem;padding:1.9rem 1.4rem 1.8rem;background:#fff;border:1px solid #e4e7ec;border-radius:14px;
-      box-shadow:0 4px 16px rgb(0 0 0 /.05);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s
+      box-shadow:0 4px 16px rgb(0 0 0 /.05);
+      transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s
     }
-    .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;background:var(--accent);opacity:.8}
+    .qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;
+                  background:var(--accent);opacity:.8}
     .qbox:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgb(0 0 0 /.08)}
     .qicon{font-size:2.4rem}
     .qbox h3{margin:.25rem 0;font-size:1.17rem}
     
-    @media (max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
-    @media (max-width:480px){
-      .quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}
-      .qbox{padding:1.7rem 1.2rem}
-    }
+    @media(max-width:700px){.quick-grid{--card-min:200px;gap:1.8rem 1.3rem}}
+    @media(max-width:480px){.quick-grid{grid-template-columns:1fr;--card-min:100%;gap:1.5rem}.qbox{padding:1.7rem 1.2rem}}
     
     /* ─────────────────────────────────────────────
-       9.  GALLERY – PHOTO TAB
+       10.  GALLERY (media > фото)
        ─────────────────────────────────────────── */
     .gallery{--thumb:160px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--thumb),1fr))}
-    .gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
-                 box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s}
+    .gallery img{
+      width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
+      box-shadow:0 2px 6px rgb(0 0 0 /.12);transition:transform .25s,box-shadow .25s
+    }
     .gallery a:hover img{transform:scale(1.03);box-shadow:0 6px 16px rgb(0 0 0 /.18)}
-    @media (min-width:800px){.gallery{--thumb:200px}}
-    @media (min-width:1100px){.gallery{--thumb:240px}}
+    @media(min-width:800px){.gallery{--thumb:200px}}
+    @media(min-width:1100px){.gallery{--thumb:240px}}
     
-    /* lightbox overlay */
+    /* lightbox */
     #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);
               display:flex;align-items:center;justify-content:center;
               opacity:0;pointer-events:none;transition:opacity .35s;z-index:1100}
@@ -160,25 +165,29 @@
     #lightbox img{max-width:94vw;max-height:94vh;border-radius:var(--radius);box-shadow:0 4px 24px rgb(0 0 0 /.3)}
     
     /* ─────────────────────────────────────────────
-       10.  AUDIO LIST / DOCS TABLE
+       11.  MEDIA – новости, аудио, docs
        ─────────────────────────────────────────── */
+    .cards-grid{display:flex;flex-direction:column;gap:2rem}
+    .card h3{margin-bottom:.4rem;font-size:1.15rem}
+    .card time{display:block;font-size:.9rem;margin-bottom:.4rem;color:#555}
+    .card p{margin-bottom:.9rem}
+    
     .audio-list{list-style:none;display:flex;flex-direction:column;gap:1.5rem}
+    
     .docs-table{width:100%;border-collapse:collapse;font-size:.95rem}
     .docs-table th,.docs-table td{padding:.55rem .6rem;border-bottom:1px solid #e4e4e4}
     .docs-table th{text-align:left;font-weight:600}
     
     /* ─────────────────────────────────────────────
-       11.  CONTACT FORM (careers)
+       12.  CONTACT FORM (careers)
        ─────────────────────────────────────────── */
     .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:700px;margin:auto}
-    .contact-form.long label{font-size:.9rem;display:flex;flex-direction:column;gap:.35rem}
     .contact-form input,.contact-form select,.contact-form textarea{
       font:inherit;width:100%;padding:.65rem .8rem;border:1px solid #cfd4da;border-radius:var(--radius);background:#fff;
       transition:border .2s,box-shadow .2s}
     .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
       border-color:var(--accent);box-shadow:0 0 0 2px rgb(0 86 179 /.2);outline:0}
     .contact-form .two-cols{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .form-msg{margin-top:.8rem;font-size:.9rem;color:var(--accent)}
     .switch{display:flex;align-items:center;gap:.6rem;margin:.8rem 0 1.2rem}
     .switch input{appearance:none;width:46px;height:24px;border-radius:12px;background:#cfd4da;cursor:pointer;position:relative;transition:.25s}
     .switch input::before{content:'';position:absolute;top:3px;left:4px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.25s}
@@ -187,7 +196,7 @@
     .switch-label{font-size:.9rem}
     
     /* ─────────────────────────────────────────────
-       12.  TOAST
+       13.  TOAST
        ─────────────────────────────────────────── */
     .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(40px);
            padding:.9rem 1.4rem;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;
@@ -196,14 +205,14 @@
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     
     /* ─────────────────────────────────────────────
-       13.  FOOTER
+       14.  FOOTER
        ─────────────────────────────────────────── */
     footer{background:#fafafa;border-top:1px solid #e0e0e0;font-size:.9rem}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0}
-    @media (max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
+    @media(max-width:560px){.footer-inner{flex-direction:column;gap:.4rem}}
     
     /* ─────────────────────────────────────────────
-       14.  ANIMATIONS & ACCESSIBILITY
+       15.  ANIMATIONS & PREFS
        ─────────────────────────────────────────── */
     @keyframes fade-up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
     .anim-init{opacity:0}
@@ -211,9 +220,9 @@
     @media(prefers-reduced-motion:reduce){.anim-init{opacity:1 !important;animation:none !important}}
     
     /* ─────────────────────────────────────────────
-       15.  MOBILE NAV & MEDIA-PAGE SELECT
+       16.  MOBILE  (≤ 600 px)
        ─────────────────────────────────────────── */
-    @media (max-width:600px){
+    @media(max-width:600px){
       html{font-size:16px}
       .logo-img{height:42px}
       .header-inner{padding:.4rem 0}
@@ -230,10 +239,9 @@
       .burger.open span:nth-child(2){opacity:0}
       .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
     
-      .hero-content{padding:3rem 1rem}.lead{margin-bottom:1.4rem}
-    
-      /* media-tab menu hides, select shows */
-      .media-tabs{display:none}
+      /* media page */
+      .media-layout{flex-direction:column}
+      .media-sidebar{display:none}
       .media-select{display:block}
       .gallery{--thumb:140px}
       .contact-form .two-cols{grid-template-columns:1fr}
