@@ -1,7 +1,8 @@
 /* =====================================================================
    Т Е К Т О Н И К А  •  style.css
-   Версия: 2025-05-31  (v13 — «главная: контакты + CTA»)
-   Полный файл, без единого пропуска.
+   Версия: 2025-05-31-c   (v15 — карта 320 px + тёмные ссылки футера)
+   =====================================================================
+   — Файл выложен целиком, без единого пропуска секций или правил. —
    ===================================================================== */
 
 
@@ -95,8 +96,6 @@
   .hero-content{position:relative;z-index:1;max-width:min(720px,92%);margin:auto;
     padding:clamp(3.6rem,10vh,6rem) 1rem}
   .lead{font-size:1.15rem;margin:.95rem 0 1.8rem;color:#333}
-  
-  /* ─ кнопка-якорь (на других страницах, если нужна) */
   .hero-content .btn{margin-top:0;font-size:1rem;padding:1rem 2.4rem;box-shadow:0 8px 22px rgb(0 96 255/.28)}
   .hero-content .btn:hover{box-shadow:0 14px 34px rgb(0 96 255/.38);transform:translateY(-5px)}
   
@@ -144,6 +143,7 @@
      8.  CONTACTS SECTION
      ─────────────────────────────────────────── */
   .contacts-section{padding:4rem 0;background:var(--clr-bg);border-top:1px solid var(--clr-border)}
+  .contacts-section iframe{height:320px}   /* ↑ карта увеличена */
   .map-placeholder{
     position:relative;height:220px;border-radius:var(--radius);
     background:linear-gradient(135deg,#dfe5f1 0%,#c9d2e2 100%);
@@ -272,6 +272,8 @@
      ─────────────────────────────────────────── */
   footer{background:#fafafa;border-top:1px solid var(--clr-border);font-size:.92rem;margin-top:4rem}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0}
+  footer nav a{color:var(--clr-text);transition:color .25s}
+  footer nav a:hover{color:var(--clr-accent)}  /* тёмные → синие при наведении */
   @media(max-width:560px){.footer-inner{flex-direction:column;gap:.5rem;text-align:center}}
   
   /* ─────────────────────────────────────────────
