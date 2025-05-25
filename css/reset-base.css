@@ -1,0 +1,97 @@
+/* =====================================================================
+   Т Е К Т О Н И К А  •  reset-base.css
+   Полный, дословный перенос блоков «0. DESIGN TOKENS» и
+   «1. RESET & BASE» из исходного style.css.
+   Ничего не удалено и не добавлено.
+   ===================================================================== */
+
+
+/* ─────────────────────────────────────────────
+   0.  DESIGN TOKENS
+   ─────────────────────────────────────────── */
+   :root{
+    /* цвета */
+    --clr-bg         : #ffffff;
+    --clr-bg-alt     : #f5f7fb;
+    --clr-text       : #1d1d1f;
+    --clr-text-soft  : #676e77;
+    --clr-accent     : #0060ff;
+    --clr-accent-2   : #3d8aff;
+    --clr-border     : #d9dee7;
+  
+    /* скругления, тени */
+    --radius         : 10px;
+    --shadow-sm      : 0 2px 6px  rgb(0 0 0/.06);
+    --shadow-md      : 0 10px 26px rgb(0 0 0/.10);
+  
+    /* ширины контейнера */
+    --w-xl           : 1180px;
+    --w-lg           : 1040px;
+    --w-sm           : 640px;
+  
+    /* масштабируемая типографика */
+    --fs-base        : clamp(17px,1vw + .6rem,19px);
+    --fs-h1          : clamp(2.6rem,2vw + 2rem,3.4rem);
+    --fs-h2          : clamp(1.9rem,1.3vw + 1.3rem,2.45rem);
+    --fs-h3          : clamp(1.22rem,.9vw + 1rem,1.46rem);
+  }
+  
+  
+  /* ─────────────────────────────────────────────
+     1.  RESET & BASE
+     ─────────────────────────────────────────── */
+  *,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  
+  html{
+    scroll-behavior:smooth;
+    font-size:var(--fs-base);
+  }
+  
+  body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+                "Helvetica Neue",Arial,sans-serif;
+    color:var(--clr-text);
+    background:var(--clr-bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  
+  img,picture,svg{
+    display:block;
+    max-width:100%;
+  }
+  
+  h1,h2,h3{
+    font-weight:700;
+    line-height:1.22;
+  }
+  
+  h1{font-size:var(--fs-h1);margin-bottom:.45em}
+  h2{font-size:var(--fs-h2);margin-bottom:.9em}
+  h3{font-size:var(--fs-h3);margin:.85rem 0 .55rem}
+  
+  p{margin:0 0 1em}
+  
+  a{
+    color:var(--clr-accent);
+    text-decoration:none;
+    transition:color .2s;
+  }
+  a:focus-visible{
+    outline:2px solid var(--clr-accent-2);
+    outline-offset:2px;
+  }
+  
+  /* контейнер слева/справа 1rem, макс-ширина var(--w-xl) */
+  .container{
+    width:min(var(--w-xl),calc(100% - 2rem));
+    margin-inline:auto;
+  }
+  
+  /* ─────────────────────────────────────────────
+     END • reset-base.css
+     ─────────────────────────────────────────── */

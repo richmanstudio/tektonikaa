@@ -3,156 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ТЕКТОНИКА — Карьера</title>
+  <title>Карьера — ТЕКТОНИКА</title>
 
-  <!-- общий шрифт + глобальные стили -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- split-CSS (без изменений) -->
+  <link rel="stylesheet" href="css/reset-base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-<!-- ===== Header ===== -->
+<!-- ===== HEADER ===== -->
 <header>
   <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
+    <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА" /></a>
 
-    <button class="burger" id="burger" aria-label="Меню">
+    <button id="burger" class="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
-    <nav class="main-nav" id="mobileNav">
+    <nav id="mobileNav" class="main-nav">
       <a href="index.html">Главная</a>
       <a href="services.html">Услуги</a>
       <a href="projects.html">Проекты</a>
       <a href="about.html">О&nbsp;нас</a>
       <a href="media.html">Медиа</a>
       <a href="research.html">Научная&nbsp;деятельность</a>
-      <a href="careers.html" class="active btn primary mini">Карьера</a>
+      <a href="careers.html" class="btn mini">Карьера</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== Careers (tabs) ===== -->
-<section class="section">
+<!-- ===== CAREER PAGE ===== -->
+<section class="career-page section">
   <div class="container">
-    <h1>Карьера в ТЕКТОНИКЕ</h1>
+    <h1>Карьера в&nbsp;ТЕКТОНИКЕ</h1>
+    <p class="intro">
+      ООО&nbsp;«ТЕКТОНИКА» постоянно растёт и&nbsp;ищет талантливых специалистов и&nbsp;студентов.
+      Две вкладки ниже помогут выбрать подходящий вариант.
+    </p>
 
-    <!-- таб-кнопки -->
-    <div class="tabs">
-      <button class="tab-button active" data-tab="jobs">Вакансии</button>
-      <button class="tab-button"        data-tab="intern">Практика для студентов</button>
-    </div>
+    <!-- FLEX-LAYOUT -->
+    <div class="career-layout">
 
-    <!-- ===== Панель: вакансии ===== -->
-    <div class="tab-panel active" id="jobs">
-      <p>ООО «ТЕКТОНИКА» постоянно растёт и ищет талантливых специалистов —
-         геологов, буровых инженеров, геофизиков, специалистов по 3-D моделям
-         и GIS-аналитиков. Актуальные вакансии будут опубликованы здесь в
-         ближайшее время. Уже сейчас вы можете отправить резюме на&nbsp;
-         <a href="mailto:hr@tektonika-dv.ru">hr@tektonika-dv.ru</a>.</p>
-    </div>
+      <!-- tabs -->
+      <aside class="career-tabs">
+        <button class="tab-btn active" data-tab="jobs">Вакансии</button>
+        <button class="tab-btn"        data-tab="intern">Практика&nbsp;для&nbsp;студентов</button>
+      </aside>
 
-    <!-- ===== Панель: практика ===== -->
-    <div class="tab-panel" id="intern">
-      <h2 class="center">Анкета для прохождения практики</h2>
+      <!-- content panes -->
+      <div class="career-content">
 
-      <form id="internForm" class="contact-form long" enctype="multipart/form-data" novalidate>
+        <!-- TAB 1 : JOBS -->
+        <div id="jobs" class="tab-pane active">
+          <div class="career-cards">
+            <!-- карточка-пример -->
+            <div class="career-card">
+              <h3>Геофизик-интерпретатор</h3>
+              <p>Полевые работы, обработка данных, 3-D инверсии.</p>
+              <p><strong>Требования:</strong> Surfer / Oasis, опыт &gt; 3&nbsp;лет.</p>
+              <a href="mailto:hr@tektonika.ru?subject=Геофизик-интерпретатор"
+                 class="btn mini">Откликнуться</a>
+            </div>
+            <!-- …другие вакансии по аналогии… -->
+          </div>
+        </div><!-- /jobs -->
 
-        <!-- === блок 1: практика === -->
-        <h3>Практика</h3>
-        <label>Направление практики
-          <select name="track" required>
-            <option value="" selected disabled>Выберите направление</option>
-            <option>Полевые геологические работы</option>
-            <option>Буровые работы</option>
-            <option>Геофизика</option>
-            <option>3-D моделирование / GIS</option>
-          </select>
-        </label>
+        <!-- TAB 2 : INTERN -->
+        <div id="intern" class="tab-pane">
 
-        <div class="two-cols">
-          <label>Желаемая дата начала
-            <input type="date" name="start" required>
-          </label>
-          <label>Продолжительность (недели)
-            <input type="number" name="weeks" min="2" max="12" required>
-          </label>
-        </div>
+          <!-- ПОЛНАЯ «СТАРАЯ» ФОРМА 1-к-1 -->
+          <form class="contact-form" id="internForm">
 
-        <!-- === блок 2: личные данные === -->
-        <h3>Личные данные</h3>
-        <label>ФИО
-          <input type="text" name="name" required placeholder="Иванов Иван Иванович">
-        </label>
+            <!-- PRACTICE -->
+            <fieldset>
+              <legend>Практика</legend>
+              <div class="grid-2">
+                <label>Направление практики
+                  <select name="track" required>
+                    <option value="" disabled selected>Выберите…</option>
+                    <option>Геология</option><option>Геофизика</option>
+                    <option>GIS / 3-D модели</option>
+                  </select>
+                </label>
 
-        <div class="two-cols">
-          <label>Дата рождения
-            <input type="date" name="dob" required>
-          </label>
-          <label>Город проживания
-            <input type="text" name="city" required>
-          </label>
-        </div>
+                <label>Желаемая дата начала
+                  <input type="date" name="start" required>
+                </label>
 
-        <!-- === блок 3: контакты === -->
-        <h3>Контакты</h3>
-        <div class="two-cols">
-          <label>Телефон
-            <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__">
-          </label>
-          <label>E-mail
-            <input type="email" name="email" required placeholder="you@example.com">
-          </label>
-        </div>
+                <label>Продолжительность (недели)
+                  <input type="number" name="weeks" min="2" max="24" required>
+                </label>
+              </div>
+            </fieldset>
 
-        <!-- === блок 4: опыт практики === -->
-        <h3>Ранее проходили практику?</h3>
-        <label>
-          <select name="prev" required>
-            <option value="" disabled selected>Выберите</option>
-            <option>Да</option>
-            <option>Нет</option>
-          </select>
-        </label>
-        <label>Если да, где и когда
-          <input type="text" name="prev_where" placeholder="Название компании / проекта">
-        </label>
+            <!-- PERSONAL -->
+            <fieldset>
+              <legend>Личные данные</legend>
+              <div class="grid-2">
+                <label>ФИО
+                  <input type="text" name="fio" required>
+                </label>
+                <label>Дата рождения
+                  <input type="date" name="dob" required>
+                </label>
+              </div>
+              <label>Город проживания
+                <input type="text" name="city" required>
+              </label>
+            </fieldset>
 
-        <!-- === блок 5: образование и навыки === -->
-        <h3>Образование и навыки</h3>
-        <label>Учебное заведение, специальность
-          <input type="text" name="university" required>
-        </label>
-        <label>Ваши ключевые навыки
-          <textarea name="skills" rows="3" placeholder="Напр. Micromine, Python, AutoCAD…"></textarea>
-        </label>
+            <!-- CONTACTS -->
+            <fieldset>
+              <legend>Контакты</legend>
+              <div class="grid-2">
+                <label>Телефон
+                  <input type="tel" name="phone" required>
+                </label>
+                <label>E-mail
+                  <input type="email" name="email" required>
+                </label>
+              </div>
+            </fieldset>
 
-        <!-- файл резюме -->
-        <label>Загрузить резюме (.PDF / .DOCX, ≤ 5 МБ)
-          <input type="file" name="cv" accept=".pdf,.doc,.docx">
-        </label>
+            <!-- PREVIOUS -->
+            <fieldset>
+              <legend>Ранее проходили практику?</legend>
+              <label>
+                <select name="prev">
+                  <option value="no" selected>Нет</option>
+                  <option value="yes">Да</option>
+                </select>
+              </label>
+              <label>Если да, где и когда?
+                <textarea name="prevInfo" rows="3"></textarea>
+              </label>
+            </fieldset>
 
-        <!-- switch-согласие -->
-        <label class="switch consent">
-          <input type="checkbox" id="consentChk" required>
-          <span class="slider"></span>
-          <span class="switch-label">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
-        </label>
+            <!-- EDUCATION -->
+            <fieldset>
+              <legend>Образование и навыки</legend>
+              <div class="grid-2">
+                <label>Учебное заведение / специальность
+                  <input type="text" name="edu" required>
+                </label>
+                <label>Ваши ключевые навыки
+                  <input type="text" name="skills">
+                </label>
+              </div>
 
-        <button class="btn primary" type="submit">Отправить</button>
-        <p id="formMsg" class="form-msg"></p>
-      </form>
-    </div>
+              <label>Загрузить резюме (PDF / DOCX, ≤ 5 MB)
+                <input type="file" name="cv" accept=".pdf,.doc,.docx">
+              </label>
+            </fieldset>
+
+            <!-- consent -->
+            <div class="switch">
+              <label>
+                <input type="checkbox" required>
+              </label>
+              <span>Я&nbsp;согласен на&nbsp;обработку персональных данных</span>
+            </div>
+
+            <button type="submit" class="btn">Отправить</button>
+          </form>
+
+        </div><!-- /intern -->
+
+      </div><!-- /.career-content -->
+    </div><!-- /.career-layout -->
   </div>
 </section>
 
-<!-- ===== Footer ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-inner">
-    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
-    <a href="mailto:tektonikayur16@gmail.com">Написать письмо</a>
+    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+      <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
+      <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О&nbsp;нас</a>
+        <a href="media.html">Медиа</a>
+        <a href="research.html">Научная&nbsp;деятельность</a>
+        <a href="careers.html">Карьера</a>
+      </nav>
+    </div>
+
+    <div style="text-align:right">
+      <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
+      <p>
+        <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
+        <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+      </p>
+    </div>
   </div>
 </footer>
 

@@ -7,7 +7,11 @@
 
   <!-- общий шрифт + глобальный css -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/reset-base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -93,8 +97,26 @@
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-inner">
-    <p>© 2023–2025 ООО «ТЕКТОНИКА»</p>
-    <a href="mailto:tektonikayur16@gmail.com">Написать письмо</a>
+    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+      <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
+      <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О нас</a>
+        <a href="media.html">Медиа</a>
+        <a href="research.html">Научная&nbsp;деятельность</a>
+        <a href="careers.html">Карьера</a>
+      </nav>
+    </div>
+
+    <div style="text-align:right">
+      <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
+      <p>
+        <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
+        <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+      </p>
+    </div>
   </div>
 </footer>
 

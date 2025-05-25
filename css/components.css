@@ -1,0 +1,183 @@
+/* =====================================================================
+   Т Е К Т О Н И К А  •  components.css
+   Содержит ВСЕ универсальные UI-компоненты проекта, дословно
+   перенесённые из исходного style.css (блоки 2, 6 и 13) —
+   без малейших пропусков.
+   ===================================================================== */
+
+
+/* ─────────────────────────────────────────────
+   2.  LOGO & BUTTONS
+   ─────────────────────────────────────────── */
+   .logo-img{
+    height:clamp(44px,4.5vw,76px);
+    object-fit:contain;
+  }
+  
+  /* универсальная кнопка */
+  .btn{
+    --grad:linear-gradient(135deg,var(--clr-accent) 0%,var(--clr-accent-2) 100%);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.45rem;
+  
+    padding:.9rem 2.1rem;
+    border:none;
+    border-radius:var(--radius);
+    cursor:pointer;
+  
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.02em;
+    color:#fff;
+  
+    background:var(--grad);
+    box-shadow:0 6px 18px rgb(0 96 255/.25);
+    transition:transform .28s cubic-bezier(.25,.8,.3,1),
+               box-shadow .28s cubic-bezier(.25,.8,.3,1);
+  }
+  
+  .btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 34px rgb(0 96 255/.35);
+  }
+  
+  .btn:active{
+    transform:translateY(-1px);
+    box-shadow:0 7px 22px rgb(0 96 255/.30);
+  }
+  
+  .btn.mini{
+    padding:.65rem 1.45rem;
+    font-size:.9rem;
+  }
+  
+  .btn.ghost{
+    background:#fff;
+    color:var(--clr-accent);
+    border:1px solid var(--clr-accent);
+  }
+  
+  .btn.ghost:hover{
+    background:var(--clr-accent);
+    color:#fff;
+  }
+  
+  
+  /* ─────────────────────────────────────────────
+     6.  TAB  SYSTEM
+     ─────────────────────────────────────────── */
+  .tab-btn,
+  .tab-button{
+    all:unset;
+    cursor:pointer;
+    font-weight:600;
+    color:var(--clr-text);
+    position:relative;
+    padding:.5rem .15rem;
+    transition:color .25s;
+  }
+  .tab-btn:hover,
+  .tab-button:hover{color:var(--clr-text)}
+  .tab-btn.active,
+  .tab-button.active{color:var(--clr-text)}
+  
+  /* подвижное подчёркивание */
+  .tab-bar{
+    --move-x:0;          /* изменяется скриптом */
+    --underline-w:0;     /* изменяется скриптом */
+    display:flex;
+    gap:2rem;
+    justify-content:center;
+    margin-bottom:2rem;
+    position:relative;
+  }
+  .tab-bar::after{
+    content:'';
+    position:absolute;
+    left:var(--move-x);
+    bottom:-6px;
+    width:var(--underline-w);
+    height:3px;
+    border-radius:2px;
+    background:var(--clr-accent-2);
+    transition:left .35s cubic-bezier(.25,.8,.3,1),
+               width .35s cubic-bezier(.25,.8,.3,1);
+  }
+  
+  .tab-pane,
+  .tab-panel{display:none}
+  .tab-pane.active,
+  .tab-panel.active{display:block}
+  
+  
+  /* ─────────────────────────────────────────────
+     13.  EFFECTS  (Reveal + Toast)
+     ─────────────────────────────────────────── */
+  
+  /* плавное появление при прокрутке */
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity .66s cubic-bezier(.25,.8,.3,1),
+               transform .66s cubic-bezier(.25,.8,.3,1);
+  }
+  .reveal.show{
+    opacity:1;
+    transform:none;
+  }
+  
+  /* всплывающее уведомление */
+  .toast{
+    position:fixed;
+    bottom:1.8rem;
+    left:50%;
+    transform:translateX(-50%) translateY(46px);
+  
+    padding:1rem 1.6rem;
+    border-radius:var(--radius);
+  
+    background:var(--clr-accent-2);
+    color:#fff;
+    font-weight:600;
+  
+    box-shadow:0 8px 26px rgb(0 96 255/.28);
+    opacity:0;
+    pointer-events:none;
+    z-index:1500;
+  
+    transition:opacity .44s cubic-bezier(.25,.8,.3,1),
+               transform .44s cubic-bezier(.25,.8,.3,1);
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  /* helper: горизонтальный свайп-скролл */
+.h-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;              /* Firefox */
+  }
+  .h-scroll::-webkit-scrollbar{display:none}
+  
+  /* визуальный hint (только на малых экранах) */
+  @media(max-width:600px){
+    .h-scroll::after{
+      content:'⟡';                     /* маленькая «звёздочка-свайп» */
+      position:absolute;right:8px;top:50%;
+      translate:0 -50%;
+      font-size:1.1rem;color:#adb5c7;
+      animation:hint 2.8s infinite ease;
+    }
+    @keyframes hint{
+      0%,90%  {opacity:0;transform:translateX(0) translateY(-50%)}
+      20%,70% {opacity:.9;transform:translateX(-6px) translateY(-50%)}
+    }
+  }
+  
+  /* ─────────────────────────────────────────────
+     END • components.css
+     ─────────────────────────────────────────── */

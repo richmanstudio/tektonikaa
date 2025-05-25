@@ -1,0 +1,86 @@
+/* =====================================================================
+   Т Е К Т О Н И К А  •  responsive.css
+   Брейк-пойнты, целиком перенесённые из блока «15. BREAKPOINTS»
+   исходного style.css — БЕЗ ИЗМЕНЕНИЙ и без пропусков.
+   ===================================================================== */
+
+/* ——— TABLET 601-1023 px ——— */
+@media (min-width:601px) and (max-width:1023px){
+
+    /* медиа-центр: превращаем сайдбар в горизонтальную строку */
+    .media-layout{flex-direction:column}
+  
+    .media-sidebar{
+      flex:none;
+      flex-direction:row;
+      justify-content:center;
+      gap:1.6rem;
+      margin:0 0 1.9rem;
+    }
+  
+    .media-sidebar .tab-btn{
+      border-left:none;
+      border-bottom:4px solid transparent;
+      padding:.6rem .3rem;
+    }
+    .media-sidebar .tab-btn.active{border-color:var(--clr-accent)}
+  
+    /* селект-замена скрыта на планшете */
+    .media-select{display:none}
+  }
+  
+  
+/* ——— MOBILE ≤600 px ——— */
+@media (max-width:600px){
+
+    /* базовая типографика */
+    html{font-size:16px}
+  
+    /* шапка */
+    .logo-img{height:42px}
+    .header-inner{padding:.48rem 0}
+  
+    /* бургер-иконка */
+    .burger{display:block}
+    .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+  
+    /* выдвижное меню */
+    .main-nav{
+      position:fixed;top:0;right:-100%;
+      width:85%;max-width:320px;height:100vh;background:#fff;
+      display:flex;flex-direction:column;gap:1.6rem;
+      padding:5rem 1.8rem 2.6rem;
+      box-shadow:-3px 0 20px rgb(0 0 0/.12);
+      transition:right .42s cubic-bezier(.25,.8,.3,1);
+      z-index:1100;
+    }
+    .main-nav.open{right:0 !important}
+    .main-nav a{font-size:1.18rem}
+    .main-nav a.btn{width:100%;text-align:center}
+  
+    /* универсальный горизонт-скролл для табов */
+    .tab-bar{gap:1.4rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .tab-bar::-webkit-scrollbar{display:none}
+  
+    /* медиа-центр / карьера: вертикаль → горизонталь */
+    .media-layout,
+    .career-layout{flex-direction:column}
+    .media-sidebar,
+    .career-tabs{display:none}           /* убираем левую колонку */
+    .media-select{display:block}
+  
+    /* фотогалерея thumbnail меньше */
+    .gallery{--thumb:145px}
+  
+    /* контактная форма узкая */
+    .contact-form{padding:2.2rem 1.4rem}
+  
+    /* футер — колонка */
+    footer .footer-inner{flex-direction:column;gap:.7rem;text-align:center}
+  }
+  
+  /* ─────────────────────────────────────────────
+     END • responsive.css
+     ─────────────────────────────────────────── */
