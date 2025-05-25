@@ -30,17 +30,17 @@
   }
   
   
-/* ——— MOBILE ≤600 px ——— */
+/* ——— MOBILE ≤ 600 px ——— */
 @media (max-width:600px){
 
     /* базовая типографика */
     html{font-size:16px}
   
-    /* шапка */
+    /* HEADER */
     .logo-img{height:42px}
     .header-inner{padding:.48rem 0}
   
-    /* бургер-иконка */
+    /* бургер */
     .burger{display:block}
     .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
     .burger.open span:nth-child(2){opacity:0}
@@ -60,27 +60,56 @@
     .main-nav a{font-size:1.18rem}
     .main-nav a.btn{width:100%;text-align:center}
   
-    /* универсальный горизонт-скролл для табов */
-    .tab-bar{gap:1.4rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .tab-bar::-webkit-scrollbar{display:none}
+    /* ------------   Т А Б Ы   ------------- */
   
-    /* медиа-центр / карьера: вертикаль → горизонталь */
+    /* универсальный горизонт-скролл */
+    .tab-bar,
+    .career-tabs{
+      display:flex;
+      flex-direction:row;
+      gap:1.6rem;
+      overflow-x:auto;
+      padding-bottom:.1rem;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      position:relative;
+    }
+    .tab-bar::-webkit-scrollbar,
+    .career-tabs::-webkit-scrollbar{display:none}
+  
+    /* тонкая рейка под вкладками */
+    .tab-bar::before,
+    .career-tabs::before{
+      content:'';
+      position:absolute;left:0;right:0;bottom:0;
+      height:2px;border-radius:1px;
+      background:var(--clr-border);
+    }
+  
+    /* активная вкладка: синяя полоса снизу */
+    .career-tabs .tab-btn{
+      border:none;
+      border-bottom:3px solid transparent;
+      padding:.4rem .1rem;
+      white-space:nowrap;
+    }
+    .career-tabs .tab-btn.active{
+      border-color:var(--clr-accent);
+    }
+  
+    /* скрывать больше НЕ нужно */
+    .media-sidebar{display:none}
+  
+    /* layout-колонки → стеки */
     .media-layout,
     .career-layout{flex-direction:column}
-    .media-sidebar,
-    .career-tabs{display:none}           /* убираем левую колонку */
-    .media-select{display:block}
   
-    /* фотогалерея thumbnail меньше */
+    /* галерея меньших превью */
     .gallery{--thumb:145px}
   
-    /* контактная форма узкая */
+    /* форма практики — узкие поля */
     .contact-form{padding:2.2rem 1.4rem}
   
-    /* футер — колонка */
+    /* футер в колонку */
     footer .footer-inner{flex-direction:column;gap:.7rem;text-align:center}
   }
-  
-  /* ─────────────────────────────────────────────
-     END • responsive.css
-     ─────────────────────────────────────────── */
