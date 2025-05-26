@@ -4,75 +4,158 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТЕКТОНИКА — Научная деятельность</title>
-
-  <!-- общий шрифт и стили -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/reset-base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Скрываем все панели по умолчанию и показываем только .active */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+  </style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
-<header>
-  <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА" /></a>
 
-    <button class="burger" id="burger" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
+      <button id="burger" class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
 
-    <nav class="main-nav" id="mobileNav">
-      <a href="index.html">Главная</a>
-      <a href="services.html">Услуги</a>
-      <a href="projects.html">Проекты</a>
-      <a href="about.html">О&nbsp;нас</a>
-      <a href="media.html">Медиа</a>
-      <a href="research.html" class="active">Научная&nbsp;деятельность</a>
-      <a href="careers.html" class="btn primary mini">Карьера</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ===== Research page ===== -->
-<section class="section">
-  <div class="container">
-    <h1>Научная деятельность</h1>
-    <p>Скоро здесь появятся публикации, патенты, научные статьи и отчёты,
-       подготовленные специалистами ООО «ТЕКТОНИКА».</p>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container footer-inner">
-    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
-      <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
-      <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+      <nav id="mobileNav" class="main-nav">
         <a href="index.html">Главная</a>
         <a href="services.html">Услуги</a>
         <a href="projects.html">Проекты</a>
-        <a href="about.html">О нас</a>
+        <a href="about.html">О&nbsp;нас</a>
         <a href="media.html">Медиа</a>
-        <a href="research.html">Научная&nbsp;деятельность</a>
-        <a href="careers.html">Карьера</a>
+        <a href="research.html" class="active">Научная&nbsp;деятельность</a>
+        <a href="careers.html" class="btn mini">Карьера</a>
       </nav>
     </div>
+  </header>
 
-    <div style="text-align:right">
-      <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
-      <p>
-        <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
-        <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
-      </p>
+  <!-- ===== HERO ===== -->
+  <section class="section">
+    <div class="container">
+      <h1>Научная деятельность</h1>
+      <p>Здесь будут публикации, патенты, научные статьи и отчёты, подготовленные специалистами ТЕКТОНИКА.</p>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script src="script.js"></script>
+  <!-- ===== RESEARCH TABS ===== -->
+  <section class="section">
+    <div class="container">
+
+      <!-- линия-основа для табов -->
+      <div class="tab-rail"></div>
+
+      <!-- кнопки-таб -->
+      <nav class="research-tabs">
+        <button class="tab-btn" data-tab="patents">Патенты</button>
+        <button class="tab-btn active" data-tab="articles">Статьи</button>
+        <button class="tab-btn" data-tab="reports">Отчёты</button>
+      </nav>
+
+      <!-- мобильный <select> -->
+      <div class="media-select">
+        <select id="researchSelect">
+          <option value="patents">Патенты</option>
+          <option value="articles" selected>Статьи</option>
+          <option value="reports">Отчёты</option>
+        </select>
+      </div>
+
+      <!-- панели -->
+      <div class="research-content">
+
+        <!-- ПАТЕНТЫ -->
+        <div class="tab-panel" id="patents">
+          <div class="cards-grid">
+            <div class="card">
+              <h3>Патент РФ №1234567</h3>
+              <time>15.10.2024</time>
+              <p>Метод высокоточного геофизического картирования месторождений.</p>
+              <a href="#" class="btn">Подробнее</a>
+            </div>
+            <div class="card">
+              <h3>Патент РФ №7654321</h3>
+              <time>07.01.2025</time>
+              <p>Система обработки IP-томографии с обратной связью в реальном времени.</p>
+              <a href="#" class="btn">Подробнее</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- СТАТЬИ -->
+        <div class="tab-panel active" id="articles">
+          <div class="cards-grid">
+            <div class="card">
+              <h3>Статья: Новые подходы к IP-томографии</h3>
+              <time>20.08.2024</time>
+              <p>Обзор методов повышения разрешающей способности при полевых измерениях.</p>
+              <a href="#" class="btn">Читать</a>
+            </div>
+            <div class="card">
+              <h3>Статья: 3D-моделирование коренных руд</h3>
+              <time>11.11.2024</time>
+              <p>Сравнение результатов блок-моделирования в Micromine и Surpac.</p>
+              <a href="#" class="btn">Читать</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ОТЧЁТЫ -->
+        <div class="tab-panel" id="reports">
+          <div class="cards-grid">
+            <div class="card">
+              <h3>Отчёт: GKZ-аудит месторождения «Орлинка»</h3>
+              <time>26.03.2025</time>
+              <p>Независимый аудит запасов с применением варьографического анализа.</p>
+              <a href="#" class="btn">Скачать</a>
+            </div>
+            <div class="card">
+              <h3>Отчёт: Лазерное сканирование карьера</h3>
+              <time>02.02.2025</time>
+              <p>Оценка точности цифровой модели рельефа по данным LiDAR-съёмки.</p>
+              <a href="#" class="btn">Скачать</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-inner">
+      <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+        <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
+        <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="projects.html">Проекты</a>
+          <a href="about.html">О нас</a>
+          <a href="media.html">Медиа</a>
+          <a href="research.html" class="active">Научная деятельность</a>
+          <a href="careers.html">Карьера</a>
+        </nav>
+      </div>
+      <div style="text-align:right">
+        <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
+        <p>
+          <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
+          <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

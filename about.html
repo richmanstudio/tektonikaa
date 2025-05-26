@@ -5,91 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТЕКТОНИКА — О нас</title>
 
-  <!-- общий шрифт и стили -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset-base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Шрифты и разделённые CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset-base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
 
-<!-- ===== Header ===== -->
-<header>
-  <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
-
-    <button class="burger" id="burger" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="main-nav" id="mobileNav">
-      <a href="index.html">Главная</a>
-      <a href="services.html">Услуги</a>
-      <a href="projects.html">Проекты</a>
-      <a href="about.html" class="active">О&nbsp;нас</a>
-      <a href="media.html">Медиа</a>
-      <a href="research.html">Научная&nbsp;деятельность</a>
-      <a href="careers.html" class="btn primary mini">Карьера</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ===== About page ===== -->
-<section class="section">
-  <div class="container">
-    <h1>О компании</h1>
-
-    <p>ООО «ТЕКТОНИКА» — российская геолого-разведочная компания, выполняющая
-       полный цикл услуг — от полевого бурения и геофизики до 3-D моделирования
-       месторождений и подготовки отчётов GKZ / JORC. Мы работаем на территории
-       всей страны, сочетая многолетний практический опыт с современными
-       цифровыми технологиями (БПЛА-съёмка, облака точек, машинное обучение).</p>
-
-    <p><strong>Ключевые факты:</strong></p>
-    <ul>
-      <li>Зарегистрированы — 18 декабря 2023 г.</li>
-      <li>Уставный капитал — 16 000 ₽</li>
-      <li>Выручка 2024 года — 97,9 млн ₽; прибыль — 19,5 млн ₽</li>
-      <li>Собственная буровая техника и аккредитованная лаборатория грунтов</li>
-      <li>Команда инженеров и геологов с опытом защиты запасов в ГКЗ</li>
-    </ul>
-
-    <p>Наша миссия — <em>комплексно исследовать недра, предоставляя заказчикам
-       точные, прозрачные и финансово обоснованные данные о ресурсах и запасах
-       полезных ископаемых</em>.</p>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container footer-inner">
-    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
-      <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
-      <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html">
+        <img src="logo.png" class="logo-img" alt="ТЕКТОНИКА" />
+      </a>
+      <button id="burger" class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mobileNav" class="main-nav">
         <a href="index.html">Главная</a>
         <a href="services.html">Услуги</a>
         <a href="projects.html">Проекты</a>
-        <a href="about.html">О нас</a>
+        <a href="about.html" class="active">О нас</a>
         <a href="media.html">Медиа</a>
-        <a href="research.html">Научная&nbsp;деятельность</a>
-        <a href="careers.html">Карьера</a>
+        <a href="research.html">Научная деятельность</a>
+        <a href="careers.html" class="btn mini">Карьера</a>
       </nav>
     </div>
+  </header>
 
-    <div style="text-align:right">
-      <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
+  <!-- ===== ABOUT ===== -->
+  <section class="about-section reveal">
+    <div class="container">
+      <h1>О компании</h1>
       <p>
-        <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
-        <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+        ООО «ТЕКТОНИКА» — российская геолого-разведочная компания, выполняющая полный цикл
+        услуг — от полевого бурения и геофизики до 3D-моделирования месторождений и подготовки
+        отчётов по стандартам GKZ и JORC. Мы работаем по всей России, сочетая многолетний опыт
+        с современными цифровыми технологиями: БПЛА-съёмка, лазерное сканирование, облака точек
+        и машинное обучение.
       </p>
+      <ul class="about-facts">
+        <li>
+          <strong>Дата регистрации:</strong><br />
+          18 декабря 2023 г.
+        </li>
+        <li>
+          <strong>Уставный капитал:</strong><br />
+          16 000 ₽
+        </li>
+        <li>
+          <strong>Выручка 2024 г.:</strong><br />
+          97,9 млн ₽<br />
+          <em>Прибыль 19,5 млн ₽</em>
+        </li>
+        <li>
+          <strong>Техника и лаборатория:</strong><br />
+          собственная буровая техника и аккредитованная лаборатория грунтов
+        </li>
+        <li>
+          <strong>Команда:</strong><br />
+          инженеры и геологи с опытом аудиторов по стандартам GKZ и JORC
+        </li>
+        <li>
+          <strong>Наша миссия:</strong><br />
+          <em>Комплексно исследовать недра, предоставляя заказчикам точные и прозрачные
+          данные о ресурсах и запасах полезных ископаемых.</em>
+        </li>
+      </ul>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script src="script.js"></script>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-inner">
+      <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+        <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
+        <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="projects.html">Проекты</a>
+          <a href="about.html">О нас</a>
+          <a href="media.html">Медиа</a>
+          <a href="research.html">Научная деятельность</a>
+          <a href="careers.html">Карьера</a>
+        </nav>
+      </div>
+      <div style="text-align:right">
+        <p>© 2025 ООО «ТЕКТОНИКА»</p>
+        <p>
+          <a href="tel:+79842626115">+7 984 262-61-15</a> ·
+          <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

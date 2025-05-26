@@ -1,115 +1,190 @@
-/* =====================================================================
-   Т Е К Т О Н И К А  •  responsive.css
-   Брейк-пойнты, целиком перенесённые из блока «15. BREAKPOINTS»
-   исходного style.css — БЕЗ ИЗМЕНЕНИЙ и без пропусков.
-   ===================================================================== */
+/* responsive.css
+   ==========================================================================
+   Стили для адаптивных точек перелома
+*/
 
-/* ——— TABLET 601-1023 px ——— */
-@media (min-width:601px) and (max-width:1023px){
-
-    /* медиа-центр: превращаем сайдбар в горизонтальную строку */
-    .media-layout{flex-direction:column}
-  
-    .media-sidebar{
-      flex:none;
-      flex-direction:row;
-      justify-content:center;
-      gap:1.6rem;
-      margin:0 0 1.9rem;
+/* ==========================================================================
+   1. Tablet (≤ 900px)
+   ========================================================================== */
+   @media (max-width: 900px) {
+    /* Контейнер — уменьшаем горизонтальные отступы */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   
-    .media-sidebar .tab-btn{
-      border-left:none;
-      border-bottom:4px solid transparent;
-      padding:.6rem .3rem;
+    /* Блок «Что мы делаем» — 2 колонки вместо 3 */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
     }
-    .media-sidebar .tab-btn.active{border-color:var(--clr-accent)}
   
-    /* селект-замена скрыта на планшете */
-    .media-select{display:none}
+    /* Логотип в шапке — чуть меньше */
+    .logo-img {
+      height: 48px;
+    }
   }
   
-  
-/* ——— MOBILE ≤ 600 px ——— */
-@media (max-width:600px){
-
-    /* базовая типографика */
-    html{font-size:16px}
-  
-    /* HEADER */
-    .logo-img{height:42px}
-    .header-inner{padding:.48rem 0}
-  
-    /* бургер */
-    .burger{display:block}
-    .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-    .burger.open span:nth-child(2){opacity:0}
-    .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-  
-    /* выдвижное меню */
-    .main-nav{
-      position:fixed;top:0;right:-100%;
-      width:85%;max-width:320px;height:100vh;background:#fff;
-      display:flex;flex-direction:column;gap:1.6rem;
-      padding:5rem 1.8rem 2.6rem;
-      box-shadow:-3px 0 20px rgb(0 0 0/.12);
-      transition:right .42s cubic-bezier(.25,.8,.3,1);
-      z-index:1100;
+  /* ==========================================================================
+     2. Mobile (≤ 600px)
+     ========================================================================== */
+  @media (max-width: 600px) {
+    /* Базовая типографика */
+    html {
+      font-size: 16px;
     }
-    .main-nav.open{right:0 !important}
-    .main-nav a{font-size:1.18rem}
-    .main-nav a.btn{width:100%;text-align:center}
   
-    /* ------------   Т А Б Ы   ------------- */
+    /* ===== HEADER ===== */
+    .header-inner {
+      padding: 0.48rem 0;
+    }
+    .logo-img {
+      height: 42px;
+    }
   
-    /* универсальный горизонт-скролл */
+    /* Бургер-меню */
+    .burger {
+      display: block;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--clr-text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .burger.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  
+    /* Выдвижное меню */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 320px;
+      height: 100vh;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      padding: 5rem 1.8rem 2.6rem;
+      box-shadow: -3px 0 20px rgba(0, 0, 0, 0.12);
+      transition: right 0.42s cubic-bezier(.25, .8, .3, 1);
+      z-index: 1100;
+    }
+    .main-nav.open {
+      right: 0 !important;
+    }
+    .main-nav a {
+      font-size: 1.18rem;
+    }
+    .main-nav a.btn {
+      width: 100%;
+      text-align: center;
+    }
+  
+    /* ===== TAB-BAR / CAREER-TABS ===== */
     .tab-bar,
-    .career-tabs{
-      display:flex;
-      flex-direction:row;
-      gap:1.6rem;
-      overflow-x:auto;
-      padding-bottom:.1rem;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
-      position:relative;
+    .career-tabs {
+      display: flex;
+      flex-direction: row;
+      gap: 1.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.1rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      position: relative;
     }
     .tab-bar::-webkit-scrollbar,
-    .career-tabs::-webkit-scrollbar{display:none}
-  
-    /* тонкая рейка под вкладками */
+    .career-tabs::-webkit-scrollbar {
+      display: none;
+    }
     .tab-bar::before,
-    .career-tabs::before{
-      content:'';
-      position:absolute;left:0;right:0;bottom:0;
-      height:2px;border-radius:1px;
-      background:var(--clr-border);
+    .career-tabs::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--clr-border);
+    }
+    .career-tabs .tab-btn {
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 0.4rem 0.1rem;
+      white-space: nowrap;
+    }
+    .career-tabs .tab-btn.active {
+      border-color: var(--clr-accent);
     }
   
-    /* активная вкладка: синяя полоса снизу */
-    .career-tabs .tab-btn{
-      border:none;
-      border-bottom:3px solid transparent;
-      padding:.4rem .1rem;
-      white-space:nowrap;
+    /* ===== MEDIA-CENTER ===== */
+    .media-sidebar {
+      display: none;
     }
-    .career-tabs .tab-btn.active{
-      border-color:var(--clr-accent);
+    .media-select {
+      display: block !important;
+      margin-bottom: 1.6rem;
+    }
+    .media-select select {
+      width: 100%;
+      font: inherit;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, #fff 0%, #f6f9ff 100%)
+        no-repeat padding-box;
+      appearance: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6' fill='%2397A3B6'/%3E%3C/svg%3E");
+      background-position: right 0.9rem center;
+      background-size: 10px 6px;
+      cursor: pointer;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .media-select select:focus {
+      border-color: var(--clr-accent);
+      box-shadow: 0 0 0 3px rgba(0, 96, 255, .18);
+      outline: 0;
     }
   
-    /* скрывать больше НЕ нужно */
-    .media-sidebar{display:none}
-  
-    /* layout-колонки → стеки */
+    /* ===== LAYOUT STACK ===== */
     .media-layout,
-    .career-layout{flex-direction:column}
+    .career-layout {
+      flex-direction: column;
+    }
   
-    /* галерея меньших превью */
-    .gallery{--thumb:145px}
+    /* ===== GALLERY ===== */
+    .gallery {
+      --thumb: 145px;
+    }
   
-    /* форма практики — узкие поля */
-    .contact-form{padding:2.2rem 1.4rem}
+    /* ===== CONTACT FORM ===== */
+    .contact-form {
+      padding: 2.2rem 1.4rem;
+    }
   
-    /* футер в колонку */
-    footer .footer-inner{flex-direction:column;gap:.7rem;text-align:center}
+    /* ===== FOOTER ===== */
+    footer .footer-inner {
+      flex-direction: column;
+      gap: 0.7rem;
+      text-align: center;
+    }
   }

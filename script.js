@@ -69,26 +69,23 @@
     revealElems().forEach(el => io.observe(el));
   
     /* ───────────────────────────────────────────
-       4.  MAIN TABS  (любой элемент data-tab)
+       4.  MAIN TABS  (любые data-tab)
        ───────────────────────────────────────── */
     const mainTabBtns = document.querySelectorAll('[data-tab]');
   
     function activateMainTab(id){
-      /* кнопки */
       mainTabBtns.forEach(btn =>
         btn.classList.toggle('active', btn.dataset.tab === id)
       );
-  
-      /* панели (поддержка .tab-pane и .tab-panel) */
       document.querySelectorAll('.tab-pane, .tab-panel').forEach(p =>
         p.classList.toggle('active', p.id === id)
       );
-  
-      /* mobile <select> sync */
+      // sync media-select
       const sel = document.getElementById('mediaSelect');
       if (sel && sel.value !== id) sel.value = id;
-  
-      /* наблюдать reveal в новом контенте */
+      // sync research-select
+      const rsel = document.getElementById('researchSelect');
+      if (rsel && rsel.value !== id) rsel.value = id;
       revealElems().forEach(el => io.observe(el));
     }
   
@@ -101,10 +98,16 @@
       mediaSelect.addEventListener('change', () => activateMainTab(mediaSelect.value));
     }
   
+    // research select (mobile)
+    const researchSelect = document.getElementById('researchSelect');
+    if (researchSelect){
+      researchSelect.addEventListener('change', () => activateMainTab(researchSelect.value));
+    }
+  
     /* ───────────────────────────────────────────
        5.  SEASON TABS (data-season)
        ───────────────────────────────────────── */
-    const seasonBtns = document.querySelectorAll('.season-tabs .tab-btn');
+    const seasonBtns = document.querySelectorAll('[data-season]');
     function activateSeason(code){
       seasonBtns.forEach(b =>
         b.classList.toggle('active', b.dataset.season === code)
@@ -138,13 +141,13 @@
     }
   
     /* ───────────────────────────────────────────
-       7.  Practice-form stub  → toast
+       7.  Practice-form stub → toast
        ───────────────────────────────────────── */
     const internForm = document.getElementById('internForm');
     if (internForm){
       internForm.addEventListener('submit', e => {
         e.preventDefault();
-        if (!internForm.checkValidity()){internForm.reportValidity();return;}
+        if (!internForm.checkValidity()){ internForm.reportValidity(); return; }
         toast('Спасибо! Заявка отправлена.');
         internForm.reset();
       });
@@ -156,12 +159,10 @@
     function toast(msg='OK', ms=4000){
       let t = document.querySelector('.toast');
       if (t) t.remove();
-  
       t = document.createElement('div');
       t.className = 'toast';
       t.textContent = msg;
       document.body.appendChild(t);
-  
       requestAnimationFrame(() => t.classList.add('show'));
       setTimeout(() => {
         t.classList.remove('show');

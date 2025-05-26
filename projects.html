@@ -2,92 +2,129 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ТЕКТОНИКА — Проекты</title>
 
-  <!-- общий шрифт + стили -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset-base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Шрифты и разбитые CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/reset-base.css"/>
+  <link rel="stylesheet" href="css/layout.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+
 </head>
 <body>
 
-<!-- ===== Header ===== -->
-<header>
-  <div class="container header-inner">
-    <a href="index.html">
-      <img src="logo.png" alt="ТЕКТОНИКА" class="logo-img">
-    </a>
-
-    <button class="burger" id="burger" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="main-nav" id="mobileNav">
-      <a href="index.html">Главная</a>
-      <a href="services.html">Услуги</a>
-      <a href="projects.html" class="active">Проекты</a>
-      <a href="about.html">О&nbsp;нас</a>
-      <a href="media.html">Медиа</a>
-      <a href="research.html">Научная&nbsp;деятельность</a>
-      <a href="careers.html" class="btn primary mini">Карьера</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ===== Projects ===== -->
-<section class="section">
-  <div class="container">
-    <h1>Портфолио проектов</h1>
-    <p>Здесь будет представлена карта и подробные кейсы завершённых и текущих работ
-       компании «ТЕКТОНИКА». На данный момент раздел служит заглушкой.</p>
-
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Золоторудный объект, Магадан</h3>
-        <p>Прирост ресурсов +35 % по категории Indicated, заверка ВНИМИ (2024).</p>
-      </div>
-      <div class="card">
-        <h3>Литиевые пегматиты, Забайкалье</h3>
-        <p>JORC‑оценка, блок‑модель; PEA NPV&nbsp;$420&nbsp;млн (2023‑2024).</p>
-      </div>
-      <div class="card">
-        <h3>Коксующийся уголь, Хабаровский край</h3>
-        <p>Сейсморазведка 2D+3D и RC‑бурение, защита запасов C2 (2023).</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container footer-inner">
-    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
-      <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px" />
-      <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html"><img src="logo.png" class="logo-img" alt="ТЕКТОНИКА"/></a>
+      <button id="burger" class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mobileNav" class="main-nav">
         <a href="index.html">Главная</a>
         <a href="services.html">Услуги</a>
-        <a href="projects.html">Проекты</a>
+        <a href="projects.html" class="active">Проекты</a>
         <a href="about.html">О нас</a>
         <a href="media.html">Медиа</a>
-        <a href="research.html">Научная&nbsp;деятельность</a>
-        <a href="careers.html">Карьера</a>
+        <a href="research.html">Научная деятельность</a>
+        <a href="careers.html" class="btn mini">Карьера</a>
       </nav>
     </div>
+  </header>
 
-    <div style="text-align:right">
-      <p>©&nbsp;2025&nbsp;ООО&nbsp;«ТЕКТОНИКА»</p>
-      <p>
-        <a href="tel:+79842626115">+7&nbsp;984&nbsp;262-61-15</a> ·
-        <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
-      </p>
+  <main>
+
+    <!-- ===== PROJECTS: КАРТА ===== -->
+    <section id="projects-map" class="map-section">
+      <div class="container">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=135.0844%2C48.4828&z=7"
+          width="100%"
+          height="300"
+          frameborder="0"
+          style="border:0; border-radius: var(--radius); box-shadow: var(--shadow-sm);"
+          allowfullscreen=""
+          aria-label="Карта выполненных работ">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS: КЕЙСЫ ===== -->
+    <section id="projects-cases" class="projects-list container">
+
+      <!-- Пример заглушки 1 -->
+      <div class="project-case">
+        <div class="case-media">
+          <img src="placeholder1.jpg" alt="Проект «Солнечный»"/>
+        </div>
+        <div class="case-info">
+          <div class="case-meta">Регион: Хабаровский край, 2023</div>
+          <h2>Геологическое исследование «Солнечный»</h2>
+          <p>Комплекс геолого-разведочных работ с применением IP-томографии и RC-бурения на участке «Солнечный».</p>
+          <a href="#" class="btn">Подробнее</a>
+        </div>
+      </div>
+
+      <!-- Пример заглушки 2 -->
+      <div class="project-case">
+        <div class="case-media">
+          <img src="placeholder2.jpg" alt="Проект «Тигровый»"/>
+        </div>
+        <div class="case-info">
+          <div class="case-meta">Регион: Амурская область, 2022</div>
+          <h2>Геофизика «Тигровый»</h2>
+          <p>Магнитная и электрическая разведка на месторождении «Тигровый» с построением 3D-модели.</p>
+          <a href="#" class="btn">Подробнее</a>
+        </div>
+      </div>
+
+      <!-- Пример заглушки 3 -->
+      <div class="project-case">
+        <div class="case-media">
+          <img src="placeholder3.jpg" alt="Проект «Орлинка»"/>
+        </div>
+        <div class="case-info">
+          <div class="case-meta">Регион: Якутия, 2021</div>
+          <h2>IP-томография «Орлинка»</h2>
+          <p>Выявление аномальных заряд-разряд зон, уточнение 3D структуры рудных тел и план бурения.</p>
+          <a href="#" class="btn">Подробнее</a>
+        </div>
+      </div>
+
+      <!-- сюда можно добавить другие кейсы аналогичным образом -->
+
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-inner">
+      <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+        <img src="logo.png" alt="ТЕКТОНИКА" style="height:36px"/>
+        <nav style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem">
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="projects.html">Проекты</a>
+          <a href="about.html">О нас</a>
+          <a href="media.html">Медиа</a>
+          <a href="research.html">Научная деятельность</a>
+          <a href="careers.html">Карьера</a>
+        </nav>
+      </div>
+      <div style="text-align:right">
+        <p>© 2025 ООО «ТЕКТОНИКА»</p>
+        <p>
+          <a href="tel:+79842626115">+7 984 262-61-15</a> ·
+          <a href="mailto:tektonikayur16@gmail.com">tektonikayur16@gmail.com</a>
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
