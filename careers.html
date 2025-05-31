@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Карьера — ТЕКТОНИКА</title>
 
-  <!-- split-CSS (без изменений) -->
+  <!-- Добавляем EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script>
+    // Инициализация EmailJS с вашим User ID
+    (function() {
+      emailjs.init("m4DT1MN15nyCSdWzE");
+    })();
+  </script>
+
+  <!-- split-CSS -->
   <link rel="stylesheet" href="css/reset-base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -63,9 +72,9 @@
           <div class="career-cards">
             <!-- карточка-пример -->
             <div class="career-card">
-              <h3>Геофизик-интерпретатор</h3>
-              <p>Полевые работы, обработка данных, 3-D инверсии.</p>
-              <p><strong>Требования:</strong> Surfer / Oasis, опыт &gt; 3&nbsp;лет.</p>
+              <h3>Название вакансии</h3>
+              <p>Действия</p>
+              <p><strong>Требования:</strong> ..</p>
               <a href="mailto:hr@tektonika.ru?subject=Геофизик-интерпретатор"
                  class="btn mini">Откликнуться</a>
             </div>
@@ -76,9 +85,8 @@
         <!-- TAB 2 : INTERN -->
         <div id="intern" class="tab-pane">
 
-          <!-- ПОЛНАЯ «СТАРАЯ» ФОРМА 1-к-1 -->
+          <!-- ФОРМА ДЛЯ ОТПРАВКИ ЧЕРЕЗ EMAILJS -->
           <form class="contact-form" id="internForm">
-
             <!-- PRACTICE -->
             <fieldset>
               <legend>Практика</legend>
