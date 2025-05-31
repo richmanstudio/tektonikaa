@@ -8,6 +8,7 @@
     13.  Projects (projects.html)
     14.  About (about.html)
     15.  Research (research.html)
+    16.  Legal Pages (agreement.html, privacy.html)
    ===================================================================== */
 
 /* ─────────────────────────────────────────────
@@ -698,6 +699,110 @@
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: none; }
+  }
+  
+  /* ─────────────────────────────────────────────
+     16.  LEGAL PAGES (agreement.html, privacy.html)
+     ─────────────────────────────────────────── */
+  .legal-page {
+    padding: 3rem 0 4rem;
+    max-width: var(--w-lg);
+    margin: 0 auto;
+  }
+  
+  .legal-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--clr-accent);
+  }
+  
+  .legal-page .date {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--clr-text-soft);
+    margin-bottom: 2.2rem;
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: 1.2rem;
+  }
+  
+  .legal-page article {
+    background: #fff;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 2.4rem;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .legal-page h2 {
+    font-size: 1.5rem;
+    margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--clr-bg-alt);
+  }
+  
+  .legal-page h3 {
+    font-size: 1.25rem;
+    margin: 1.8rem 0 0.8rem;
+    color: var(--clr-accent);
+  }
+  
+  .legal-page p {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+  }
+  
+  .legal-page ul, 
+  .legal-page ol {
+    margin: 0 0 1.5rem 1.8rem;
+    padding: 0;
+  }
+  
+  .legal-page li {
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  
+  .legal-page li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--clr-accent);
+    font-size: 1.3rem;
+  }
+  
+  .legal-page a {
+    color: var(--clr-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  
+  .legal-page a:hover {
+    text-decoration: none;
+  }
+  
+  .legal-page .contact-block {
+    background: var(--clr-bg-alt);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    margin-top: 2.5rem;
+  }
+  
+  @media (max-width: 600px) {
+    .legal-page {
+      padding: 2rem 0;
+    }
+    .legal-page article {
+      padding: 1.6rem;
+    }
+    .legal-page h1 {
+      font-size: 1.8rem;
+    }
+    .legal-page h2 {
+      font-size: 1.3rem;
+    }
   }
   
   /* End of pages.css */
